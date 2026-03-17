@@ -1,0 +1,59 @@
+body {
+    font-family: Arial;
+}
+
+/* Botón flotante */
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Ventana del chat */
+.chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    display: none;
+}
+
+/* Header */
+.chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Cuerpo */
+.chat-body {
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+/* Input */
+.chat-footer {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.chat-footer input {
+    width: 70%;
+    padding: 5px;
+}
+
+.chat-footer button {
+    padding: 5px 10px;
+}
