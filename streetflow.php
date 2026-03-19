@@ -254,9 +254,6 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <li><a href="#">Sale</a></li>
   </ul>
   <div class="nav-icons">
-    <button>🔍</button>
-    <button>♡</button>
-    <button>🛍️</button>
   </div>
 </nav>
 
@@ -288,7 +285,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <div class="sec-hd"><h2>CATEGORÍAS <span>// ESTILOS</span></h2><a href="#">Ver todo →</a></div>
 <div class="categories">
   <div class="cat-card">
-    <div class="cat-bg">🧢</div><div class="cat-frame"></div><span class="cat-num">01</span>
+    <img src="imagenes/busolargohombre.jpg" alt="Hoodies" class="cat-img">
     <div class="cat-info"><span class="cat-label">Urban</span><h3>HOODIES &<br>SWEATERS</h3><p class="cat-count">42 prendas disponibles</p></div>
   </div>
   <div class="cat-card">
@@ -389,7 +386,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   <div class="chat-header">
     <div class="chat-avatar">🤖</div>
     <div class="chat-header-info">
-      <strong>ASISTENTE STREETFLOW</strong>
+      <strong>ASISTENTE VIRTUAL</strong>
       <span class="chat-online">En línea ahora</span>
     </div>
     <button class="chat-close" id="chat-close">✕</button>
@@ -443,7 +440,7 @@ const RULES = [
   {
     k: ["oferta","descuento","sale","rebaja","promo","precio","barato"],
     r: `🏷️ ¡Hay ofertas activas! Los <span class="kw">Cargo Pants Wide</span> están al <span class="kw">−30%</span> (ahora $175.000) y la <span class="kw">Bandana Vintage</span> al −20%. En la sección <span class="kw">Sale</span> hay más piezas con hasta 40% off. ¿Cuál te interesa? Dime y te doy más detalles.`
-  },
+  }, 
   {
     k: ["hoodie","sudadera","buzo","sweatshirt","poleron"],
     r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller: $189.000, material 380gsm, tiro largo y cuello amplio. Disponible en negro, verde militar y gris. ¿Necesitas saber tu <span class="kw">talla</span> ideal? Escribe <span class="kw">talla</span> y te oriento. ¿Ya vas a pedir? Escribe <span class="kw">comprar</span>.`
@@ -461,7 +458,7 @@ const RULES = [
     r: `🛒 ¡Vamos! Agrega los productos al carrito desde la tienda y elige tu método de <span class="kw">pago</span>. Si tienes dudas sobre alguna prenda, dime cuál es y te ayudo. ¿Ya sabes cómo llega tu pedido? Escribe <span class="kw">envio</span> para todos los detalles.`
   },
   {
-    k: ["contacto","whatsapp","llamar","hablar","persona","humano"],
+    k: ["contacto","whatsapp","llamar","hablar","persona","humano", "usuario"],
     r: `📞 Puedes contactarnos por <span class="kw">WhatsApp</span> al 300-000-0000 o por <span class="kw">Instagram</span> @streetflow.co. Respuesta en menos de 2 horas en horario hábil. ¿Hay algo más que pueda ayudarte? Escribe lo que necesitas.`
   },
 ];
