@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STREETFLOW — Calzado & Accesorios</title>
+<title>STREETFLOW — Cargo & Joggers</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12,7 +12,7 @@
   --black2:     #0F140F;
   --black3:     #161C16;
   --card:       #111711;
-  --green:      #14ffeb;
+  --green:      #14fff3;
   --green-dim:  #1DB80D;
   --green-dark: #0A4A05;
   --white:      #E8F5E4;
@@ -90,21 +90,15 @@ nav ul a:hover, nav ul a.active { color: var(--green); }
 .talla-chip { font-size: 0.6rem; padding: 3px 7px; border: 1px solid var(--border2); color: var(--muted); cursor: pointer; font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.08em; transition: all 0.15s; }
 .talla-chip:hover { border-color: var(--green); color: var(--green); }
 
-/* GRID DE ACCESORIOS — 4 col también */
-.accesorios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 4rem; }
-.acc-card { background: var(--card); cursor: pointer; transition: background 0.2s; position: relative; }
-.acc-card:hover { background: var(--black3); }
-.acc-img { height: 220px; display: flex; align-items: center; justify-content: center; background: var(--black3); position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
-
 .feature-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 4rem; }
 .feat-item { background: var(--card); padding: 1.8rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
 .feat-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
-.feat-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+.feat-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--white); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
 .feat-text span { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
 
 footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px solid var(--border); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
-.footer-brand p { color: var(--muted); font-size: 0.8rem; line-height: 1.7; max-width: 240px; margin-top: 0.8rem; }
+.footer-brand p { color: var(--muted); font-size: 0.8rem; line-height: 1.7; max-width: 240px; margin-top: 0.8rem; font-weight: 300; }
 .footer-col h5 { color: var(--green); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.2rem; font-weight: 700; font-family: 'Syne', sans-serif; }
 .footer-col ul { list-style: none; }
 .footer-col li { margin-bottom: 0.6rem; }
@@ -158,14 +152,14 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 .chat-send:hover { background: #4fff28; transform: scale(1.04); }
 
 @media (max-width: 960px) {
-  .products-grid, .accesorios-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
   .feature-band { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .cat-hero { padding: 2rem; }
   .cat-hero h1 { font-size: 3.5rem; }
 }
 @media (max-width: 580px) {
-  .products-grid, .accesorios-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
   nav ul { display: none; }
   #chat-window { width: calc(100vw - 20px); right: 10px; bottom: 92px; }
   .cat-hero h1 { font-size: 2.8rem; }
@@ -177,46 +171,45 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <nav>
   <a href="index.php" class="logo">STREET<span>FLOW</span></a>
   <ul>
-    <li><a href="streetflow.php">Inicio</a></li>
+    <li><a href="index.php">Inicio</a></li>
     <li><a href="ropa.php">Busos & Chaquetas</a></li>
-    <li><a href="pantalon.php">Cargos & Joggers</a></li>
-    <li><a href="zapato.php" class="active">Calzado & Accesorios</a></li>
+    <li><a href="pantalon.php" class="active">Cargos & Joggers</a></li>
+    <li><a href="zapato.php">Calzado & Accesorios</a></li>
     <li><a href="#">Sale</a></li>
   </ul>
 </nav>
 
 <div class="ticker">
-  <span class="ticker-inner">SNEAKERS · RELOJES · GORRAS · COLLARES · ACCESORIOS URBANOS · KICKS · DROP SS2026 · ENVÍO GRATIS +$200.000 · SNEAKERS · RELOJES · GORRAS · COLLARES ·</span>
+  <span class="ticker-inner">CARGO PANTS · JOGGERS · BAGGY · PANTALONETAS · WIDE LEG · STREETWEAR · DROP SS2026 · ENVÍO GRATIS +$200.000 · CARGO PANTS · JOGGERS · BAGGY · WIDE LEG ·</span>
 </div>
 
 <section class="cat-hero">
-  <div class="cat-hero-gfx">👟</div>
-  <div class="breadcrumb"><a href="index.php">Inicio</a> &nbsp;/&nbsp; Calzado & Accesorios</div>
-  <h1>CALZADO &<br><span>ACCESORIOS</span></h1>
-  <p>Completa tu look. Sneakers chunky, relojes urbanos, gorras de colección, collares y más para los que no se pierden un detalle.</p>
+  <div class="cat-hero-gfx">👖</div>
+  <div class="breadcrumb"><a href="index.php">Inicio</a> &nbsp;/&nbsp; Cargo & Joggers</div>
+  <h1>CARGO &<br><span>JOGGERS</span></h1>
+  <p>Pantalones para dominar la calle. Cargos baggy, joggers de corte amplio y pantalonetas urbanas con el mejor fit del mercado.</p>
   <div class="cat-stats">
-    <div class="cat-stat"><div class="num">65</div><div class="lbl">Estilos</div></div>
-    <div class="cat-stat"><div class="num">12</div><div class="lbl">Categorías</div></div>
-    <div class="cat-stat"><div class="num">36–45</div><div class="lbl">Tallas calzado</div></div>
+    <div class="cat-stat"><div class="num">38</div><div class="lbl">Prendas</div></div>
+    <div class="cat-stat"><div class="num">6</div><div class="lbl">Estilos</div></div>
+    <div class="cat-stat"><div class="num">XS–XXL</div><div class="lbl">Tallas</div></div>
   </div>
 </section>
 
 <div class="filter-bar">
   <span class="filter-label">Filtrar:</span>
-  <button class="filter-btn active">Todo</button>
-  <button class="filter-btn">Calzado</button>
-  <button class="filter-btn">Gorras</button>
-  <button class="filter-btn">Relojes</button>
-  <button class="filter-btn">Collares</button>
-  <button class="filter-btn">Mochilas</button>
+  <button class="filter-btn active">Todos</button>
+  <button class="filter-btn">Cargos</button>
+  <button class="filter-btn">Joggers</button>
+  <button class="filter-btn">Pantalonetas</button>
+  <button class="filter-btn">Baggy</button>
   <div class="filter-sep"></div>
   <button class="filter-btn">Ofertas</button>
   <button class="filter-btn">Nuevo</button>
-  <span class="results-count">12 productos encontrados</span>
+  <span class="results-count">8 productos encontrados</span>
 </div>
 
-<!-- CALZADO -->
-<div class="sec-hd"><h2>CALZADO <span>// KICKS</span></h2></div>
+<!-- CARGOS -->
+<div class="sec-hd"><h2>CARGO <span>// PANTS</span></h2></div>
 <div class="products-grid" style="padding-bottom:0;">
 
   <!-- PRODUCTO 1 -->
@@ -225,25 +218,25 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/sneaker-chunky.jpg" alt="Sneaker Chunky" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/cargo-wide.jpg" alt="Cargo Pants Wide" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Sneaker Chunky<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/sneaker-chunky.jpg</span>
+        <span class="ph-text">Cargo Pants Wide<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/cargo-wide.jpg</span>
       </div>
-      <span class="badge badge-new">Drop</span>
+      <span class="badge badge-sale">−30%</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Sneaker Chunky</h4>
-      <p class="product-sub">Calzado · Urbano</p>
+      <h4>Cargo Pants Wide</h4>
+      <p class="product-sub">Hombre · Baggy</p>
       <div class="tallas-row">
-        <span class="talla-chip">36</span><span class="talla-chip">37</span><span class="talla-chip">38</span><span class="talla-chip">39</span><span class="talla-chip">40</span><span class="talla-chip">41</span><span class="talla-chip">42</span><span class="talla-chip">43</span><span class="talla-chip">44</span><span class="talla-chip">45</span>
+        <span class="talla-chip">28</span><span class="talla-chip">30</span><span class="talla-chip">32</span><span class="talla-chip">34</span><span class="talla-chip">36</span>
       </div>
       <div class="product-footer">
-        <div><span class="price">$320.000</span></div>
+        <div><span class="price">$175.000</span><span class="price-old">$250.000</span></div>
         <button class="btn-add">+ Carrito</button>
       </div>
     </div>
@@ -255,25 +248,25 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/sneaker-low.jpg" alt="Sneaker Low Top" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/cargo-tactical.jpg" alt="Cargo Tactical" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Sneaker Low Top<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/sneaker-low.jpg</span>
+        <span class="ph-text">Cargo Tactical<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/cargo-tactical.jpg</span>
       </div>
-      <span class="badge badge-sale">−20%</span>
+      <span class="badge badge-hot">Hot</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Sneaker Low Top Classic</h4>
-      <p class="product-sub">Calzado · Essentials</p>
+      <h4>Cargo Tactical</h4>
+      <p class="product-sub">Unisex · Street</p>
       <div class="tallas-row">
-        <span class="talla-chip">36</span><span class="talla-chip">37</span><span class="talla-chip">38</span><span class="talla-chip">39</span><span class="talla-chip">40</span><span class="talla-chip">41</span><span class="talla-chip">42</span><span class="talla-chip">43</span>
+        <span class="talla-chip">28</span><span class="talla-chip">30</span><span class="talla-chip">32</span><span class="talla-chip">34</span><span class="talla-chip">36</span>
       </div>
       <div class="product-footer">
-        <div><span class="price">$220.000</span><span class="price-old">$275.000</span></div>
+        <div><span class="price">$210.000</span></div>
         <button class="btn-add">+ Carrito</button>
       </div>
     </div>
@@ -285,25 +278,25 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/bota-urbana.jpg" alt="Bota Urbana" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/cargo-denim.jpg" alt="Cargo Denim" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Bota Urbana<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/bota-urbana.jpg</span>
+        <span class="ph-text">Cargo Denim<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/cargo-denim.jpg</span>
       </div>
-      <span class="badge badge-hot">Hot</span>
+      <span class="badge badge-new">Nuevo</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Bota Urbana Combat</h4>
-      <p class="product-sub">Calzado · Street</p>
+      <h4>Cargo Denim Washed</h4>
+      <p class="product-sub">Unisex · Urban</p>
       <div class="tallas-row">
-        <span class="talla-chip">38</span><span class="talla-chip">39</span><span class="talla-chip">40</span><span class="talla-chip">41</span><span class="talla-chip">42</span><span class="talla-chip">43</span><span class="talla-chip">44</span>
+        <span class="talla-chip">28</span><span class="talla-chip">30</span><span class="talla-chip">32</span><span class="talla-chip">34</span>
       </div>
       <div class="product-footer">
-        <div><span class="price">$285.000</span></div>
+        <div><span class="price">$229.000</span></div>
         <button class="btn-add">+ Carrito</button>
       </div>
     </div>
@@ -315,109 +308,22 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/slide-urban.jpg" alt="Slide Urban" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/cargo-slim.jpg" alt="Cargo Slim" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Slide Urban<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/slide-urban.jpg</span>
+        <span class="ph-text">Cargo Slim<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/cargo-slim.jpg</span>
       </div>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Slide Urban Premium</h4>
-      <p class="product-sub">Calzado · Casual</p>
+      <h4>Cargo Slim Fit</h4>
+      <p class="product-sub">Hombre · Essentials</p>
       <div class="tallas-row">
-        <span class="talla-chip">36</span><span class="talla-chip">38</span><span class="talla-chip">40</span><span class="talla-chip">42</span><span class="talla-chip">44</span>
+        <span class="talla-chip">28</span><span class="talla-chip">30</span><span class="talla-chip">32</span><span class="talla-chip">34</span><span class="talla-chip">36</span>
       </div>
-      <div class="product-footer">
-        <div><span class="price">$98.000</span></div>
-        <button class="btn-add">+ Carrito</button>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ACCESORIOS: RELOJES, GORRAS, COLLARES -->
-<div class="sec-hd"><h2>ACCESORIOS <span>// DRIP</span></h2></div>
-<div class="accesorios-grid">
-
-  <!-- GORRA 1 -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/snapback-cap.jpg" alt="Snapback Cap" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
-      <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Snapback Cap<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/snapback-cap.jpg</span>
-      </div>
-      <span class="badge badge-hot">Hot</span>
-      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
-    </div>
-    <div class="product-info">
-      <h4>Snapback Cap Logo</h4>
-      <p class="product-sub">Gorras · Urban</p>
-      <div class="product-footer">
-        <div><span class="price">$65.000</span></div>
-        <button class="btn-add">+ Carrito</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- GORRA 2 -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/bucket-hat.jpg" alt="Bucket Hat" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
-      <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Bucket Hat<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/bucket-hat.jpg</span>
-      </div>
-      <span class="badge badge-new">Nuevo</span>
-      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
-    </div>
-    <div class="product-info">
-      <h4>Bucket Hat Reversible</h4>
-      <p class="product-sub">Gorras · Street</p>
-      <div class="product-footer">
-        <div><span class="price">$72.000</span></div>
-        <button class="btn-add">+ Carrito</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- RELOJ 1 -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/reloj-street.jpg" alt="Reloj Street" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
-      <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Reloj Street<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/reloj-street.jpg</span>
-      </div>
-      <span class="badge badge-new">Drop</span>
-      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
-    </div>
-    <div class="product-info">
-      <h4>Reloj Street Digital</h4>
-      <p class="product-sub">Relojes · Urban</p>
       <div class="product-footer">
         <div><span class="price">$185.000</span></div>
         <button class="btn-add">+ Carrito</button>
@@ -425,135 +331,127 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     </div>
   </div>
 
-  <!-- RELOJ 2 -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
+</div>
+
+<!-- JOGGERS Y PANTALONETAS -->
+<div class="sec-hd"><h2>JOGGERS <span>// PANTALONETAS</span></h2></div>
+<div class="products-grid">
+
+  <!-- PRODUCTO 5 -->
+  <div class="product-card">
+    <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/reloj-chain.jpg" alt="Reloj Chain" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/jogger-fleece.jpg" alt="Jogger Fleece" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Reloj Chain<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/reloj-chain.jpg</span>
+        <span class="ph-text">Jogger Fleece<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/jogger-fleece.jpg</span>
       </div>
       <span class="badge badge-hot">Hot</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Reloj Chain Oversized</h4>
-      <p class="product-sub">Relojes · Premium</p>
+      <h4>Jogger Fleece Oversized</h4>
+      <p class="product-sub">Unisex · Comfort</p>
+      <div class="tallas-row">
+        <span class="talla-chip">XS</span><span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
       <div class="product-footer">
-        <div><span class="price">$245.000</span></div>
+        <div><span class="price">$155.000</span></div>
         <button class="btn-add">+ Carrito</button>
       </div>
     </div>
   </div>
 
-  <!-- COLLAR 1 -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
+  <!-- PRODUCTO 6 -->
+  <div class="product-card">
+    <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/collar-chain.jpg" alt="Collar Chain" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/jogger-tech.jpg" alt="Jogger Tech" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Collar Chain<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/collar-chain.jpg</span>
+        <span class="ph-text">Jogger Tech<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/jogger-tech.jpg</span>
+      </div>
+      <span class="badge badge-new">Drop</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Jogger Tech Ripstop</h4>
+      <p class="product-sub">Unisex · Sport</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span><span class="talla-chip">XXL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$178.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO 7 — PANTALONETA -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/pantaloneta-cargo.jpg" alt="Pantaloneta Cargo" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Pantaloneta Cargo<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/pantaloneta-cargo.jpg</span>
       </div>
       <span class="badge badge-sale">−15%</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Collar Chain Street</h4>
-      <p class="product-sub">Collares · Gold</p>
+      <h4>Pantaloneta Cargo Street</h4>
+      <p class="product-sub">Hombre · Summer</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
       <div class="product-footer">
-        <div><span class="price">$45.000</span><span class="price-old">$53.000</span></div>
+        <div><span class="price">$89.000</span><span class="price-old">$105.000</span></div>
         <button class="btn-add">+ Carrito</button>
       </div>
     </div>
   </div>
 
-  <!-- COLLAR 2 -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
+  <!-- PRODUCTO 8 — PANTALONETA -->
+  <div class="product-card">
+    <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
         Reemplaza el div .img-placeholder por:
-        <img src="imagenes/collar-pendant.jpg" alt="Collar Pendant" style="width:100%;height:100%;object-fit:cover;">
+        <img src="imagenes/pantaloneta-baggy.jpg" alt="Pantaloneta Baggy" style="width:100%;height:100%;object-fit:cover;">
         ==============================
       -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
-        <span class="ph-text">Collar Pendant<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/collar-pendant.jpg</span>
-      </div>
-      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
-    </div>
-    <div class="product-info">
-      <h4>Collar Pendant Logo</h4>
-      <p class="product-sub">Collares · Silver</p>
-      <div class="product-footer">
-        <div><span class="price">$52.000</span></div>
-        <button class="btn-add">+ Carrito</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MOCHILA -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/mochila-tactical.jpg" alt="Mochila Tactical" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
-      <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Mochila Tactical<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/mochila-tactical.jpg</span>
+        <span class="ph-text">Pantaloneta Baggy<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/pantaloneta-baggy.jpg</span>
       </div>
       <span class="badge badge-hot">Hot</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
     </div>
     <div class="product-info">
-      <h4>Mochila Tactical</h4>
-      <p class="product-sub">Bolsos · Street</p>
-      <div class="product-footer">
-        <div><span class="price">$145.000</span></div>
-        <button class="btn-add">+ Carrito</button>
+      <h4>Pantaloneta Baggy Mesh</h4>
+      <p class="product-sub">Unisex · Urban</p>
+      <div class="tallas-row">
+        <span class="talla-chip">XS</span><span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
       </div>
-    </div>
-  </div>
-
-  <!-- BANDANA -->
-  <div class="acc-card product-card">
-    <div class="product-img acc-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/bandana-vintage.jpg" alt="Bandana Vintage" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
-      <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Bandana Vintage<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/bandana-vintage.jpg</span>
-      </div>
-      <span class="badge badge-sale">−20%</span>
-      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
-    </div>
-    <div class="product-info">
-      <h4>Bandana Vintage</h4>
-      <p class="product-sub">Accesorios · Retro</p>
       <div class="product-footer">
-        <div><span class="price">$32.000</span><span class="price-old">$40.000</span></div>
+        <div><span class="price">$95.000</span></div>
         <button class="btn-add">+ Carrito</button>
       </div>
     </div>
@@ -621,34 +519,32 @@ document.querySelectorAll('.talla-chip').forEach(chip => {
 });
 
 const SUGS = [
-  { label: "👟 Ver sneakers",          msg: "sneaker" },
-  { label: "🧢 Ver gorras",            msg: "gorra" },
-  { label: "⌚ Relojes",               msg: "reloj" },
-  { label: "📏 Tallas de calzado",     msg: "talla" },
-  { label: "🚚 Info de envíos",        msg: "envio" },
-  { label: "🔥 Ver ofertas",           msg: "oferta" },
+  { label: "👖 Ver cargos",           msg: "cargo" },
+  { label: "🩳 Pantalonetas",         msg: "pantaloneta" },
+  { label: "📏 Guía de tallas",       msg: "talla" },
+  { label: "🚚 Info de envíos",       msg: "envio" },
+  { label: "💳 Formas de pago",       msg: "pago" },
+  { label: "🔥 Ver ofertas",          msg: "oferta" },
 ];
 
 const RULES = [
-  { k: ["hola","hey","buenas","saludos","que mas","ola"], r: `¡Ey! 👊 Estás en <span class="kw">Calzado & Accesorios</span>. ¿Buscas <span class="kw">sneakers</span>, una <span class="kw">gorra</span>, <span class="kw">reloj</span> o <span class="kw">collar</span>? Cuéntame y te ayudo a armar el look completo.` },
-  { k: ["novedad","nuevo","drop","coleccion"], r: `🔥 Nuevos en la tienda: <span class="kw">Sneaker Chunky</span> ($320K), <span class="kw">Reloj Chain Oversized</span> ($245K) y el <span class="kw">Bucket Hat Reversible</span> ($72K). ¿Cuál te interesa?` },
-  { k: ["talla","medida","numero","size","pie"], r: `📏 Para calzado manejamos del <span class="kw">36 al 45</span>. Para gorras es <span class="kw">talla única</span> ajustable. Relojes tienen pulsera ajustable. ¿De qué producto necesitas info?` },
-  { k: ["envio","envío","domicilio","entrega"], r: `🚚 Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Express en <span class="kw">24h</span> para Bogotá, Medellín y Cali.` },
+  { k: ["hola","hey","buenas","saludos","que mas","ola"], r: `¡Ey! 👊 Estás en <span class="kw">Cargo & Joggers</span>. ¿Buscas un pantalón <span class="kw">cargo</span>, un <span class="kw">jogger</span> o una <span class="kw">pantaloneta</span>? Cuéntame y te ayudo a elegir.` },
+  { k: ["novedad","nuevo","drop","coleccion"], r: `🔥 Lo nuevo: <span class="kw">Cargo Denim Washed</span> ($229K) y el <span class="kw">Jogger Tech Ripstop</span> ($178K). El <span class="kw">Cargo Wide</span> también sigue disponible con el 30% off.` },
+  { k: ["talla","medida","queda","fit","size","cintura"], r: `📏 Para los cargos manejamos tallas de cintura <span class="kw">28 al 36</span>. Para joggers usamos <span class="kw">XS al XXL</span>. ¿De qué prenda necesitas la medida? Te oriento.` },
+  { k: ["envio","envío","domicilio","entrega","despacho"], r: `🚚 Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Express en <span class="kw">24h</span> para Bogotá, Medellín y Cali.` },
   { k: ["devolucion","cambio","garantia"], r: `🔄 <span class="kw">30 días</span> para cambiar sin rollos. Etiqueta original y sin uso. Escribe <span class="kw">contacto</span> para iniciar.` },
   { k: ["pago","tarjeta","nequi","pse","cuota"], r: `💳 Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span>.` },
-  { k: ["oferta","descuento","sale","promo"], r: `🏷️ Ofertas: <span class="kw">Sneaker Low Top</span> al −20% ($220K), <span class="kw">Collar Chain</span> al −15% ($45K) y <span class="kw">Bandana Vintage</span> al −20% ($32K).` },
-  { k: ["sneaker","zapatilla","tenis","zapato","kicks","calzado"], r: `👟 Tenemos la <span class="kw">Sneaker Chunky</span> ($320K), <span class="kw">Low Top Classic</span> ($220K con 20% off), <span class="kw">Bota Combat</span> ($285K) y <span class="kw">Slide Urban</span> ($98K). ¿Cuál es tu número?` },
-  { k: ["gorra","cap","snapback","hat","bucket"], r: `🧢 La <span class="kw">Snapback Cap Logo</span> ($65K) es la más pedida. El <span class="kw">Bucket Hat Reversible</span> ($72K) es el nuevo drop. ¿Cuál te llama?` },
-  { k: ["reloj","watch","hora","tiempo"], r: `⌚ El <span class="kw">Reloj Street Digital</span> ($185K) es perfecto para el estilo urbano. Si buscas algo más premium, el <span class="kw">Reloj Chain Oversized</span> ($245K) es el must-have de la temporada.` },
-  { k: ["collar","chain","joya","accesorio","colgante","pendant"], r: `📿 El <span class="kw">Collar Chain Street</span> ($45K con 15% off) y el <span class="kw">Collar Pendant Logo</span> ($52K) son los favoritos. Perfectos para completar el look.` },
-  { k: ["mochila","bolso","bag","backpack"], r: `🎒 La <span class="kw">Mochila Tactical</span> ($145K) es nuestra más vendida: compartimentos múltiples, resistente al agua y con el estilo street que necesitas.` },
-  { k: ["comprar","agregar","carrito","quiero"], r: `🛒 Selecciona tu talla o color, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Tienes dudas? Cuéntame.` },
-  { k: ["contacto","whatsapp","hablar"], r: `📞 <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
+  { k: ["oferta","descuento","sale","promo","rebaja"], r: `🏷️ Ofertas activas: <span class="kw">Cargo Pants Wide</span> al −30% ($175K) y <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K).` },
+  { k: ["cargo","pantalon","pantalón","baggy"], r: `👖 Tenemos <span class="kw">Cargo Wide</span> ($175K con 30% off), <span class="kw">Cargo Tactical</span> ($210K), <span class="kw">Cargo Denim</span> ($229K) y <span class="kw">Cargo Slim</span> ($185K). ¿Cuál te llama?` },
+  { k: ["jogger","jogging","sport"], r: `🏃 El <span class="kw">Jogger Fleece Oversized</span> a $155K es el más popular. El <span class="kw">Jogger Tech Ripstop</span> ($178K) es ideal si buscas algo más técnico. ¿Necesitas la talla?` },
+  { k: ["pantaloneta","short","corto","bermuda"], r: `🩳 Tenemos la <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K) y la <span class="kw">Pantaloneta Baggy Mesh</span> ($95K). Perfectas para el verano urbano.` },
+  { k: ["comprar","agregar","carrito","quiero"], r: `🛒 Selecciona tu talla, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Dudas con el envío? Escribe <span class="kw">envio</span>.` },
+  { k: ["contacto","whatsapp","hablar","humano"], r: `📞 <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
 ];
 
-const DEFAULT = `Mmmh 🤔 Puedo ayudarte con: <span class="kw">sneaker</span>, <span class="kw">gorra</span>, <span class="kw">reloj</span>, <span class="kw">collar</span>, <span class="kw">talla</span>, <span class="kw">envio</span> u <span class="kw">oferta</span>. Escribe alguna.`;
+const DEFAULT = `Mmmh 🤔 Puedo ayudarte con: <span class="kw">cargo</span>, <span class="kw">jogger</span>, <span class="kw">pantaloneta</span>, <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span> u <span class="kw">oferta</span>. Escribe alguna y te cuento.`;
 
-const toggle=document.getElementById('chat-toggle'),win=document.getElementById('chat-window'),closeBtn=document.getElementById('chat-close'),msgs=document.getElementById('chat-messages'),input=document.getElementById('chat-input'),sendBtn=document.getElementById('chat-send'),sugWrap=document.getElementById('sug-wrap'),sugCont=document.getElementById('sug-container');
+const toggle=document.getElementById('chat-toggle'), win=document.getElementById('chat-window'), closeBtn=document.getElementById('chat-close'), msgs=document.getElementById('chat-messages'), input=document.getElementById('chat-input'), sendBtn=document.getElementById('chat-send'), sugWrap=document.getElementById('sug-wrap'), sugCont=document.getElementById('sug-container');
 function time(){const d=new Date();return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
 function addMsg(html,side){const div=document.createElement('div');div.className='msg '+side;div.innerHTML=side==='bot'?`<div class="msg-av">🤖</div><div><div class="bubble">${html}</div><div class="msg-time">${time()}</div></div>`:`<div><div class="bubble">${html}</div><div class="msg-time" style="text-align:right">${time()}</div></div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
 function showTyping(){const d=document.createElement('div');d.className='msg bot';d.id='typing';d.innerHTML=`<div class="msg-av">🤖</div><div class="typing-indicator"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>`;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
@@ -657,7 +553,7 @@ function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\
 function getReply(text){const n=normalize(text);for(const r of RULES){if(r.k.some(k=>n.includes(normalize(k))))return r.r;}return DEFAULT;}
 function send(text){if(!text.trim())return;addMsg(text,'user');input.value='';sugWrap.style.display='none';showTyping();setTimeout(()=>{removeTyping();addMsg(getReply(text),'bot');},700+Math.random()*600);}
 function buildSugs(){sugCont.innerHTML='';SUGS.forEach(s=>{const b=document.createElement('button');b.className='sug-chip';b.textContent=s.label;b.onclick=()=>send(s.msg);sugCont.appendChild(b);});}
-function openChat(){win.classList.add('open');document.querySelector('.chat-ping').style.display='none';if(!msgs.children.length){setTimeout(()=>{showTyping();setTimeout(()=>{removeTyping();addMsg(`¡Ey! 👊 Estás en <span class="kw">Calzado & Accesorios</span>. ¿Buscas <span class="kw">sneakers</span>, <span class="kw">gorras</span>, <span class="kw">relojes</span> o <span class="kw">collares</span>? ¡Te ayudo a armar el look completo!`,'bot');buildSugs();},1100);},300);}}
+function openChat(){win.classList.add('open');document.querySelector('.chat-ping').style.display='none';if(!msgs.children.length){setTimeout(()=>{showTyping();setTimeout(()=>{removeTyping();addMsg(`¡Ey! 👊 Estás en <span class="kw">Cargo & Joggers</span>. Te ayudo a encontrar el pantalón perfecto. ¿Buscas un <span class="kw">cargo</span>, <span class="kw">jogger</span> o <span class="kw">pantaloneta</span>?`,'bot');buildSugs();},1100);},300);}}
 toggle.addEventListener('click',()=>{win.classList.contains('open')?win.classList.remove('open'):openChat();});
 closeBtn.addEventListener('click',()=>win.classList.remove('open'));
 sendBtn.addEventListener('click',()=>send(input.value));

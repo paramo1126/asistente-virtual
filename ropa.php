@@ -1,314 +1,689 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-include_once 'chat_bot.php';
- 
-// Filtro activo (viene de la URL o del bot)
-$filtro = isset($_GET['filtro']) ? strtolower($_GET['filtro']) : '';
- 
-// Productos de ropa
-$productos = [
-  [
-    'id'       => 'buso',
-    'nombre'   => 'Buso Clásico',
-    'precio'   => '$52.000',
-    'img'      => 'imagenes/busolargohombre.jpg',
-    'emoji'    => '👕',
-    'colores'  => ['Negro','Gris','Azul'],
-    'tallas'   => ['S','M','L','XL'],
-    'desc'     => 'Buso de algodón 100%, corte oversize. Perfecto para el día a día.',
-    'tags'     => ['buso','buzo','oversize'],
-    'nuevo'    => true,
-    'oferta'   => false,
-  ],
-  [
-    'id'       => 'pantaloneta',
-    'nombre'   => 'Pantaloneta Urbana',
-    'precio'   => '$35.000',
-    'img'      => 'pantaloneta.jpg',
-    'emoji'    => '🩳',
-    'colores'  => ['Negro','Azul','Blanco'],
-    'tallas'   => ['S','M','L','XL'],
-    'desc'     => 'Pantaloneta deportiva con bolsillos laterales. Fresca y cómoda.',
-    'tags'     => ['pantaloneta','short'],
-    'nuevo'    => false,
-    'oferta'   => true,
-    'precio_antes' => '$45.000',
-  ],
-  [
-    'id'       => 'camiseta',
-    'nombre'   => 'Camiseta Premium',
-    'precio'   => '$28.000',
-    'img'      => 'camiseta.jpg',
-    'emoji'    => '👚',
-    'colores'  => ['Blanco','Negro','Rojo','Verde'],
-    'tallas'   => ['XS','S','M','L','XL','XXL'],
-    'desc'     => 'Camiseta básica de algodón peinado 180g. Ideal para cualquier look.',
-    'tags'     => ['camiseta','camisa','remera'],
-    'nuevo'    => false,
-    'oferta'   => false,
-  ],
-];
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Ropa — UrbanStyle</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STREETFLOW — Busos & Chaquetas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --naranja: #ff6b35;
-  --oscuro: #1a1a2e;
-  --oscuro2: #16213e;
-  --crema: #f8f6f2;
-  --gris: #e8e5e0;
-  --texto: #2c2c2c;
-  --muted: #888;
-  --r: 14px;
-  --font: 'Nunito', sans-serif;
-  --dis: 'Bebas Neue', cursive;
+  --black:      #080C08;
+  --black2:     #0F140F;
+  --black3:     #161C16;
+  --card:       #111711;
+  --green:      #14f7ff;
+  --green-dim:  #1DB80D;
+  --green-dark: #0A4A05;
+  --white:      #E8F5E4;
+  --muted:      #5A7055;
+  --border:     #1E2E1E;
+  --border2:    #2A3D2A;
 }
- 
-body { font-family: var(--font); background: var(--crema); color: var(--texto); min-height: 100vh; }
- 
-/* ── NAV ── */
+html { scroll-behavior: smooth; }
+body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black2); }
+::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
+
+/* NAV */
 nav {
-  background: var(--oscuro);
-  padding: 0 48px;
-  height: 66px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky; top: 0; z-index: 500;
-  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+  background: rgba(8,12,8,0.96);
+  backdrop-filter: blur(12px);
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 62px; position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-family: var(--dis); font-size: 1.9rem; letter-spacing: .08em; color: #fff; text-decoration: none; }
-.nav-logo span { color: var(--naranja); }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { color: rgba(255,255,255,.6); text-decoration: none; font-size: .83rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
-.nav-links a:hover, .nav-links a.activo { color: var(--naranja); }
-.nav-back { color: rgba(255,255,255,.5); text-decoration: none; font-size: .82rem; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: color .2s; }
-.nav-back:hover { color: var(--naranja); }
- 
-/* ── HERO ROPA ── */
-.page-hero {
-  background: linear-gradient(135deg, var(--oscuro) 60%, #0f3460);
-  padding: 52px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--green); text-shadow: 0 0 18px rgba(57,255,20,0.55); user-select: none; text-decoration: none; }
+.logo span { color: var(--white); }
+nav ul { list-style: none; display: flex; gap: 2rem; }
+nav ul a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
+nav ul a:hover, nav ul a.active { color: var(--green); }
+
+/* TICKER */
+.ticker { background: var(--green); overflow: hidden; white-space: nowrap; padding: 8px 0; }
+.ticker-inner { display: inline-block; animation: ticker 22s linear infinite; font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; letter-spacing: 0.22em; color: var(--black); }
+@keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+
+/* HERO CATEGORÍA */
+.cat-hero {
+  min-height: 320px;
+  background: var(--black2);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 4rem;
 }
-.page-hero-txt {}
-.page-hero-tag { display: inline-block; background: rgba(255,107,53,.15); border: 1px solid rgba(255,107,53,.3); color: var(--naranja); font-size: .75rem; font-weight: 800; padding: 5px 14px; border-radius: 20px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
-.page-hero-titulo { font-family: var(--dis); font-size: clamp(2.5rem,5vw,4rem); color: #fff; letter-spacing: .05em; line-height: .95; margin-bottom: 12px; }
-.page-hero-sub { font-size: .9rem; color: rgba(255,255,255,.5); max-width: 400px; line-height: 1.65; }
-.page-hero-emojis { font-size: 5rem; letter-spacing: 10px; opacity: .7; }
- 
-/* ── BARRA FILTROS ── */
-.filtro-bar {
-  background: #fff;
-  border-bottom: 1px solid var(--gris);
-  padding: 14px 48px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  position: sticky; top: 66px; z-index: 400;
+.cat-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 90% 50%, rgba(57,255,20,0.07) 0%, transparent 65%);
+  pointer-events: none;
 }
-.filtro-bar-label { font-size: .78rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-right: 4px; }
-.fbtn { background: var(--crema); border: 1.5px solid var(--gris); color: var(--muted); padding: 6px 18px; border-radius: 25px; font-family: var(--font); font-size: .78rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all .18s; display: inline-block; }
-.fbtn:hover, .fbtn.on { background: var(--oscuro); border-color: var(--oscuro); color: #fff; }
-.fbtn.naranja { background: var(--naranja); border-color: var(--naranja); color: #fff; }
-.prod-count { margin-left: auto; font-size: .78rem; color: var(--muted); font-weight: 600; }
- 
-/* ── GRID PRODUCTOS ── */
-.shop { padding: 40px 48px 100px; }
-.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
- 
-/* ── CARD PRODUCTO ── */
-.pcard {
-  background: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 2px 14px rgba(0,0,0,.06);
-  transition: transform .25s, box-shadow .25s;
-  position: relative;
-  border: 2px solid transparent;
+.cat-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(57,255,20,0.025) 0px, transparent 1px, transparent 60px, rgba(57,255,20,0.025) 60px),
+    repeating-linear-gradient(90deg, rgba(57,255,20,0.025) 0px, transparent 1px, transparent 60px, rgba(57,255,20,0.025) 60px);
+  pointer-events: none;
 }
-.pcard:hover { transform: translateY(-7px); box-shadow: 0 18px 44px rgba(0,0,0,.1); }
- 
-<?php if ($filtro): ?>
-/* Filtro activo desde el bot */
-.pcard.resaltado { border-color: var(--naranja); box-shadow: 0 0 0 4px rgba(255,107,53,.12), 0 18px 44px rgba(255,107,53,.1); transform: translateY(-7px); }
-.pcard.opaco { opacity: .25; filter: grayscale(.5); transform: none !important; }
-<?php endif ?>
- 
-/* Badges */
-.bw { position: absolute; top: 12px; left: 12px; display: flex; gap: 5px; z-index: 2; }
-.bdg { font-size: .63rem; font-weight: 800; padding: 3px 10px; border-radius: 6px; letter-spacing: .06em; text-transform: uppercase; }
-.bdg.nuevo { background: #1a3bff; color: #fff; }
-.bdg.oferta { background: var(--naranja); color: #fff; }
- 
-/* Imagen */
-.imgw { height: 250px; background: var(--crema); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.pcard-img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; display: block; }
-.pcard:hover .pcard-img { transform: scale(1.06); }
-.pcard-emoji { font-size: 7rem; opacity: .5; }
- 
-/* Cuerpo */
-.cbody { padding: 16px; }
-.cnombre { font-size: 1.05rem; font-weight: 800; margin-bottom: 5px; }
-.cdesc { font-size: .78rem; color: var(--muted); line-height: 1.45; margin-bottom: 12px; }
- 
-/* Colores */
-.ccolores-label { font-size: .7rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
-.ccolores { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
-.ccol { font-size: .68rem; background: var(--crema); border: 1px solid var(--gris); padding: 2px 8px; border-radius: 5px; color: var(--texto); font-weight: 600; }
- 
-/* Tallas */
-.ctallas-label { font-size: .7rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
-.ctallas { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 14px; }
-.ctalla { font-size: .72rem; border: 1.5px solid var(--gris); padding: 3px 9px; border-radius: 6px; font-weight: 700; color: var(--texto); }
- 
-/* Precio */
-.cmeta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
-.cprecio { font-family: var(--dis); font-size: 1.3rem; color: var(--naranja); letter-spacing: .04em; }
-.cprecio-old { font-size: .78rem; color: var(--muted); text-decoration: line-through; margin-left: 6px; }
- 
-/* Botón agregar */
-.btn-agregar { width: 100%; padding: 11px; background: var(--oscuro); color: #fff; border: none; border-radius: 10px; font-family: var(--font); font-size: .85rem; font-weight: 700; cursor: pointer; letter-spacing: .02em; transition: background .18s, transform .14s; }
-.btn-agregar:hover { background: #333; transform: scale(1.02); }
- 
-/* Sin resultados */
-.sin-res { text-align: center; padding: 80px 20px; color: var(--muted); }
-.sin-res h3 { font-family: var(--dis); font-size: 1.5rem; color: var(--oscuro); margin-bottom: 8px; }
- 
-/* ── FOOTER ── */
-footer { background: var(--oscuro); color: rgba(255,255,255,.35); text-align: center; padding: 26px; font-size: .8rem; }
-footer strong { color: var(--naranja); }
- 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 0 16px; }.nav-links { display: none; }
-  .page-hero { flex-direction: column; padding: 36px 16px; }
-  .filtro-bar { padding: 12px 16px; }
-  .shop { padding: 20px 14px 90px; }
+.breadcrumb { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; position: relative; z-index: 1; }
+.breadcrumb a { color: var(--green); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.cat-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; line-height: 0.92; letter-spacing: 0.05em; color: var(--white); position: relative; z-index: 1; }
+.cat-hero h1 span { color: var(--green); text-shadow: 0 0 24px rgba(57,255,20,0.5); }
+.cat-hero p { color: var(--muted); font-size: 0.9rem; max-width: 500px; margin-top: 1rem; line-height: 1.7; font-weight: 300; position: relative; z-index: 1; }
+.cat-hero-gfx { position: absolute; right: 6rem; top: 50%; transform: translateY(-50%); font-size: 14rem; opacity: 0.05; filter: grayscale(1); user-select: none; animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(-50%) rotate(-3deg); } 50% { transform: translateY(calc(-50% - 18px)) rotate(3deg); } }
+.cat-stats { display: flex; gap: 2.5rem; margin-top: 2rem; position: relative; z-index: 1; }
+.cat-stat .num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--green); line-height: 1; }
+.cat-stat .lbl { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+/* FILTROS */
+.filter-bar { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 2.5rem; background: var(--black2); border-bottom: 1px solid var(--border); max-width: 100%; overflow-x: auto; }
+.filter-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 700; white-space: nowrap; font-family: 'Syne', sans-serif; }
+.filter-btn { background: var(--card); border: 1px solid var(--border2); color: var(--muted); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
+.filter-btn:hover, .filter-btn.active { background: var(--green-dark); border-color: var(--green); color: var(--green); }
+.filter-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+.results-count { margin-left: auto; font-size: 0.68rem; color: var(--muted); white-space: nowrap; letter-spacing: 0.1em; }
+
+/* SECTION HEADER */
+.sec-hd { padding: 3.5rem 2.5rem 2rem; display: flex; align-items: flex-end; justify-content: space-between; max-width: 1200px; margin: 0 auto; }
+.sec-hd h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--white); letter-spacing: 0.06em; line-height: 1; }
+.sec-hd h2 span { color: var(--green); }
+
+/* GRILLA DE PRODUCTOS */
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+.product-card { background: var(--card); cursor: pointer; transition: background 0.2s; position: relative; }
+.product-card:hover { background: var(--black3); }
+
+/* ESPACIO PARA IMAGEN */
+.product-img {
+  height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--black3);
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+/* Placeholder visual para imagen */
+.img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.7rem;
+  border: 2px dashed var(--border2);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--black3),
+    var(--black3) 10px,
+    rgba(57,255,20,0.015) 10px,
+    rgba(57,255,20,0.015) 20px
+  );
+}
+/* CUANDO AGREGUES IMAGEN: reemplaza .img-placeholder por <img src="tu-imagen.jpg" alt="..." style="width:100%;height:100%;object-fit:cover;"> */
+.img-placeholder .ph-icon { font-size: 2.5rem; opacity: 0.15; }
+.img-placeholder .ph-text { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0.5; font-family: 'Syne', sans-serif; text-align: center; line-height: 1.5; }
+.img-placeholder .ph-tag { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); opacity: 0.4; font-family: 'Syne', sans-serif; border: 1px dashed var(--green-dark); padding: 3px 8px; }
+
+.p-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s; background: rgba(8,12,8,0.4); }
+.product-card:hover .p-overlay { opacity: 1; }
+.p-quick { background: var(--green); color: var(--black); border: none; padding: 9px 20px; font-family: 'Syne', sans-serif; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; cursor: pointer; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
+.p-quick:hover { background: #4fff28; }
+.badge { position: absolute; top: 10px; left: 10px; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 9px; font-weight: 700; z-index: 1; font-family: 'Syne', sans-serif; }
+.badge-new  { background: var(--green); color: var(--black); }
+.badge-sale { background: #FF1414; color: #fff; }
+.badge-hot  { background: var(--black); color: var(--green); border: 1px solid var(--green); }
+.product-info { padding: 1rem 1.1rem 1.2rem; }
+.product-info h4 { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+.product-sub { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; }
+.price { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--green); letter-spacing: 0.04em; }
+.price-old { font-size: 0.75rem; color: var(--muted); text-decoration: line-through; margin-left: 6px; }
+.btn-add { background: transparent; border: 1px solid var(--green-dark); color: var(--green); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; font-weight: 700; }
+.btn-add:hover { background: var(--green); color: var(--black); border-color: var(--green); box-shadow: 0 0 12px rgba(57,255,20,0.3); }
+
+/* TALLAS */
+.tallas-row { display: flex; gap: 5px; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.talla-chip { font-size: 0.6rem; padding: 3px 7px; border: 1px solid var(--border2); color: var(--muted); cursor: pointer; font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.08em; transition: all 0.15s; }
+.talla-chip:hover { border-color: var(--green); color: var(--green); }
+
+/* FEATURES */
+.feature-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+.feat-item { background: var(--card); padding: 1.8rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+.feat-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
+.feat-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--white); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+.feat-text span { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+
+/* FOOTER */
+footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
+.footer-brand p { color: var(--muted); font-size: 0.8rem; line-height: 1.7; max-width: 240px; margin-top: 0.8rem; font-weight: 300; }
+.footer-col h5 { color: var(--green); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.2rem; font-weight: 700; font-family: 'Syne', sans-serif; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--green); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; color: #2A402A; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* CHATBOT */
+#chat-toggle { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; border-radius: 50%; background: var(--black2); border: 2px solid var(--green); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; z-index: 9999; line-height: 1; box-shadow: 0 0 20px rgba(57,255,20,0.35), 0 4px 24px rgba(0,0,0,0.6); transition: transform 0.2s, box-shadow 0.2s; }
+#chat-toggle:hover { transform: scale(1.08); box-shadow: 0 0 32px rgba(57,255,20,0.55), 0 6px 30px rgba(0,0,0,0.6); }
+.chat-ping { position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; border-radius: 50%; background: var(--green); border: 2px solid var(--black2); animation: ping 1.8s ease-in-out infinite; }
+@keyframes ping { 0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,0.6); } 50% { box-shadow: 0 0 0 6px rgba(57,255,20,0); } }
+#chat-window { position: fixed; bottom: 102px; right: 28px; width: 370px; height: 540px; background: var(--black2); border: 1px solid var(--border2); border-radius: 4px; box-shadow: 0 0 40px rgba(57,255,20,0.12), 0 20px 60px rgba(0,0,0,0.7); z-index: 9998; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.88) translateY(16px); opacity: 0; pointer-events: none; transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s; }
+#chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+.chat-topbar { height: 2px; background: var(--green); flex-shrink: 0; box-shadow: 0 0 12px rgba(57,255,20,0.7); }
+.chat-header { background: var(--card); padding: 12px 15px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
+.chat-avatar { width: 36px; height: 36px; border-radius: 4px; background: var(--green-dark); border: 1px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.chat-header-info { flex: 1; }
+.chat-header-info strong { display: block; color: var(--white); font-size: 0.84rem; font-weight: 700; letter-spacing: 0.06em; font-family: 'Syne', sans-serif; }
+.chat-online { display: flex; align-items: center; gap: 5px; font-size: 0.66rem; color: var(--green); letter-spacing: 0.08em; font-weight: 500; }
+.chat-online::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); display: inline-block; animation: glow 2s ease-in-out infinite; }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 4px var(--green); } 50% { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(57,255,20,0.4); } }
+.chat-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; line-height: 1; }
+.chat-close:hover { color: var(--green); }
+.chat-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; background: var(--black2); }
+.chat-messages::-webkit-scrollbar { width: 3px; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
+.msg { display: flex; gap: 8px; align-items: flex-end; }
+.msg.bot { justify-content: flex-start; }
+.msg.user { justify-content: flex-end; }
+.msg-av { width: 26px; height: 26px; border-radius: 3px; background: var(--green-dark); border: 1px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+.bubble { max-width: 78%; padding: 10px 13px; font-size: 0.82rem; line-height: 1.55; }
+.msg.bot .bubble { background: var(--card); color: var(--white); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; }
+.msg.user .bubble { background: var(--green-dark); color: var(--white); border: 1px solid rgba(57,255,20,0.3); border-radius: 8px 0 8px 8px; }
+.bubble .kw { color: var(--green); font-weight: 700; font-style: italic; }
+.msg-time { font-size: 0.6rem; color: #2A402A; margin-top: 2px; padding: 0 3px; }
+.typing-indicator { display: flex; gap: 5px; padding: 12px 15px; background: var(--card); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; width: fit-content; align-items: center; }
+.tdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: tb 1.2s infinite; box-shadow: 0 0 6px rgba(57,255,20,0.5); }
+.tdot:nth-child(2) { animation-delay: 0.2s; }
+.tdot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes tb { 0%, 60%, 100% { transform: translateY(0); opacity: 0.6; } 30% { transform: translateY(-6px); opacity: 1; } }
+.sug-wrap { padding: 10px 14px 12px; flex-shrink: 0; border-top: 1px solid var(--border); background: var(--black3); }
+.sug-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; font-family: 'Syne', sans-serif; }
+.suggestions { display: flex; flex-wrap: wrap; gap: 6px; }
+.sug-chip { background: var(--card); border: 1px solid var(--border2); color: var(--white); font-size: 0.72rem; padding: 6px 12px; border-radius: 2px; cursor: pointer; transition: all 0.15s; font-family: 'Space Grotesk', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
+.sug-chip:hover { background: var(--green-dark); border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+.chat-input-row { display: flex; gap: 8px; padding: 11px 14px; border-top: 1px solid var(--border); background: var(--card); flex-shrink: 0; align-items: center; }
+.chat-input-row input { flex: 1; border: 1px solid var(--border2); border-radius: 2px; padding: 9px 13px; font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; outline: none; color: var(--white); background: var(--black2); transition: border-color 0.2s, box-shadow 0.2s; }
+.chat-input-row input:focus { border-color: var(--green); box-shadow: 0 0 8px rgba(57,255,20,0.15); }
+.chat-input-row input::placeholder { color: var(--muted); }
+.chat-send { width: 38px; height: 38px; border-radius: 2px; background: var(--green); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--black); font-weight: 900; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%); }
+.chat-send:hover { background: #4fff28; box-shadow: 0 0 16px rgba(57,255,20,0.5); transform: scale(1.04); }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .feature-band { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .cat-hero { padding: 2rem 2rem; }
+  .cat-hero h1 { font-size: 3.5rem; }
+}
+@media (max-width: 580px) {
+  .products-grid { grid-template-columns: 1fr; }
+  nav ul { display: none; }
+  #chat-window { width: calc(100vw - 20px); right: 10px; bottom: 92px; }
+  .cat-hero h1 { font-size: 2.8rem; }
 }
 </style>
 </head>
 <body>
- 
+
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="presentacion2.php">URBAN<span>STYLE</span></a>
-  <ul class="nav-links">
-    <li><a href="presentacion2.php">Inicio</a></li>
-    <li><a href="ropa.php" class="activo">Ropa</a></li>
-    <li><a href="zapato.php">Zapatos</a></li>
+  <a href="index.php" class="logo">STREET<span>FLOW</span></a>
+  <ul>
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="ropa.php" class="active">Busos & Chaquetas</a></li>
+    <li><a href="pantalon.php">Cargos & Joggers</a></li>
+    <li><a href="zapato.php">Calzado & Accesorios</a></li>
+    <li><a href="#">Sale</a></li>
   </ul>
-  <a href="presentacion2.php" class="nav-back">← Volver al inicio</a>
 </nav>
- 
-<!-- HERO -->
-<div class="page-hero">
-  <div class="page-hero-txt">
-    <div class="page-hero-tag">Colección Ropa</div>
-    <h1 class="page-hero-titulo">NUESTRA<br>ROPA</h1>
-    <p class="page-hero-sub">Busos, camisetas y pantalonetas de la mejor calidad. Estilo urbano para todos los días.</p>
-  </div>
-  <div class="page-hero-emojis">👕🩳👚</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">BUSOS · HOODIES · OVERSIZED · CHAQUETAS PREMIUM · JACKETS · STREETWEAR · DROP SS2026 · ENVÍO GRATIS +$200.000 · BUSOS · HOODIES · OVERSIZED · CHAQUETAS PREMIUM ·</span>
 </div>
- 
+
+<!-- HERO DE CATEGORÍA -->
+<section class="cat-hero">
+  <div class="cat-hero-gfx">🧥</div>
+  <div class="breadcrumb"><a href="index.php">Inicio</a> &nbsp;/&nbsp; Busos & Chaquetas</div>
+  <h1>BUSOS &<br><span>CHAQUETAS</span></h1>
+  <p>Streetwear de peso. Hoodies oversized, jackets coach y chaquetas de temporada para los que mandan en el asfalto.</p>
+  <div class="cat-stats">
+    <div class="cat-stat"><div class="num">42</div><div class="lbl">Prendas</div></div>
+    <div class="cat-stat"><div class="num">8</div><div class="lbl">Estilos</div></div>
+    <div class="cat-stat"><div class="num">XS–XXL</div><div class="lbl">Tallas</div></div>
+  </div>
+</section>
+
 <!-- FILTROS -->
-<div class="filtro-bar">
-  <span class="filtro-bar-label">Filtrar:</span>
-  <a href="ropa.php" class="fbtn <?= !$filtro ? 'on' : '' ?>">Todos</a>
-  <a href="ropa.php?filtro=buso" class="fbtn <?= $filtro==='buso' ? 'naranja' : '' ?>">👕 Busos</a>
-  <a href="ropa.php?filtro=camiseta" class="fbtn <?= $filtro==='camiseta' ? 'naranja' : '' ?>">👚 Camisetas</a>
-  <a href="ropa.php?filtro=pantaloneta" class="fbtn <?= $filtro==='pantaloneta' ? 'naranja' : '' ?>">🩳 Pantalonetas</a>
-  <span class="prod-count">
-    <?php
-    if ($filtro) {
-      $visible = count(array_filter($productos, fn($p) => in_array($filtro, $p['tags'])));
-      echo $visible.' producto'.($visible!==1?'s':'').' encontrado'.($visible!==1?'s':'');
-    } else {
-      echo count($productos).' productos';
-    }
-    ?>
-  </span>
+<div class="filter-bar">
+  <span class="filter-label">Filtrar:</span>
+  <button class="filter-btn active">Todos</button>
+  <button class="filter-btn">Hoodies</button>
+  <button class="filter-btn">Chaquetas</button>
+  <button class="filter-btn">Oversized</button>
+  <button class="filter-btn">Premium</button>
+  <div class="filter-sep"></div>
+  <button class="filter-btn">Ofertas</button>
+  <button class="filter-btn">Nuevo</button>
+  <span class="results-count">8 productos encontrados</span>
 </div>
- 
-<!-- GRID -->
-<section class="shop">
-  <?php
-  $con_filtro = array_filter($productos, fn($p) => !$filtro || in_array($filtro, $p['tags']));
-  if (empty($con_filtro) && $filtro):
-  ?>
-  <div class="sin-res">
-    <h3>Sin resultados 🔍</h3>
-    <p>No encontramos "<?= htmlspecialchars($filtro) ?>" en ropa. <a href="ropa.php">Ver todo</a></p>
-  </div>
-  <?php else: ?>
-  <div class="pgrid">
-    <?php foreach ($productos as $p):
-      $mostrar   = !$filtro || in_array($filtro, $p['tags']);
-      $clase_extra = '';
-      if ($filtro) $clase_extra = $mostrar ? 'resaltado' : 'opaco';
-    ?>
-    <div class="pcard <?= $clase_extra ?>" id="prod-<?= $p['id'] ?>">
-      <!-- Badges -->
-      <div class="bw">
-        <?php if ($p['nuevo']): ?><span class="bdg nuevo">Nuevo</span><?php endif ?>
-        <?php if ($p['oferta']): ?><span class="bdg oferta">Oferta</span><?php endif ?>
+
+<!-- PRODUCTOS -->
+<div class="sec-hd"><h2>BUSOS <span>// HOODIES</span></h2></div>
+<div class="products-grid" style="padding-bottom: 0;">
+
+  <!-- PRODUCTO 1 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/hoodie-oversized.jpg" alt="Hoodie Oversized" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Hoodie Oversized<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/hoodie-oversized.jpg</span>
       </div>
-      <!-- Imagen -->
-      <div class="imgw">
-        <img class="pcard-img" src="<?= $p['img'] ?>" alt="<?= $p['nombre'] ?>"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="pcard-emoji" style="display:none"><?= $p['emoji'] ?></div>
+      <span class="badge badge-new">Drop</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Hoodie Oversized</h4>
+      <p class="product-sub">Unisex · Essentials</p>
+      <div class="tallas-row">
+        <span class="talla-chip">XS</span><span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span><span class="talla-chip">XXL</span>
       </div>
-      <!-- Info -->
-      <div class="cbody">
-        <div class="cnombre"><?= $p['nombre'] ?></div>
-        <div class="cdesc"><?= $p['desc'] ?></div>
-        <!-- Colores -->
-        <div class="ccolores-label">Colores disponibles</div>
-        <div class="ccolores">
-          <?php foreach ($p['colores'] as $c): ?>
-          <span class="ccol"><?= $c ?></span>
-          <?php endforeach ?>
-        </div>
-        <!-- Tallas -->
-        <div class="ctallas-label">Tallas</div>
-        <div class="ctallas">
-          <?php foreach ($p['tallas'] as $t): ?>
-          <span class="ctalla"><?= $t ?></span>
-          <?php endforeach ?>
-        </div>
-        <!-- Precio -->
-        <div class="cmeta">
-          <div>
-            <span class="cprecio"><?= $p['precio'] ?></span>
-            <?php if (isset($p['precio_antes'])): ?>
-            <span class="cprecio-old"><?= $p['precio_antes'] ?></span>
-            <?php endif ?>
-          </div>
-        </div>
-        <button class="btn-agregar">+ Agregar al carrito</button>
+      <div class="product-footer">
+        <div><span class="price">$189.000</span></div>
+        <button class="btn-add">+ Carrito</button>
       </div>
     </div>
-    <?php endforeach ?>
   </div>
-  <?php endif ?>
-</section>
- 
+
+  <!-- PRODUCTO 2 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/jacket-coach.jpg" alt="Jacket Coach" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Jacket Coach<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/jacket-coach.jpg</span>
+      </div>
+      <span class="badge badge-new">Drop</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Jacket Coach</h4>
+      <p class="product-sub">Unisex · Premium</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$265.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO 3 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/buso-vintage.jpg" alt="Buso Vintage" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Buso Vintage<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/buso-vintage.jpg</span>
+      </div>
+      <span class="badge badge-sale">−25%</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Buso Vintage Washed</h4>
+      <p class="product-sub">Unisex · Retro</p>
+      <div class="tallas-row">
+        <span class="talla-chip">XS</span><span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$142.000</span><span class="price-old">$190.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO 4 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/chaqueta-bomber.jpg" alt="Chaqueta Bomber" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Chaqueta Bomber<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/chaqueta-bomber.jpg</span>
+      </div>
+      <span class="badge badge-hot">Hot</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Chaqueta Bomber</h4>
+      <p class="product-sub">Unisex · Street</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span><span class="talla-chip">XXL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$235.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SEGUNDA SECCIÓN: CHAQUETAS -->
+<div class="sec-hd"><h2>CHAQUETAS <span>// OUTERWEAR</span></h2></div>
+<div class="products-grid">
+
+  <!-- PRODUCTO 5 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/chaqueta-cargo.jpg" alt="Chaqueta Cargo" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Chaqueta Cargo<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/chaqueta-cargo.jpg</span>
+      </div>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Chaqueta Cargo Utility</h4>
+      <p class="product-sub">Unisex · Tactical</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$298.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO 6 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/hoodie-zip.jpg" alt="Hoodie Zip" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Hoodie Zip<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/hoodie-zip.jpg</span>
+      </div>
+      <span class="badge badge-new">Nuevo</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Hoodie Full Zip</h4>
+      <p class="product-sub">Unisex · Essentials</p>
+      <div class="tallas-row">
+        <span class="talla-chip">XS</span><span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$175.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO 7 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/chaqueta-denim.jpg" alt="Chaqueta Denim" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Chaqueta Denim<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/chaqueta-denim.jpg</span>
+      </div>
+      <span class="badge badge-sale">−20%</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Jacket Denim Oversize</h4>
+      <p class="product-sub">Unisex · Urban</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span><span class="talla-chip">XXL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$200.000</span><span class="price-old">$250.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO 8 -->
+  <div class="product-card">
+    <div class="product-img">
+      <!--
+        ===== ESPACIO PARA IMAGEN =====
+        Reemplaza el div .img-placeholder por:
+        <img src="imagenes/corta-viento.jpg" alt="Cortaviento" style="width:100%;height:100%;object-fit:cover;">
+        ==============================
+      -->
+      <div class="img-placeholder">
+        <span class="ph-icon">📷</span>
+        <span class="ph-text">Cortaviento<br>Agrega tu imagen aquí</span>
+        <span class="ph-tag">imagenes/corta-viento.jpg</span>
+      </div>
+      <span class="badge badge-hot">Hot</span>
+      <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+    </div>
+    <div class="product-info">
+      <h4>Cortaviento Ripstop</h4>
+      <p class="product-sub">Unisex · Outdoor</p>
+      <div class="tallas-row">
+        <span class="talla-chip">S</span><span class="talla-chip">M</span><span class="talla-chip">L</span><span class="talla-chip">XL</span>
+      </div>
+      <div class="product-footer">
+        <div><span class="price">$219.000</span></div>
+        <button class="btn-add">+ Carrito</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FEATURES -->
+<div class="sec-hd" style="padding-top:3rem;"><h2>POR QUÉ <span>// STREETFLOW</span></h2></div>
+<div class="feature-band">
+  <div class="feat-item"><span class="feat-icon">🚀</span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
+  <div class="feat-item"><span class="feat-icon">🔄</span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
+  <div class="feat-item"><span class="feat-icon">🛡️</span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
+  <div class="feat-item"><span class="feat-icon">💳</span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2025 <strong>UrbanStyle</strong> — Hecho con ❤️ en Colombia</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo" style="display:block;margin-bottom:0.2rem;">STREET<span style="color:var(--white)">FLOW</span></span>
+      <p>Moda urbana sin filtros. Diseñada para los que viven la calle, la crean y la representan.</p>
+    </div>
+    <div class="footer-col"><h5>Tienda</h5><ul><li><a href="ropa.php">Hoodies</a></li><li><a href="pantalon.php">Cargos</a></li><li><a href="zapato.php">Calzado</a></li><li><a href="zapato.php">Accesorios</a></li></ul></div>
+    <div class="footer-col"><h5>Ayuda</h5><ul><li><a href="#">Guía de tallas</a></li><li><a href="#">Envíos</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Contacto</a></li></ul></div>
+    <div class="footer-col"><h5>Marca</h5><ul><li><a href="#">Nosotros</a></li><li><a href="#">Lookbook</a></li><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Streetflow. Todos los derechos reservados.</span><span>Hecho con flow 🟢</span></div>
 </footer>
- 
+
+<!-- CHAT TOGGLE -->
+<button id="chat-toggle" title="Abrir asistente">🤖<div class="chat-ping"></div></button>
+
+<!-- CHAT WINDOW -->
+<div id="chat-window">
+  <div class="chat-topbar"></div>
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div class="chat-header-info">
+      <strong>ASISTENTE VIRTUAL</strong>
+      <span class="chat-online">En línea ahora</span>
+    </div>
+    <button class="chat-close" id="chat-close">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="sug-wrap" id="sug-wrap">
+    <div class="sug-label">Preguntas rápidas</div>
+    <div class="suggestions" id="sug-container"></div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+    <button class="chat-send" id="chat-send">➤</button>
+  </div>
+</div>
+
+<script>
+// Filtros interactivos
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Chips de talla interactivos
+document.querySelectorAll('.talla-chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    const row = this.closest('.tallas-row');
+    row.querySelectorAll('.talla-chip').forEach(c => c.style.borderColor = '');
+    row.querySelectorAll('.talla-chip').forEach(c => c.style.color = '');
+    this.style.borderColor = 'var(--green)';
+    this.style.color = 'var(--green)';
+  });
+});
+
+// ===== CHATBOT =====
+const SUGS = [
+  { label: "🧥 Ver hoodies",         msg: "hoodie" },
+  { label: "📏 Guía de tallas",       msg: "talla" },
+  { label: "🚚 Info de envíos",       msg: "envio" },
+  { label: "🔄 Devoluciones",         msg: "devolucion" },
+  { label: "💳 Formas de pago",       msg: "pago" },
+  { label: "🔥 Ver ofertas",          msg: "oferta" },
+];
+
+const RULES = [
+  { k: ["hola","hey","buenas","saludos","que mas","ola","epale"], r: `¡Ey, qué más! 👊 Estás en la sección de <span class="kw">Busos & Chaquetas</span> de Streetflow. Te ayudo a encontrar la prenda perfecta. ¿Buscas un <span class="kw">hoodie</span>, una <span class="kw">chaqueta</span> o algo especial?` },
+  { k: ["novedad","nuevo","drop","coleccion","lanzamiento"], r: `🔥 El <span class="kw">Drop SS2026</span> está disponible: <span class="kw">Hoodie Oversized</span> ($189K), <span class="kw">Jacket Coach</span> ($265K) y la <span class="kw">Chaqueta Bomber</span>. ¿Quieres info de tallas? Escribe <span class="kw">talla</span>.` },
+  { k: ["talla","medida","queda","fit","size"], r: `📏 Manejamos tallas <span class="kw">XS hasta XXL</span>. Para hoodies y jackets recomendamos pedir una talla más para el fit oversized streetwear. ¿De qué prenda necesitas la talla?` },
+  { k: ["envio","envío","domicilio","entrega","despacho"], r: `🚚 Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Bogotá, Medellín y Cali en <span class="kw">24 horas</span>. Resto del país 2–5 días hábiles.` },
+  { k: ["devolucion","cambio","garantia","retorno"], r: `🔄 ¡Sin rollos! <span class="kw">30 días</span> para devolver o cambiar. La prenda debe tener etiqueta original y estar sin uso. Escribe <span class="kw">contacto</span> para iniciar un cambio.` },
+  { k: ["pago","tarjeta","nequi","pse","cuota"], r: `💳 Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span> con tarjeta de crédito.` },
+  { k: ["oferta","descuento","sale","promo"], r: `🏷️ ¡Hay descuentos activos! El <span class="kw">Buso Vintage Washed</span> al −25% y el <span class="kw">Jacket Denim</span> al −20%. Revisa los badges rojos en los productos.` },
+  { k: ["hoodie","sudadera","buzo","sweatshirt"], r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller a $189.000, material 380gsm. El <span class="kw">Hoodie Full Zip</span> también está disponible a $175.000. ¿Necesitas la talla?` },
+  { k: ["chaqueta","jacket","bomber","coach"], r: `🥋 Tenemos la <span class="kw">Jacket Coach</span> ($265K), <span class="kw">Bomber</span> ($235K), <span class="kw">Denim Oversize</span> ($200K) y <span class="kw">Cargo Utility</span> ($298K). ¿Cuál te llama más la atención?` },
+  { k: ["comprar","agregar","carrito","quiero","pedido"], r: `🛒 ¡Vamos! Selecciona tu <span class="kw">talla</span>, haz clic en <span class="kw">+ Carrito</span> y elige tu método de <span class="kw">pago</span>. ¿Tienes dudas sobre el envío? Escribe <span class="kw">envio</span>.` },
+  { k: ["contacto","whatsapp","hablar","humano"], r: `📞 Contacta al <span class="kw">WhatsApp 300-000-0000</span> o por Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2 horas en horario hábil.` },
+];
+
+const DEFAULT = `Mmmh, no caché bien esa 🤔 Pero puedo ayudarte con: <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span>, <span class="kw">hoodie</span>, <span class="kw">chaqueta</span> o <span class="kw">oferta</span>. Escribe alguna y te respondo.`;
+
+const toggle  = document.getElementById('chat-toggle');
+const win     = document.getElementById('chat-window');
+const closeBtn= document.getElementById('chat-close');
+const msgs    = document.getElementById('chat-messages');
+const input   = document.getElementById('chat-input');
+const sendBtn = document.getElementById('chat-send');
+const sugWrap = document.getElementById('sug-wrap');
+const sugCont = document.getElementById('sug-container');
+
+function time() { const d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+
+function addMsg(html, side) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + side;
+  div.innerHTML = side==='bot'
+    ? `<div class="msg-av">🤖</div><div><div class="bubble">${html}</div><div class="msg-time">${time()}</div></div>`
+    : `<div><div class="bubble">${html}</div><div class="msg-time" style="text-align:right">${time()}</div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  const d = document.createElement('div');
+  d.className = 'msg bot'; d.id = 'typing';
+  d.innerHTML = `<div class="msg-av">🤖</div><div class="typing-indicator"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>`;
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() { const t=document.getElementById('typing'); if(t) t.remove(); }
+function normalize(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+function getReply(text) { const n=normalize(text); for(const r of RULES){ if(r.k.some(k=>n.includes(normalize(k)))) return r.r; } return DEFAULT; }
+
+function send(text) {
+  if (!text.trim()) return;
+  addMsg(text, 'user');
+  input.value = '';
+  sugWrap.style.display = 'none';
+  showTyping();
+  setTimeout(() => { removeTyping(); addMsg(getReply(text), 'bot'); }, 700 + Math.random()*600);
+}
+
+function buildSugs() {
+  sugCont.innerHTML = '';
+  SUGS.forEach(s => { const b=document.createElement('button'); b.className='sug-chip'; b.textContent=s.label; b.onclick=()=>send(s.msg); sugCont.appendChild(b); });
+}
+
+function openChat() {
+  win.classList.add('open');
+  document.querySelector('.chat-ping').style.display = 'none';
+  if (!msgs.children.length) {
+    setTimeout(() => {
+      showTyping();
+      setTimeout(() => {
+        removeTyping();
+        addMsg(`¡Ey! 👊 Estás en <span class="kw">Busos & Chaquetas</span>. Soy el asistente de Streetflow. ¿Buscas un <span class="kw">hoodie</span>, una <span class="kw">chaqueta</span>? ¿O tienes dudas sobre <span class="kw">tallas</span> o <span class="kw">envíos</span>?`, 'bot');
+        buildSugs();
+      }, 1100);
+    }, 300);
+  }
+}
+
+toggle.addEventListener('click', () => { win.classList.contains('open') ? win.classList.remove('open') : openChat(); });
+closeBtn.addEventListener('click', () => win.classList.remove('open'));
+sendBtn.addEventListener('click', () => send(input.value));
+input.addEventListener('keydown', e => { if(e.key==='Enter') send(input.value); });
+</script>
 </body>
 </html>
- 
