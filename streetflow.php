@@ -1,46 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['chat'])) $_SESSION['chat'] = [];
-
-// --- REGLAS DEL CHATBOT ---
-$rules = [
-  ["k" => ["hola","hey","buenas","saludos","que mas","ola","epale"],
-   "r" => "¡Ey, qué más! 👊 Bienvenid@ al chat de Streetflow. ¿Buscas novedades, tallas o info de envío?"],
-  ["k" => ["novedad","nuevo","drop","coleccion","lanzamiento"],
-   "r" => "🔥 El Drop SS2026 ya está disponible: Hoodie Oversized ($189K), Cargo Pants Wide (-30%) y Jacket Coach ($265K)."],
-  ["k" => ["talla","medida","fit","size","queda"],
-   "r" => "📏 Manejamos XS hasta XXL. Para hoodies recomendamos pedir una talla más para el fit oversized."],
-  ["k" => ["envio","envío","domicilio","entrega","despacho"],
-   "r" => "🚚 Envíos a toda Colombia. GRATIS desde $200.000. Express 24h para Bogotá, Medellín y Cali."],
-  ["k" => ["devolucion","cambio","garantia","retorno"],
-   "r" => "🔄 30 días para cambiar sin rollos. Etiqueta original y sin uso. Escribe 'contacto' para iniciar."],
-  ["k" => ["pago","tarjeta","nequi","pse","cuota"],
-   "r" => "💳 Visa/Mastercard, PSE, Nequi, Daviplata y efectivo. Hasta 12 cuotas sin interés."],
-  ["k" => ["oferta","descuento","sale","promo"],
-   "r" => "🏷️ Cargo Pants Wide al -30% ($175K) y Bandana Vintage al -20% ($32K)."],
-  ["k" => ["comprar","agregar","carrito","quiero"],
-   "r" => "🛒 Agrega al carrito y elige tu método de pago. ¿Dudas con el envío?"],
-  ["k" => ["contacto","whatsapp","hablar","humano"],
-   "r" => "📞 WhatsApp: 300-000-0000 o Instagram @streetflow.co. Respuesta en menos de 2h."],
-];
-
-function chat_reply($text, $rules) {
-  $n = strtolower(iconv('UTF-8','ASCII//TRANSLIT', $text));
-  foreach ($rules as $rule) {
-    foreach ($rule['k'] as $k) {
-      if (strpos($n, $k) !== false) return $rule['r'];
-    }
-  }
-  return "Mmmh 🤔 Puedo ayudarte con: talla, envio, pago, devolucion, oferta o comprar.";
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['chat_msg'])) {
-  $user_msg = htmlspecialchars(trim($_POST['chat_msg']));
-  $bot_reply = chat_reply($user_msg, $rules);
-  $_SESSION['chat'][] = ['side' => 'user', 'text' => $user_msg];
-  $_SESSION['chat'][] = ['side' => 'bot',  'text' => $bot_reply];
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -290,7 +247,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <nav>
   <span class="logo">STREET<span>FLOW</span></span>
   <ul>
-    <li><a href="#">Colección</a></li>
+    <li><a href="https://wa.me/573102916140" target="_blank">Whatsapp</a></li>
     <li><a href="#">Urbano</a></li>
     <li><a href="#">Accesorios</a></li>
     <li><a href="#">Drops</a></li>
@@ -446,10 +403,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <div class="suggestions" id="sug-container"></div>
   </div>
   <div class="chat-input-row">
-      <form method="POST" action="" style="display:flex;flex:1;gap:8px;">
-    <input type="text" name="chat_msg" class="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
-    <button type="submit" class="chat-send">➤</button>
-  </form>
+    <a href="wha"></a>
+    <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+    <button class="chat-send" id="chat-send">➤</button>
+  </div>
 </div>
 
 <script>
@@ -460,7 +417,155 @@ const SUGS = [
   { label: "🔄 Devoluciones",         msg: "devolucion" },
   { label: "💳 Formas de pago",       msg: "pago" },
   { label: "🔥 Ver ofertas",          msg: "oferta" },
+  { label: "🤳 contacto",             msg: "contacto" },
+  { label: "🗾 ubicación",            msg: "ubicacion" },
 ];
+
+const RULES = [
+  {
+    k: ["hola","hey","buenas","saludos","que mas","ola","epale", "ey"],
+    r: `¡Ey, qué más! 👊 Bienvenid@ al chat de <span class="kw">Streetflow</span>. Estoy aquí para ayudarte con lo que necesites.`
+  },
+  {
+    k: ["novedades","nuevo","nueva","drop","coleccion","temporada","lanzamiento", "novedad"],
+    r: ` El <span class="kw">Drop SS2026</span> ya está disponible. Tenemos <span class="kw">Hoodie Oversized</span> ($189.000), <span class="kw">Cargo Pants Wide</span> (con 30% off ahorita) y la nueva <span class="kw">Jacket Coach</span> ($265.000). ¿Quieres saber de alguna prenda específica? Y si necesitas info de <span class="kw">envio</span>, con gusto te explico.`
+  },
+  {
+    k: ["talla","medida","tamaño","queda","fit","size"],
+    r: ` Manejamos tallas <span class="kw">XS hasta XXL</span>. Tambien manejamos tallas de zapato <span class="kw">36 a 45</span>. ¿Tienes dudas de una prenda? Dime cuál es y te ayudo. Si ya tienes la tuya lista, escribe <span class="kw">comprar</span> para continuar.`
+  },
+  {
+    k: ["envio","envío","domicilio","entrega","llegar","despacho","shipping"],
+    r: `🚚 Hacemos <span class="kw">envíos a toda Colombia</span>. Envío <span class="kw">GRATIS</span> en compras desde $200.000. Para Bogotá, Medellín y Cali hay entrega <span class="kw">express en 24 horas</span>. El resto del país: 2 a 5 días hábiles. Tambien hacemos <span class="kw">devoluciones</span>. Solo escribe <span class="kw">cambio</span>, para darte mas informacion`
+  },
+  {
+    k: ["devolucion","devolución","cambio","cambiar","garantia","retorno"],
+    r: ` Tienes <span class="kw">30 días</span> para devolver o cambiar cualquier prenda. Solo necesita la etiqueta original y estar sin uso. ¿Necesitas iniciar uno? Escribe <span class="kw">contacto</span> y te conectamos con el equipo.`
+  },
+  {
+    k: ["pago","pagar","cuota","tarjeta","efectivo","nequi","pse","banco"],
+    r: `💳 Aceptamos <span class="kw">tarjetas</span> Visa/Mastercard, <span class="kw">PSE</span>, <span class="kw">Nequi</span>, Daviplata y efectivo por Efecty o Baloto. Con tarjetas de crédito tienes <span class="kw">hasta 12 cuotas sin interés</span>. ¿Ya tienes algo en el carrito? Escribe <span class="kw">comprar</span> para continuar.`
+  },
+  {
+    k: ["oferta","descuento","sale","rebaja","promo","precio","barato"],
+    r: `🏷️ ¡Hay ofertas activas! Los <span class="kw">Cargo Pants Wide</span> están al <span class="kw">−30%</span> (ahora $175.000) y la <span class="kw">Bandana Vintage</span> al −20%. En la sección <span class="kw">Sale</span> hay más piezas con hasta 40% off. ¿Cuál te interesa? Dime y te doy más detalles.`
+  }, 
+  {
+    k: ["hoodie","sudadera","buzo","sweatshirt","poleron"],
+    r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller: $189.000, material 380gsm, tiro largo y cuello amplio. Disponible en negro, verde militar y gris. ¿Necesitas saber tu <span class="kw">talla</span> ideal? Escribe <span class="kw">talla</span> y te oriento. ¿Ya vas a pedir? Escribe <span class="kw">comprar</span>.`
+  },
+  {
+    k: ["cargo","pantalon","pantalón","jogger","jean","pant"],
+    r: `👖 Los <span class="kw">Cargo Pants Wide</span> están a $175.000 (antes $250.000). Fit baggy, bolssillos laterales y cintura ajustable. ¿Dudas con la <span class="kw">talla</span>? Cuéntame tu medida de cintura y te recomiendo la ideal. También puedes ver las otras <span class="kw">ofertas</span> activas si quieres.`
+  },
+  {
+    k: ["zapatilla","sneaker","calzado","zapato","tenis","shoe","kicks"],
+    r: `👟 Las <span class="kw">Sneakers Chunky</span> ($320.000) son el must-have de la temporada: suela gruesa, disponibles del 36 al 45. ¿Cuál es tu número? Si quieres ver más opciones de <span class="kw">calzado</span>, también tenemos drops próximos. Escribe <span class="kw">novedades</span> para más info.`
+  },
+  {
+    k: ["comprar","agregar","carrito","pedido","quiero"],
+    r: `🛒 ¡Vamos! Agrega los productos al carrito desde la tienda y elige tu método de <span class="kw">pago</span>. Si tienes dudas sobre alguna prenda, dime cuál es y te ayudo. ¿Ya sabes cómo llega tu pedido? Escribe <span class="kw">envio</span> para todos los detalles.`
+  },
+  {
+    k: ["horario", "atencion", "antiende"],
+    r: `⏰ Nuestro horario de atención es de lunes a viernes de 9am a 6pm. Fuera de ese horario, puedes escribirnos y te responderemos lo antes posible en el siguiente día hábil. Si quieres contacto directo, solo escribe <span class="kw">contacto</span> y te doy las opciones.`
+  },
+  {
+    k: ["ubicación, dirección","donde estan","sede","tienda","local","oficina","dónde están", "ubicacion","direccion"],
+    r: `Nos encontramos en <span class="kw">Neiva-huila, san pedro plaza-local 101</span>, pero hacemos envíos a toda Colombia. Si quieres el horario de atencion, solo escribe <span class="kw">horario</span> y te doy las opciones.`
+  },
+  {
+    k: ["contacto","whatsapp","llamar","hablar","persona","humano", "usuario"],
+    r: `📞 Puedes contactarnos por <a href="https://wa.me/573102916140" target="_blank"><span class="kw">WhatsApp</span></a> o por <span class="kw">Instagram</span> @streetflow.co. Respuesta en menos de 2 horas en horario hábil. ¿Hay algo más que pueda ayudarte? Escribe lo que necesitas.`
+  },
+];
+
+const DEFAULT = `Mmmh, no caché bien esa 🤔 Pero puedo ayudarte con: <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span>, <span class="kw">devolucion</span>, <span class="kw">oferta</span>, <span class="kw">hoodie</span>, <span class="kw">cargo</span> o <span class="kw">comprar</span>. Escribe alguna y te respondo.`;
+
+const toggle   = document.getElementById('chat-toggle');
+const win      = document.getElementById('chat-window');
+const closeBtn = document.getElementById('chat-close');
+const msgs     = document.getElementById('chat-messages');
+const input    = document.getElementById('chat-input');
+const sendBtn  = document.getElementById('chat-send');
+const sugWrap  = document.getElementById('sug-wrap');
+const sugCont  = document.getElementById('sug-container');
+
+function time() {
+  const d = new Date();
+  return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+
+function addMsg(html, side) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + side;
+  if (side === 'bot') {
+    div.innerHTML = `<div class="msg-av">🤖</div><div><div class="bubble">${html}</div><div class="msg-time">${time()}</div></div>`;
+  } else {
+    div.innerHTML = `<div><div class="bubble">${html}</div><div class="msg-time" style="text-align:right">${time()}</div></div>`;
+  }
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  const d = document.createElement('div');
+  d.className = 'msg bot'; d.id = 'typing';
+  d.innerHTML = `<div class="msg-av">🤖</div><div class="typing-indicator"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>`;
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() { const t = document.getElementById('typing'); if (t) t.remove(); }
+
+function normalize(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+
+function getReply(text) {
+  const n = normalize(text);
+  for (const rule of RULES) {
+    if (rule.k.some(k => n.includes(normalize(k)))) return rule.r;
+  }
+  return DEFAULT;
+}
+
+function send(text) {
+  if (!text.trim()) return;
+  addMsg(text, 'user');
+  input.value = '';
+  sugWrap.style.display = 'none';
+  showTyping();
+  setTimeout(() => { removeTyping(); addMsg(getReply(text), 'bot'); }, 700 + Math.random()*600);
+}
+
+function buildSugs() {
+  sugCont.innerHTML = '';
+  SUGS.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'sug-chip'; b.textContent = s.label;
+    b.onclick = () => send(s.msg);
+    sugCont.appendChild(b);
+  });
+}
+
+function openChat() {
+  win.classList.add('open');
+  document.querySelector('.chat-ping').style.display = 'none';
+  if (!msgs.children.length) {
+    setTimeout(() => {
+      showTyping();
+      setTimeout(() => {
+        removeTyping();
+        addMsg(`¡Ey! 👊 Soy el asistente virtual de <span class="kw">Streetflow</span>. Estoy aquí para ayudarte con lo que necesites. Cuéntame, ¿qué andas buscando hoy?`, 'bot');
+        buildSugs();
+      }, 1100);
+    }, 300);
+  }
+}
+
+toggle.addEventListener('click', () => { win.classList.contains('open') ? win.classList.remove('open') : openChat(); });
+closeBtn.addEventListener('click', () => win.classList.remove('open'));
+sendBtn.addEventListener('click', () => send(input.value));
+input.addEventListener('keydown', e => { if (e.key === 'Enter') send(input.value); });
 </script>
 </body>
 </html>

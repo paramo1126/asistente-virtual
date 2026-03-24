@@ -240,7 +240,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
 
 <!-- NAV -->
 <nav>
-  <a href="index.php" class="logo">STREET<span>FLOW</span></a>
+  <a href="streetflow.php" class="logo">STREET<span>FLOW</span></a>
   <ul>
     <li><a href="index.php">Inicio</a></li>
     <li><a href="ropa.php">Busos</a></li>
@@ -257,7 +257,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
 
 <!-- HERO -->
 <section class="cat-hero">
-  <div class="breadcrumb"><a href="index.php">Inicio</a> &nbsp;/&nbsp; Catálogo completo</div>
+  <div class="breadcrumb"><a href="streetflow.php">Inicio</a> &nbsp;/&nbsp; Catálogo completo</div>
   <h1>TODO EL <span>CATÁLOGO</span></h1>
   <p>Busos, chaquetas, pantalones, calzado y accesorios en un solo lugar.</p>
   <div class="hero-hint">Pregúntale al chat: "Muéstrame busos talla M" o "Quiero una gorra"</div>
@@ -274,6 +274,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <button class="qf-btn" data-filter="pantaloneta">Pantalonetas</button>
   <div class="qf-sep"></div>
   <button class="qf-btn" data-filter="sneaker">Sneakers</button>
+  <button class="qf-btn" data-filter="bota">Botas</button>
   <button class="qf-btn" data-filter="gorra">Gorras</button>
   <button class="qf-btn" data-filter="reloj">Relojes</button>
   <button class="qf-btn" data-filter="collar">Collares</button>
@@ -300,7 +301,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-busos">
 
     <!-- BUSO 1 — línea 298: cambia .img-ph por <img src="imagenes/hoodie-oversized.jpg" ...> -->
-    <div class="product-card" data-cat="buso" data-tags="hoodie oversized unisex negro verde gris essentials talla xs s m l xl xxl" data-name="Hoodie Oversized" data-precio="189000" data-tallas="XS S M L XL XXL">
+    <div class="product-card" data-cat="busos buso" data-tags="hoodie oversized unisex negro verde gris essentials talla xs s m l xl xxl" data-name="Hoodie Oversized" data-precio="189000" data-tallas="XS S M L XL XXL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">hoodie-oversized.jpg</span></div>
         <span class="badge badge-new">Drop</span>
@@ -315,7 +316,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- BUSO 2 — línea 315: cambia .img-ph por <img src="imagenes/buso-vintage.jpg" ...> -->
-    <div class="product-card" data-cat="buso" data-tags="buso vintage washed retro unisex talla xs s m l xl" data-name="Buso Vintage Washed" data-precio="142000" data-tallas="XS S M L XL">
+    <div class="product-card" data-cat="busos buso" data-tags="buso vintage washed retro unisex talla xs s m l xl" data-name="Buso Vintage Washed" data-precio="142000" data-tallas="XS S M L XL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">buso-vintage.jpg</span></div>
         <span class="badge badge-sale">−25%</span>
@@ -330,7 +331,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- BUSO 3 — línea 329: cambia .img-ph por <img src="imagenes/hoodie-zip.jpg" ...> -->
-    <div class="product-card" data-cat="buso" data-tags="hoodie zip cierre full unisex essentials talla xs s m l xl" data-name="Hoodie Full Zip" data-precio="175000" data-tallas="XS S M L XL">
+    <div class="product-card" data-cat="busos buso" data-tags="hoodie zip cierre full unisex essentials talla xs s m l xl" data-name="Hoodie Full Zip" data-precio="175000" data-tallas="XS S M L XL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">hoodie-zip.jpg</span></div>
         <span class="badge badge-new">Nuevo</span>
@@ -345,7 +346,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- BUSO 4 — línea 343: cambia .img-ph por <img src="imagenes/buso-crop.jpg" ...> -->
-    <div class="product-card" data-cat="buso" data-tags="buso crop corto mujer femenino urban talla xs s m l" data-name="Buso Crop Urban" data-precio="135000" data-tallas="XS S M L">
+    <div class="product-card" data-cat="busos buso" data-tags="buso crop corto mujer femenino urban talla xs s m l" data-name="Buso Crop Urban" data-precio="135000" data-tallas="XS S M L">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">buso-crop.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -370,7 +371,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-chaquetas">
 
     <!-- CHAQUETA 1 — línea 372: cambia .img-ph por <img src="imagenes/jacket-coach.jpg" ...> -->
-    <div class="product-card" data-cat="chaqueta" data-tags="jacket coach unisex premium talla s m l xl" data-name="Jacket Coach" data-precio="265000" data-tallas="S M L XL">
+    <div class="product-card" data-cat="chaquetas chaqueta" data-tags="jacket coach unisex premium talla s m l xl" data-name="Jacket Coach" data-precio="265000" data-tallas="S M L XL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">jacket-coach.jpg</span></div>
         <span class="badge badge-new">Drop</span>
@@ -385,7 +386,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- CHAQUETA 2 — línea 387: cambia .img-ph por <img src="imagenes/chaqueta-bomber.jpg" ...> -->
-    <div class="product-card" data-cat="chaqueta" data-tags="chaqueta bomber unisex street talla s m l xl xxl" data-name="Chaqueta Bomber" data-precio="235000" data-tallas="S M L XL XXL">
+    <div class="product-card" data-cat="chaquetas chaqueta" data-tags="chaqueta bomber unisex street talla s m l xl xxl" data-name="Chaqueta Bomber" data-precio="235000" data-tallas="S M L XL XXL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">chaqueta-bomber.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -400,7 +401,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- CHAQUETA 3 — línea 402: cambia .img-ph por <img src="imagenes/jacket-denim.jpg" ...> -->
-    <div class="product-card" data-cat="chaqueta" data-tags="jacket denim oversize unisex urban talla s m l xl xxl" data-name="Jacket Denim Oversize" data-precio="200000" data-tallas="S M L XL XXL">
+    <div class="product-card" data-cat="chaquetas chaqueta" data-tags="jacket denim oversize unisex urban talla s m l xl xxl" data-name="Jacket Denim Oversize" data-precio="200000" data-tallas="S M L XL XXL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">jacket-denim.jpg</span></div>
         <span class="badge badge-sale">−20%</span>
@@ -415,7 +416,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- CHAQUETA 4 — línea 417: cambia .img-ph por <img src="imagenes/cortaviento.jpg" ...> -->
-    <div class="product-card" data-cat="chaqueta" data-tags="cortaviento ripstop unisex outdoor talla s m l xl" data-name="Cortaviento Ripstop" data-precio="219000" data-tallas="S M L XL">
+    <div class="product-card" data-cat="chaquetas chaqueta" data-tags="cortaviento ripstop unisex outdoor talla s m l xl" data-name="Cortaviento Ripstop" data-precio="219000" data-tallas="S M L XL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">cortaviento.jpg</span></div>
         <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
@@ -439,7 +440,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-cargos">
 
     <!-- CARGO 1 — línea 445: cambia .img-ph por <img src="imagenes/cargo-wide.jpg" ...> -->
-    <div class="product-card" data-cat="cargo" data-tags="cargo pantalon wide baggy hombre talla 28 30 32 34 36" data-name="Cargo Pants Wide" data-precio="175000" data-tallas="28 30 32 34 36">
+    <div class="product-card" data-cat="cargo cargos" data-tags="cargo wide baggy hombre talla 28 30 32 34 36" data-name="Cargo Pants Wide" data-precio="175000" data-tallas="28 30 32 34 36">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">cargo-wide.jpg</span></div>
         <span class="badge badge-sale">−30%</span>
@@ -454,7 +455,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- CARGO 2 — línea 460: cambia .img-ph por <img src="imagenes/cargo-tactical.jpg" ...> -->
-    <div class="product-card" data-cat="cargo" data-tags="cargo pantalon tactical unisex street talla 28 30 32 34 36" data-name="Cargo Tactical" data-precio="210000" data-tallas="28 30 32 34 36">
+    <div class="product-card" data-cat="cargo cargos" data-tags="cargo pantalon tactical unisex street talla 28 30 32 34 36" data-name="Cargo Tactical" data-precio="210000" data-tallas="28 30 32 34 36">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">cargo-tactical.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -469,7 +470,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- CARGO 3 — línea 475: cambia .img-ph por <img src="imagenes/cargo-denim.jpg" ...> -->
-    <div class="product-card" data-cat="cargo" data-tags="cargo denim washed pantalon unisex urban talla 28 30 32 34" data-name="Cargo Denim Washed" data-precio="229000" data-tallas="28 30 32 34">
+    <div class="product-card" data-cat="cargo cargos" data-tags="cargo denim washed pantalon unisex urban talla 28 30 32 34" data-name="Cargo Denim Washed" data-precio="229000" data-tallas="28 30 32 34">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">cargo-denim.jpg</span></div>
         <span class="badge badge-new">Nuevo</span>
@@ -484,7 +485,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- CARGO 4 — línea 490: cambia .img-ph por <img src="imagenes/cargo-slim.jpg" ...> -->
-    <div class="product-card" data-cat="cargo" data-tags="cargo slim fit pantalon hombre essentials talla 28 30 32 34 36" data-name="Cargo Slim Fit" data-precio="185000" data-tallas="28 30 32 34 36">
+    <div class="product-card" data-cat="cargo cargos" data-tags="cargo slim fit pantalon hombre essentials talla 28 30 32 34 36" data-name="Cargo Slim Fit" data-precio="185000" data-tallas="28 30 32 34 36">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">cargo-slim.jpg</span></div>
         <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
@@ -508,7 +509,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-joggers">
 
     <!-- JOGGER 1 — línea 517: cambia .img-ph por <img src="imagenes/jogger-fleece.jpg" ...> -->
-    <div class="product-card" data-cat="jogger" data-tags="jogger fleece oversized unisex comfort talla xs s m l xl" data-name="Jogger Fleece Oversized" data-precio="155000" data-tallas="XS S M L XL">
+    <div class="product-card" data-cat="jogger joggers" data-tags="jogger fleece oversized unisex comfort talla xs s m l xl" data-name="Jogger Fleece Oversized" data-precio="155000" data-tallas="XS S M L XL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">jogger-fleece.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -523,7 +524,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- JOGGER 2 — línea 531: cambia .img-ph por <img src="imagenes/jogger-tech.jpg" ...> -->
-    <div class="product-card" data-cat="jogger" data-tags="jogger tech ripstop unisex sport talla s m l xl xxl" data-name="Jogger Tech Ripstop" data-precio="178000" data-tallas="S M L XL XXL">
+    <div class="product-card" data-cat="jogger joggers" data-tags="jogger tech ripstop unisex sport talla s m l xl xxl" data-name="Jogger Tech Ripstop" data-precio="178000" data-tallas="S M L XL XXL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">jogger-tech.jpg</span></div>
         <span class="badge badge-new">Drop</span>
@@ -538,7 +539,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- PANTALONETA 1 — línea 545: cambia .img-ph por <img src="imagenes/pantaloneta-cargo.jpg" ...> -->
-    <div class="product-card" data-cat="pantaloneta" data-tags="pantaloneta cargo short corto hombre summer talla s m l xl" data-name="Pantaloneta Cargo Street" data-precio="89000" data-tallas="S M L XL">
+    <div class="product-card" data-cat="pantaloneta pantalonetas" data-tags="pantaloneta cargo short corto hombre summer talla s m l xl" data-name="Pantaloneta Cargo Street" data-precio="89000" data-tallas="S M L XL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">pantaloneta-cargo.jpg</span></div>
         <span class="badge badge-sale">−15%</span>
@@ -553,7 +554,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- PANTALONETA 2 — línea 559: cambia .img-ph por <img src="imagenes/pantaloneta-baggy.jpg" ...> -->
-    <div class="product-card" data-cat="pantaloneta" data-tags="pantaloneta baggy mesh short corto unisex urban talla xs s m l xl" data-name="Pantaloneta Baggy Mesh" data-precio="95000" data-tallas="XS S M L XL">
+    <div class="product-card" data-cat="pantaloneta pantalonetas" data-tags="pantaloneta baggy mesh short corto unisex urban talla xs s m l xxl" data-name="Pantaloneta Baggy Mesh" data-precio="95000" data-tallas="XS S M L XL XXL">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">pantaloneta-baggy.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -578,7 +579,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-sneakers">
 
     <!-- SNEAKER 1 — línea 587: cambia .img-ph por <img src="imagenes/sneaker-chunky.jpg" ...> -->
-    <div class="product-card" data-cat="sneaker" data-tags="sneaker chunky zapatilla tenis calzado urbano talla 36 37 38 39 40 41 42 43 44 45" data-name="Sneaker Chunky" data-precio="320000" data-tallas="36 37 38 39 40 41 42 43 44 45">
+    <div class="product-card" data-cat="sneaker" data-tags="sneaker chunky zapatilla tenis calzado urbano talla 38 40 41 44 45" data-name="Sneaker Chunky" data-precio="320000" data-tallas="36 37 38 39 40 41 42 43 44 45">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">sneaker-chunky.jpg</span></div>
         <span class="badge badge-new">Drop</span>
@@ -587,13 +588,13 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
       <div class="product-info">
         <h4>Sneaker Chunky</h4>
         <p class="product-sub">Calzado · Urbano</p>
-        <div class="tallas"><span class="talla">36</span><span class="talla">38</span><span class="talla">40</span><span class="talla">42</span><span class="talla">44</span></div>
+        <div class="tallas"><span class="talla">36</span><span class="talla">38</span><span class="talla">40</span><span class="talla">41</span><span class="talla">44</span><span class="talla">45</span></div>
         <div class="product-footer"><div><span class="price">$320.000</span></div><button class="btn-add">+ Carrito</button></div>
       </div>
     </div>
 
     <!-- SNEAKER 2 — línea 601: cambia .img-ph por <img src="imagenes/sneaker-low.jpg" ...> -->
-    <div class="product-card" data-cat="sneaker" data-tags="sneaker low top classic zapatilla tenis calzado talla 36 37 38 39 40 41 42 43" data-name="Sneaker Low Top Classic" data-precio="220000" data-tallas="36 37 38 39 40 41 42 43">
+    <div class="product-card" data-cat="sneaker sneakers" data-tags="sneaker low top classic zapatilla tenis calzado talla 37 38 39 42" data-name="Sneaker Low Top Classic" data-precio="220000" data-tallas="36">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">sneaker-low.jpg</span></div>
         <span class="badge badge-sale">−20%</span>
@@ -602,13 +603,13 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
       <div class="product-info">
         <h4>Sneaker Low Top Classic</h4>
         <p class="product-sub">Calzado · Essentials</p>
-        <div class="tallas"><span class="talla">36</span><span class="talla">38</span><span class="talla">40</span><span class="talla">42</span></div>
+        <div class="tallas"><span class="talla">37</span><span class="talla">38</span><span class="talla">39</span><span class="talla">42</span></div>
         <div class="product-footer"><div><span class="price">$220.000</span><span class="price-old">$275.000</span></div><button class="btn-add">+ Carrito</button></div>
       </div>
     </div>
 
     <!-- BOTA — línea 615: cambia .img-ph por <img src="imagenes/bota-urbana.jpg" ...> -->
-    <div class="product-card" data-cat="sneaker" data-tags="bota urbana combat calzado street talla 38 39 40 41 42 43 44" data-name="Bota Urbana Combat" data-precio="285000" data-tallas="38 39 40 41 42 43 44">
+    <div class="product-card" data-cat="sneaker sneakers" data-tags="bota urbana combat calzado street talla 38 39 40 41 42 43 44" data-name="Bota Urbana Combat" data-precio="285000" data-tallas="38 39 40 41 42 43 44">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">bota-urbana.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -623,7 +624,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- SLIDE — línea 629: cambia .img-ph por <img src="imagenes/slide-urban.jpg" ...> -->
-    <div class="product-card" data-cat="sneaker" data-tags="slide sandalias calzado casual talla 36 38 40 42 44" data-name="Slide Urban Premium" data-precio="98000" data-tallas="36 38 40 42 44">
+    <div class="product-card" data-cat="sneaker sneakers" data-tags="slide sandalias calzado casual talla 36 38 40 42 44" data-name="Slide Urban Premium" data-precio="98000" data-tallas="36 38 40 42 44">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">slide-urban.jpg</span></div>
         <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
@@ -639,6 +640,101 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   </div><!-- /grid-sneakers -->
   <div class="sec-empty" id="empty-sneakers">No hay calzado que coincida.</div>
 
+  <!-- ==================== BOTAS ==================== -->
+  <div class="sec-title" id="sec-botas">
+    Botas <span>& Boots</span>
+    <span class="sec-count" id="count-botas"></span>
+  </div>
+  <div class="products-grid" id="grid-botas">
+
+    <!-- =====================================================
+         AQUÍ VAN LOS PRODUCTOS DE BOTAS
+         Copia este bloque por cada bota que quieras agregar
+         y cambia los datos: data-name, data-precio, data-tallas
+         y el nombre de la imagen
+         =====================================================
+
+    <div class="product-card" data-cat="bota" data-tags="bota boots calzado urban talla 38 39 40 41 42 43 44" data-name="NOMBRE DE LA BOTA" data-precio="000000" data-tallas="38 39 40 41 42 43 44">
+      <div class="product-img">
+        // AQUÍ VA TU IMAGEN:
+        // <img src="imagenes/nombre-bota.jpg" alt="Nombre Bota" style="width:100%;height:100%;object-fit:cover;">
+        <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">nombre-bota.jpg</span></div>
+        <span class="badge badge-new">Nuevo</span>
+        <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+      </div>
+      <div class="product-info">
+        <h4>NOMBRE DE LA BOTA</h4>
+        <p class="product-sub">Botas · Urban</p>
+        <div class="tallas"><span class="talla">38</span><span class="talla">39</span><span class="talla">40</span><span class="talla">41</span><span class="talla">42</span><span class="talla">43</span><span class="talla">44</span></div>
+        <div class="product-footer"><div><span class="price">$000.000</span></div><button class="btn-add">+ Carrito</button></div>
+      </div>
+    </div>
+
+    ===================================================== -->
+
+    <!-- BOTA 1 — Cambia .img-ph por <img src="imagenes/bota-1.jpg" ...> -->
+    <div class="product-card" data-cat="bota botas" data-tags="bota boots calzado urban street talla 38 39 40 41 42 43 44" data-name="Bota Urban Street" data-precio="0" data-tallas="38 39 40 41 42 43 44">
+      <div class="product-img">
+        <!-- AQUÍ VA TU IMAGEN: <img src="imagenes/bota-1.jpg" alt="Bota Urban Street" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">bota-1.jpg</span></div>
+        <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+      </div>
+      <div class="product-info">
+        <h4>Bota Urban Street</h4>
+        <p class="product-sub">Botas · Urban</p>
+        <div class="tallas"><span class="talla">38</span><span class="talla">39</span><span class="talla">40</span><span class="talla">41</span><span class="talla">42</span><span class="talla">43</span><span class="talla">44</span></div>
+        <div class="product-footer"><div><span class="price">$0</span></div><button class="btn-add">+ Carrito</button></div>
+      </div>
+    </div>
+
+    <!-- BOTA 2 — Cambia .img-ph por <img src="imagenes/bota-2.jpg" ...> -->
+    <div class="product-card" data-cat="bota botas" data-tags="bota boots calzado combat militar talla 38 39 40 41 42 43 44" data-name="Bota Combat" data-precio="0" data-tallas="38 39 40 41 42 43 44">
+      <div class="product-img">
+        <!-- AQUÍ VA TU IMAGEN: <img src="imagenes/bota-2.jpg" alt="Bota Combat" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">bota-2.jpg</span></div>
+        <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+      </div>
+      <div class="product-info">
+        <h4>Bota Combat</h4>
+        <p class="product-sub">Botas · Combat</p>
+        <div class="tallas"><span class="talla">38</span><span class="talla">39</span><span class="talla">40</span><span class="talla">41</span><span class="talla">42</span><span class="talla">43</span><span class="talla">44</span></div>
+        <div class="product-footer"><div><span class="price">$0</span></div><button class="btn-add">+ Carrito</button></div>
+      </div>
+    </div>
+
+    <!-- BOTA 3 — Cambia .img-ph por <img src="imagenes/bota-3.jpg" ...> -->
+    <div class="product-card" data-cat="bota botas" data-tags="bota boots calzado tactico premium talla 38 39 40 41 42 43 44" data-name="Bota Táctica Premium" data-precio="0" data-tallas="38 39 40 41 42 43 44">
+      <div class="product-img">
+        <!-- AQUÍ VA TU IMAGEN: <img src="imagenes/bota-3.jpg" alt="Bota Táctica Premium" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">bota-3.jpg</span></div>
+        <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+      </div>
+      <div class="product-info">
+        <h4>Bota Táctica Premium</h4>
+        <p class="product-sub">Botas · Premium</p>
+        <div class="tallas"><span class="talla">38</span><span class="talla">39</span><span class="talla">40</span><span class="talla">41</span><span class="talla">42</span><span class="talla">43</span><span class="talla">44</span></div>
+        <div class="product-footer"><div><span class="price">$0</span></div><button class="btn-add">+ Carrito</button></div>
+      </div>
+    </div>
+
+    <!-- BOTA 4 — Cambia .img-ph por <img src="imagenes/bota-4.jpg" ...> -->
+    <div class="product-card" data-cat="bota botas" data-tags="bota boots calzado chelsea casual talla 38 39 40 41 42 43 44" data-name="Bota Chelsea" data-precio="0" data-tallas="38 39 40 41 42 43 44">
+      <div class="product-img">
+        <!-- AQUÍ VA TU IMAGEN: <img src="imagenes/bota-4.jpg" alt="Bota Chelsea" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">bota-4.jpg</span></div>
+        <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
+      </div>
+      <div class="product-info">
+        <h4>Bota Chelsea</h4>
+        <p class="product-sub">Botas · Casual</p>
+        <div class="tallas"><span class="talla">38</span><span class="talla">39</span><span class="talla">40</span><span class="talla">41</span><span class="talla">42</span><span class="talla">43</span><span class="talla">44</span></div>
+        <div class="product-footer"><div><span class="price">$0</span></div><button class="btn-add">+ Carrito</button></div>
+      </div>
+    </div>
+
+  </div><!-- /grid-botas -->
+  <div class="sec-empty" id="empty-botas">No hay botas que coincidan.</div>
+
   <!-- ==================== GORRAS ==================== -->
   <div class="sec-title" id="sec-gorras">
     Gorras <span>& Headwear</span>
@@ -647,7 +743,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-gorras">
 
     <!-- GORRA 1 — línea 657: cambia .img-ph por <img src="imagenes/snapback-cap.jpg" ...> -->
-    <div class="product-card" data-cat="gorra" data-tags="gorra snapback cap logo urban talla unica" data-name="Snapback Cap Logo" data-precio="65000" data-tallas="Talla única">
+    <div class="product-card" data-cat="gorra gorras" data-tags="gorra snapback cap logo urban talla unica" data-name="Snapback Cap Logo" data-precio="65000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">snapback-cap.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -661,7 +757,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- GORRA 2 — línea 671: cambia .img-ph por <img src="imagenes/bucket-hat.jpg" ...> -->
-    <div class="product-card" data-cat="gorra" data-tags="gorra bucket hat reversible street talla unica" data-name="Bucket Hat Reversible" data-precio="72000" data-tallas="Talla única">
+    <div class="product-card" data-cat="gorra gorras" data-tags="gorra bucket hat reversible street talla unica" data-name="Bucket Hat Reversible" data-precio="72000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">bucket-hat.jpg</span></div>
         <span class="badge badge-new">Nuevo</span>
@@ -685,7 +781,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-relojes">
 
     <!-- RELOJ 1 — línea 695: cambia .img-ph por <img src="imagenes/reloj-street.jpg" ...> -->
-    <div class="product-card" data-cat="reloj" data-tags="reloj watch digital street urban accesorios" data-name="Reloj Street Digital" data-precio="185000" data-tallas="Talla única">
+    <div class="product-card" data-cat="reloj relojes" data-tags="reloj watch digital street urban accesorios" data-name="Reloj Street Digital" data-precio="185000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">reloj-street.jpg</span></div>
         <span class="badge badge-new">Drop</span>
@@ -699,7 +795,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- RELOJ 2 — línea 709: cambia .img-ph por <img src="imagenes/reloj-chain.jpg" ...> -->
-    <div class="product-card" data-cat="reloj" data-tags="reloj watch chain oversized premium accesorios" data-name="Reloj Chain Oversized" data-precio="245000" data-tallas="Talla única">
+    <div class="product-card" data-cat="reloj relojes" data-tags="reloj watch chain oversized premium accesorios" data-name="Reloj Chain Oversized" data-precio="245000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">reloj-chain.jpg</span></div>
         <span class="badge badge-hot">Hot</span>
@@ -723,7 +819,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
   <div class="products-grid" id="grid-collares">
 
     <!-- COLLAR 1 — línea 733: cambia .img-ph por <img src="imagenes/collar-chain.jpg" ...> -->
-    <div class="product-card" data-cat="collar" data-tags="collar chain joya gold dorado accesorios street" data-name="Collar Chain Street" data-precio="45000" data-tallas="Talla única">
+    <div class="product-card" data-cat="collar collares" data-tags="collar chain joya gold dorado accesorios street" data-name="Collar Chain Street" data-precio="45000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">collar-chain.jpg</span></div>
         <span class="badge badge-sale">−15%</span>
@@ -737,7 +833,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- COLLAR 2 — línea 747: cambia .img-ph por <img src="imagenes/collar-pendant.jpg" ...> -->
-    <div class="product-card" data-cat="collar" data-tags="collar pendant logo joya silver plateado accesorios" data-name="Collar Pendant Logo" data-precio="52000" data-tallas="Talla única">
+    <div class="product-card" data-cat="collar collares" data-tags="collar pendant logo joya silver plateado accesorios" data-name="Collar Pendant Logo" data-precio="52000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">collar-pendant.jpg</span></div>
         <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
@@ -750,7 +846,7 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     </div>
 
     <!-- MANILLA — línea 761: cambia .img-ph por <img src="imagenes/manilla-street.jpg" ...> -->
-    <div class="product-card" data-cat="collar" data-tags="manilla pulsera brazalete accesorio street urban" data-name="Manilla Street Leather" data-precio="38000" data-tallas="Talla única">
+    <div class="product-card" data-cat="collar collares" data-tags="manilla pulsera brazalete accesorio street urban" data-name="Manilla Street Leather" data-precio="38000" data-tallas="Talla única">
       <div class="product-img">
         <div class="img-ph"><span class="ph-ico">📷</span><span class="ph-txt">manilla-street.jpg</span></div>
         <span class="badge badge-new">Nuevo</span>
@@ -882,40 +978,41 @@ const PRODUCTOS = Array.from(document.querySelectorAll('.product-card')).map((el
 function buscarProductos(query) {
   const q = normalizar(query);
 
-  // Detectar talla mencionada (XS, S, M, L, XL, XXL, o números 28-45)
-  const tallaMatch = q.match(/\b(xs|s\b|m\b|l\b|xl|xxl|28|30|32|34|36|38|39|40|41|42|43|44|45)\b/i);
+  // Detectar talla — xxl y xl primero para que no se confundan
+  const tallaMatch = q.match(/\b(xxl|xl|xs|28|30|32|34|36|38|39|40|41|42|43|44|45|[smlSML])\b/);
   const tallaFiltro = tallaMatch ? tallaMatch[0].toUpperCase() : null;
 
-  // Detectar si pide ofertas / sale / descuento
-  const quiereSale = /oferta|descuento|sale|rebaja|promo|barato|economico/.test(q);
+  // Detectar si pide ofertas
+  const quiereSale = /oferta|descuento|sale|rebaja|promo|barato/.test(q);
 
-  // Palabras clave de categoría y producto
-  const keywords = q.split(/\s+/).filter(w => w.length > 1);
+  // Quitar del query la talla y palabras de relleno — lo que queda es la categoría
+  const RELLENO = /^(talla|tallas|de|en|con|me|una|un|los|las|quiero|mostrar|ver|muestra|hay|tienes|busco|dame|quisiera|para|por|favor|que|cual|cuales|oferta|descuento|sale|rebaja|promo|barato|disponible|muestrame|mostrarme|necesito)$/;
+  const TALLAS_TEXTO = /^(xxl|xl|xs|s|m|l|28|30|32|34|36|38|39|40|41|42|43|44|45)$/;
+
+  const palabras = q.split(/\s+/).filter(w => w.length > 0);
+  const keywordsCat = palabras.filter(k => !RELLENO.test(k) && !TALLAS_TEXTO.test(k));
 
   return PRODUCTOS.filter(p => {
     const textoProducto = normalizar(p.nombre + ' ' + p.cat + ' ' + p.tags);
 
-    // Filtro de talla: si pidió talla específica, el producto debe tenerla
+    // 1. Filtrar por talla si la mencionó
     if (tallaFiltro) {
-      const tieneTalla = p.tallas.some(t => normalizar(t) === normalizar(tallaFiltro));
+      const tieneTalla = p.tallas.some(t => t.toUpperCase() === tallaFiltro);
       if (!tieneTalla) return false;
     }
 
-    // Filtro de sale
+    // 2. Filtrar por descuento si lo pidió
     if (quiereSale) {
-      const badge = p.el.querySelector('.badge-sale');
-      if (!badge) return false;
+      if (!p.el.querySelector('.badge-sale')) return false;
     }
 
-    // Al menos una keyword debe coincidir con el producto
-    // (excepto si solo filtró por talla o sale)
-    const soloTallaOSale = keywords.every(k =>
-      /^(talla|talla:|de|en|con|me|una|un|los|las|quiero|mostrar|ver|muestra|hay|tienes|busco|dame|quisiera|para|por|favor|porfavor|que|cual|cuales|xs|s|m|l|xl|xxl|\d+|oferta|descuento|sale|rebaja|promo|barato)$/.test(k)
-    );
+    // 3. Filtrar por categoría si escribió algo más que talla/relleno
+    if (keywordsCat.length > 0) {
+      return keywordsCat.some(k => textoProducto.includes(k));
+    }
 
-    if (soloTallaOSale) return true;
-
-    return keywords.some(k => k.length > 2 && textoProducto.includes(k));
+    // 4. Solo talla o solo sale sin categoría: mostrar todos los que pasaron
+    return true;
   });
 }
 
@@ -946,6 +1043,7 @@ function aplicarFiltro(resultados, query) {
     { grid: 'grid-cargos',    empty: 'empty-cargos',    sec: 'sec-cargos',    count: 'count-cargos' },
     { grid: 'grid-joggers',   empty: 'empty-joggers',   sec: 'sec-joggers',   count: 'count-joggers' },
     { grid: 'grid-sneakers',  empty: 'empty-sneakers',  sec: 'sec-sneakers',  count: 'count-sneakers' },
+    { grid: 'grid-botas',     empty: 'empty-botas',     sec: 'sec-botas',     count: 'count-botas' },
     { grid: 'grid-gorras',    empty: 'empty-gorras',    sec: 'sec-gorras',    count: 'count-gorras' },
     { grid: 'grid-relojes',   empty: 'empty-relojes',   sec: 'sec-relojes',   count: 'count-relojes' },
     { grid: 'grid-collares',  empty: 'empty-collares',  sec: 'sec-collares',  count: 'count-collares' },
@@ -1168,10 +1266,45 @@ function procesarMensaje(texto) {
 
   // Respuesta del chat con mini-cards
   const cats = [...new Set(resultados.map(p => p.cat))];
-  const catTexto = cats.map(c => `<span class="kw">${c}</span>`).join(', ');
   const cards = buildResultCards(resultados);
 
-  let respuesta = `✅ Encontré <span class="kw">${resultados.length} producto${resultados.length !== 1 ? 's' : ''}</span> de ${catTexto}. Los estoy mostrando en pantalla:`;
+  // =====================================================
+  // MENSAJES INDIVIDUALES POR CATEGORÍA
+  // Aquí puedes cambiar el texto que el chat le dice
+  // al cliente según el producto que buscó
+  // =====================================================
+  const MENSAJES_CATEGORIA = {
+
+    buso:       `🧥 ¡Aquí te mostramos los busos disponibles! Tenemos hoodies oversized, busos vintage y más. Todos en tallas XS hasta XXL. Materiales de alto gramaje, perfectos para el streetwear auténtico.`,
+
+    chaqueta:   `🥋 Estas son las chaquetas que tenemos disponibles. Jackets coach, bombers, denim oversize y cortavientos. Tallas S hasta XXL. El outerwear que domina la calle.`,
+
+    cargo:      `👖 Aquí están los cargos y pantalones disponibles. Fit baggy, bolsillos laterales y cintura ajustable. Tallas de cintura 28 al 36. El pantalón que define el streetwear.`,
+
+    jogger:     `🩳 Estos son los joggers y pantalonetas disponibles. Fleece oversized, tech ripstop y pantalonetas baggy. Tallas XS hasta XXL. Comodidad sin perder el estilo.`,
+
+    sneaker:    `👟 Aquí te mostramos el calzado disponible. Sneakers chunky, low top classic, botas urbanas y slides. Tallas del 36 al 45. Los kicks que completan el look.`,
+
+    // =====================================================
+    // CONCEPTO DE BOTAS — Aquí escribe lo que el chat
+    // le va a decir al cliente cuando pida botas
+    // =====================================================
+    bota:       `🥾 Aquí están las botas disponibles. [ESCRIBE AQUÍ EL CONCEPTO DE TUS BOTAS — ejemplo: materiales, estilos, tallas, para qué ocasión van, precio, etc.]`,
+
+    gorra:      `🧢 Estas son las gorras que tenemos disponibles. Snapbacks, bucket hats y más. Talla única ajustable. El accesorio que arma cualquier look urbano.`,
+
+    reloj:      `⌚ Aquí están los relojes disponibles. Street digital y chain oversized. El detalle que diferencia el outfit.`,
+
+    collar:     `📿 Estos son los collares, manillas y joyería disponibles. Chains en gold y silver, pendant logo y manillas de cuero. El drip que completa el estilo.`,
+
+    mochila:    `🎒 Aquí te mostramos las mochilas y accesorios disponibles. Tactical resistente al agua y bandanas vintage. Lo que necesitas para llevar el estilo a otro nivel.`,
+
+  };
+  // =====================================================
+
+  const catPrincipal = cats[0];
+  let respuesta = MENSAJES_CATEGORIA[catPrincipal]
+    || `✅ Aquí están los ${resultados.length} producto${resultados.length !== 1 ? 's' : ''} que encontré:`;
 
   addMsg(respuesta, 'bot', cards);
 
