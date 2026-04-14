@@ -8,17 +8,17 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --black:      #080C08;
-  --black2:     #0F140F;
-  --black3:     #161C16;
-  --card:       #111711;
-  --green:      #14f7ff;
+  --black:      #69696986;
+  --black2:     #746b6b;
+  --black3:     #5c5c5c;
+  --card:       #5e5858de;
+  --green:      #161616;
   --green-dim:  #1f60ec;
-  --green-dark: #0A4A05;
-  --white:      #E8F5E4;
-  --muted:      #5A7055;
-  --border:     #1E2E1E;
-  --border2:    #2A3D2A;
+  --green-dark: #000000;
+  --white:      #ffffff;
+  --muted:      #ffffff;
+  --border:     #030303;
+  --border2:    #070707;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; overflow-x: hidden; }
@@ -28,21 +28,21 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color
 
 /* NAV */
 nav {
-  background: rgba(8,12,8,0.96);
+  background:rgba(50, 56, 55, 0.8); 
   backdrop-filter: blur(12px);
   padding: 0 2.5rem;
   display: flex; align-items: center; justify-content: space-between;
   height: 62px; position: sticky; top: 0; z-index: 100;
   border-bottom: 1px solid var(--border);
 }
-.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--green); text-shadow: 0 0 18px rgba(57,255,20,0.55); user-select: none; }
-.logo span { color: var(--white); }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--white); text-shadow: none; user-select: none; }
+.logo span { color: #a0a0a0; }
 nav ul { list-style: none; display: flex; gap: 2rem; }
 nav ul a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
 nav ul a:hover { color: var(--green); }
 .nav-icons { display: flex; gap: 1rem; align-items: center; }
 .nav-icons button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.1rem; padding: 4px; transition: color 0.2s, text-shadow 0.2s; }
-.nav-icons button:hover { color: var(--green); text-shadow: 0 0 8px rgba(57,255,20,0.6); }
+.nav-icons button:hover { color: var(--green); text-shadow: 0 0 8px rgba(206, 189, 154, 0.6); }
 
 /* TICKER */
 .ticker { background: var(--green); overflow: hidden; white-space: nowrap; padding: 8px 0; }
@@ -57,11 +57,11 @@ nav ul a:hover { color: var(--green); }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 1.5rem; }
 .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--green); }
 .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 6.5rem; line-height: 0.92; color: var(--white); letter-spacing: 0.04em; margin-bottom: 1.6rem; }
-.hero h1 .green { color: var(--green); text-shadow: 0 0 24px rgba(57,255,20,0.5); display: block; }
+.hero h1 .green { color: var(--green); text-shadow: 0 0 24px rgba(0, 0, 0, 0.5); display: block; }
 .hero p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; max-width: 360px; margin-bottom: 2.5rem; font-weight: 300; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-primary { display: inline-block; background: var(--green); color: var(--black); border: none; padding: 13px 32px; font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; text-decoration: none; font-weight: 700; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
-.btn-primary:hover { background: #4fff28; box-shadow: 0 0 24px rgba(57,255,20,0.5); transform: translateY(-2px); }
+.btn-primary:hover { background: #000000; box-shadow: 0 0 24px rgba(0, 0, 0, 0.5); transform: translateY(-2px); }
 .btn-outline { display: inline-block; background: transparent; color: var(--green); border: 1px solid var(--green); padding: 13px 32px; font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; font-weight: 700; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
 .btn-outline:hover { background: var(--green-dark); }
 .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; z-index: 1; }
@@ -85,10 +85,9 @@ nav ul a:hover { color: var(--green); }
 .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 4rem; }
 .cat-card { background: var(--card); position: relative; height: 300px; overflow: hidden; cursor: pointer; transition: background 0.2s; }
 .cat-card:hover { background: var(--black3); }
-.cat-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 8rem; opacity: 0.07; filter: grayscale(1); transition: transform 0.4s, opacity 0.3s; user-select: none; }
-.cat-card:hover .cat-bg { transform: scale(1.08); opacity: 0.12; }
-.cat-frame { position: absolute; inset: 0; border: 1px solid transparent; transition: border-color 0.3s; }
-.cat-card:hover .cat-frame { border-color: var(--green); }
+.cat-card a { display: block; height: 100%; position: relative; }
+.cat-card img.cat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.6; transition: opacity 0.4s, transform 0.5s; }
+.cat-card:hover img.cat-img { opacity: 0.75; transform: scale(1.06); }
 .cat-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(8,12,8,0.95) 0%, transparent 100%); }
 .cat-num { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: rgba(57,255,20,0.06); position: absolute; top: 0.5rem; right: 1rem; line-height: 1; }
 .cat-label { display: inline-block; background: var(--green); color: var(--black); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; padding: 3px 9px; font-weight: 700; margin-bottom: 0.5rem; }
@@ -101,6 +100,8 @@ nav ul a:hover { color: var(--green); }
 .product-card { background: var(--card); cursor: pointer; transition: background 0.2s; position: relative; }
 .product-card:hover { background: var(--black3); }
 .product-img { height: 260px; display: flex; align-items: center; justify-content: center; background: var(--black3); position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+.product-img img.prod-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.85; transition: opacity 0.3s, transform 0.4s; }
+.product-card:hover .prod-img { opacity: 1; transform: scale(1.04); }
 .p-icon { font-size: 6rem; opacity: 0.08; filter: grayscale(1); transition: opacity 0.3s, transform 0.4s; user-select: none; }
 .product-card:hover .p-icon { opacity: 0.14; transform: scale(1.06); }
 .p-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s; }
@@ -181,7 +182,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
 }
 #chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
-.chat-topbar { height: 2px; background: var(--green); flex-shrink: 0; box-shadow: 0 0 12px rgba(57,255,20,0.7); }
+.chat-topbar { height: 2px; background: var(--green); flex-shrink: 0; box-shadow: 0 0 12px rgba(255, 255, 255, 0.7); }
 .chat-header { background: var(--card); padding: 12px 15px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
 .chat-avatar { width: 36px; height: 36px; border-radius: 4px; background: var(--green-dark); border: 1px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
 .chat-header-info { flex: 1; }
@@ -257,9 +258,6 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 </nav>
 
-<div class="ticker">
-  <span class="ticker-inner">NUEVA COLECCIÓN 2026 &nbsp;·&nbsp; ENVÍO GRATIS +$200.000 &nbsp;·&nbsp; STREETWEAR PREMIUM &nbsp;·&nbsp; DROP EXCLUSIVO YA DISPONIBLE &nbsp;·&nbsp; NUEVA COLECCIÓN 2026 &nbsp;·&nbsp; ENVÍO GRATIS +$200.000 &nbsp;·&nbsp; STREETWEAR PREMIUM &nbsp;·&nbsp;</span>
-</div>
 
 <section class="hero">
   <div class="hero-text">
@@ -282,23 +280,23 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 </section>
 
-<div class="sec-hd"><h2>CATEGORÍAS <span>// ESTILOS</span></h2><a href="catalogo.php">Ver todo →</a></div>
+<div class="sec-hd"><h2>CATEGORÍAS <span>// ESTILOS</span></h2><a href="catalogo.php">Catalogo →</a></div>
 <div class="categories">
   <div class="cat-card">
-    <a href="ropa.php">
-      <img src="imagenes/busolargohombre.jpg" alt="Hoodies" class="cat-frame">
+    <a href="buso.php">
+      <img src="imagenes/busolargohombre.jpg" alt="Hoodies" class="cat-img">
     <div class="cat-info"><span class="cat-label">Urban</span><h3>BUSOS &<br>CHAQUETAS</h3><p class="cat-count">42 prendas disponibles</p></div>
     </a>
   </div>
   <div class="cat-card">
     <a href="pantalon.php">
-      <img src="imagenes/pantalon.jpg" alt="Pantalones" class="cat-frame">
+      <img src="imagenes/pantalon.jpg" alt="Pantalones" class="cat-img">
       <div class="cat-info"><span class="cat-label">FIRE</span><h3>PANTALON &<br>JOGGERS</h3><p class="cat-count">38 prendas disponibles</p></div>
     </a>
   </div>
   <div class="cat-card">
     <a href="zapato.php">
-      <img src="imagenes/zapatos.webp" alt="Calzado" class="cat-frame">
+      <img src="imagenes/zapatos.webp" alt="Calzado" class="cat-img">
       <div class="cat-info"><span class="cat-label">FULL MODEL</span><h3>CALZADO &<br>ACCESORIOS</h3><p class="cat-count">65 estilos disponibles</p></div>
     </a>
   </div>
@@ -308,7 +306,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   <div class="sec-hd" style="padding-top:4rem;"><h2>MÁS <span>// VENDIDOS</span></h2><a href="#">Ver catálogo →</a></div>
   <div class="products-grid">
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">🧥</div><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-img"><img src="imagenes/buso1.jpg" alt="Hoodie" class="prod-img"><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
       <div class="product-info"><h4>Hoodie Oversized</h4><p class="product-sub">Unisex · Essentials</p><div class="product-footer"><div><span class="price">$189.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
@@ -373,7 +371,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <span class="logo" style="display:block;margin-bottom:0.2rem;">STREET<span style="color:var(--white)">FLOW</span></span>
+      <span class="logo" style="display:block;margin-bottom:0.2rem;">STREET<span style="color:#a0a0a0">FLOW</span></span>
       <p>Moda urbana sin filtros. Diseñada para los que viven la calle, la crean y la representan.</p>
     </div>
     <div class="footer-col"><h5>Tienda</h5><ul><li><a href="#">Hoodies</a></li><li><a href="#">Cargos</a></li><li><a href="#">Calzado</a></li><li><a href="#">Accesorios</a></li><li><a href="#">Sale</a></li></ul></div>
@@ -451,8 +449,8 @@ const RULES = [
     r: `🏷️ ¡Hay ofertas activas! Los <span class="kw">Cargo Pants Wide</span> están al <span class="kw">−30%</span> (ahora $175.000) y la <span class="kw">Bandana Vintage</span> al −20%. En la sección <span class="kw">Sale</span> hay más piezas con hasta 40% off. ¿Cuál te interesa? Dime y te doy más detalles.`
   }, 
   {
-    k: ["hoodie","sudadera","buzo","sweatshirt","poleron"],
-    r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller: $189.000, material 380gsm, tiro largo y cuello amplio. Disponible en negro, verde militar y gris. ¿Necesitas saber tu <span class="kw">talla</span> ideal? Escribe <span class="kw">talla</span> y te oriento. ¿Ya vas a pedir? Escribe <span class="kw">comprar</span>.`
+    k: ["hoodie","sudadera","buzo","sweatshirt","poleron", "buso deportivo", "camisa", "chaqueta", ],
+    r: ` La <span class="kw">Hoodie Oversized</span> es nuestro bestseller: $189.000, material 380gsm, tiro largo y cuello amplio. Disponible en negro, verde militar y gris. ¿Necesitas saber tu <span class="kw">talla</span> ideal? Escribe <span class="kw">talla</span> y te oriento. ¿Ya vas a pedir? Escribe <span class="kw">comprar</span>.`
   },
   {
     k: ["cargo","pantalon","pantalón","jogger","jean","pant"],
@@ -460,7 +458,7 @@ const RULES = [
   },
   {
     k: ["zapatilla","sneaker","calzado","zapato","tenis","shoe","kicks"],
-    r: `👟 Las <span class="kw">Sneakers Chunky</span> ($320.000) son el must-have de la temporada: suela gruesa, disponibles del 36 al 45. ¿Cuál es tu número? Si quieres ver más opciones de <span class="kw">calzado</span>, también tenemos drops próximos. Escribe <span class="kw">novedades</span> para más info.`
+    r: ` Se encuentra en la categoria de <span class="kw"> Calzado y Accesorios</span>. Aqui solo se envia informacion  general de muestra tienda <span class="kw">streetflow </span> como <span class="kw"> ubicación, contacto, horario, pago, devolución </span>`
   },
   {
     k: ["comprar","agregar","carrito","pedido","quiero"],

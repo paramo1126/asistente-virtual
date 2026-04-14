@@ -8,16 +8,17 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --black:      #080C08;
-  --black2:     #0F140F;
-  --black3:     #161C16;
-  --card:       #111711;
-  --green:      #14f7ff;
-  --green-dark: #0A4A05;
-  --white:      #E8F5E4;
-  --muted:      #5A7055;
-  --border:     #1E2E1E;
-  --border2:    #2A3D2A;
+  --black:      #69696986;
+  --black2:     #746b6b;
+  --black3:     #5c5c5c;
+  --card:       #5e5858de;
+  --green:      #161616;
+  --green-dim:  #1f60ec;
+  --green-dark: #000000;
+  --white:      #ffffff;
+  --muted:      #ffffff;
+  --border:     #030303;
+  --border2:    #070707;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
@@ -26,7 +27,7 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color
 ::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
 
 /* NAV */
-nav { background: rgba(8,12,8,0.96); backdrop-filter: blur(12px); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+nav {   background:rgba(50, 56, 55, 0.8);  ; backdrop-filter: blur(12px); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
 .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--green); text-shadow: 0 0 18px rgba(57,255,20,0.55); text-decoration: none; }
 .logo span { color: var(--white); }
 nav ul { list-style: none; display: flex; gap: 2rem; }
@@ -249,11 +250,6 @@ footer { background:var(--black); padding:3rem 2.5rem 2rem; border-top:1px solid
     <li><a href="#">Sale</a></li>
   </ul>
 </nav>
-
-<!-- TICKER -->
-<div class="ticker">
-  <span class="ticker-inner">CATÁLOGO COMPLETO · BUSOS · CHAQUETAS · CARGOS · JOGGERS · CALZADO · GORRAS · RELOJES · COLLARES · MOCHILAS · ENVÍO GRATIS +$200.000 · DROP SS2026 ·</span>
-</div>
 
 <!-- HERO -->
 <section class="cat-hero">

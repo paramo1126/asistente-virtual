@@ -8,17 +8,17 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --black:      #080C08;
-  --black2:     #0F140F;
-  --black3:     #161C16;
-  --card:       #111711;
-  --green:      #14fff3;
-  --green-dim:  #1DB80D;
-  --green-dark: #0A4A05;
-  --white:      #E8F5E4;
-  --muted:      #5A7055;
-  --border:     #1E2E1E;
-  --border2:    #2A3D2A;
+    --black:      #69696986;
+  --black2:     #746b6b;
+  --black3:     #5c5c5c;
+  --card:       #5e5858de;
+  --green:      #161616;
+  --green-dim:  #1f60ec;
+  --green-dark: #000000;
+  --white:      #ffffff;
+  --muted:      #ffffff;
+  --border:     #030303;
+  --border2:    #070707;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; overflow-x: hidden; }
@@ -26,9 +26,9 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color
 ::-webkit-scrollbar-track { background: var(--black2); }
 ::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
 
-nav { background: rgba(8,12,8,0.96); backdrop-filter: blur(12px); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
-.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--green); text-shadow: 0 0 18px rgba(57,255,20,0.55); user-select: none; text-decoration: none; }
-.logo span { color: var(--white); }
+nav { background: rgb(67, 68, 66); backdrop-filter: blur(12px); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--white); text-shadow: none; user-select: none; text-decoration: none; }
+.logo span { color: #a0a0a0; }
 nav ul { list-style: none; display: flex; gap: 2rem; }
 nav ul a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
 nav ul a:hover, nav ul a.active { color: var(--green); }
@@ -43,7 +43,7 @@ nav ul a:hover, nav ul a.active { color: var(--green); }
 .breadcrumb { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; position: relative; z-index: 1; }
 .breadcrumb a { color: var(--green); text-decoration: none; }
 .cat-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; line-height: 0.92; letter-spacing: 0.05em; color: var(--white); position: relative; z-index: 1; }
-.cat-hero h1 span { color: var(--green); text-shadow: 0 0 24px rgba(57,255,20,0.5); }
+.cat-hero h1 span { color: var(--white); text-shadow: none; }
 .cat-hero p { color: var(--muted); font-size: 0.9rem; max-width: 500px; margin-top: 1rem; line-height: 1.7; font-weight: 300; position: relative; z-index: 1; }
 .cat-hero-gfx { position: absolute; right: 6rem; top: 50%; transform: translateY(-50%); font-size: 14rem; opacity: 0.05; filter: grayscale(1); user-select: none; animation: float 6s ease-in-out infinite; }
 @keyframes float { 0%, 100% { transform: translateY(-50%) rotate(-3deg); } 50% { transform: translateY(calc(-50% - 18px)) rotate(3deg); } }
@@ -179,9 +179,6 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </ul>
 </nav>
 
-<div class="ticker">
-  <span class="ticker-inner">CARGO PANTS · JOGGERS · BAGGY · PANTALONETAS · WIDE LEG · STREETWEAR · DROP SS2026 · ENVÍO GRATIS +$200.000 · CARGO PANTS · JOGGERS · BAGGY · WIDE LEG ·</span>
-</div>
 
 <section class="cat-hero">
   <div class="cat-hero-gfx">👖</div>
@@ -215,16 +212,8 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   <!-- PRODUCTO 1 -->
   <div class="product-card">
     <div class="product-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/cargo-wide.jpg" alt="Cargo Pants Wide" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
       <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Cargo Pants Wide<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/cargo-wide.jpg</span>
+        <img src="imagenes/pantalon1.jpg" alt="buso1" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <span class="badge badge-sale">−30%</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
@@ -538,6 +527,7 @@ const RULES = [
   { k: ["cargo","pantalon","pantalón","baggy"], r: `👖 Tenemos <span class="kw">Cargo Wide</span> ($175K con 30% off), <span class="kw">Cargo Tactical</span> ($210K), <span class="kw">Cargo Denim</span> ($229K) y <span class="kw">Cargo Slim</span> ($185K). ¿Cuál te llama?` },
   { k: ["jogger","jogging","sport"], r: `🏃 El <span class="kw">Jogger Fleece Oversized</span> a $155K es el más popular. El <span class="kw">Jogger Tech Ripstop</span> ($178K) es ideal si buscas algo más técnico. ¿Necesitas la talla?` },
   { k: ["pantaloneta","short","corto","bermuda"], r: `🩳 Tenemos la <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K) y la <span class="kw">Pantaloneta Baggy Mesh</span> ($95K). Perfectas para el verano urbano.` },
+  { k: ["muchacha","mujer","pantalon mujer"], r: `Por ahora no tenemos, se agotaron` },
   { k: ["comprar","agregar","carrito","quiero"], r: `🛒 Selecciona tu talla, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Dudas con el envío? Escribe <span class="kw">envio</span>.` },
   { k: ["contacto","whatsapp","hablar","humano"], r: `📞 <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
 ];

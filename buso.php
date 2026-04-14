@@ -8,17 +8,17 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --black:      #080C08;
-  --black2:     #0F140F;
-  --black3:     #161C16;
-  --card:       #111711;
-  --green:      #14f7ff;
-  --green-dim:  #1DB80D;
-  --green-dark: #0A4A05;
-  --white:      #E8F5E4;
-  --muted:      #5A7055;
-  --border:     #1E2E1E;
-  --border2:    #2A3D2A;
+  --black:      #69696986;
+  --black2:     #746b6b;
+  --black3:     #5c5c5c;
+  --card:       #5e5858de;
+  --green:      #161616;
+  --green-dim:  #1f60ec;
+  --green-dark: #000000;
+  --white:      #ffffff;
+  --muted:      #ffffff;
+  --border:     #030303;
+  --border2:    #070707;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; overflow-x: hidden; }
@@ -28,15 +28,15 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color
 
 /* NAV */
 nav {
-  background: rgba(8,12,8,0.96);
+  background:rgba(50, 56, 55, 0.8);
   backdrop-filter: blur(12px);
   padding: 0 2.5rem;
   display: flex; align-items: center; justify-content: space-between;
   height: 62px; position: sticky; top: 0; z-index: 100;
   border-bottom: 1px solid var(--border);
 }
-.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--green); text-shadow: 0 0 18px rgba(57,255,20,0.55); user-select: none; text-decoration: none; }
-.logo span { color: var(--white); }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.12em; color: var(--white); text-shadow: none; user-select: none; text-decoration: none; }
+.logo span { color: #a0a0a0; }
 nav ul { list-style: none; display: flex; gap: 2rem; }
 nav ul a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
 nav ul a:hover, nav ul a.active { color: var(--green); }
@@ -173,7 +173,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 @keyframes ping { 0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,0.6); } 50% { box-shadow: 0 0 0 6px rgba(57,255,20,0); } }
 #chat-window { position: fixed; bottom: 102px; right: 28px; width: 370px; height: 540px; background: var(--black2); border: 1px solid var(--border2); border-radius: 4px; box-shadow: 0 0 40px rgba(57,255,20,0.12), 0 20px 60px rgba(0,0,0,0.7); z-index: 9998; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.88) translateY(16px); opacity: 0; pointer-events: none; transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s; }
 #chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
-.chat-topbar { height: 2px; background: var(--green); flex-shrink: 0; box-shadow: 0 0 12px rgba(57,255,20,0.7); }
+.chat-topbar { height: 2px; background: var(--green); flex-shrink: 0; box-shadow: 0 0 12px rgba(0, 0, 0, 0.7); }
 .chat-header { background: var(--card); padding: 12px 15px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
 .chat-avatar { width: 36px; height: 36px; border-radius: 4px; background: var(--green-dark); border: 1px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
 .chat-header-info { flex: 1; }
@@ -241,12 +241,6 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <li><a href="#">Sale</a></li>
   </ul>
 </nav>
-
-<!-- TICKER -->
-<div class="ticker">
-  <span class="ticker-inner">BUSOS · HOODIES · OVERSIZED · CHAQUETAS PREMIUM · JACKETS · STREETWEAR · DROP SS2026 · ENVÍO GRATIS +$200.000 · BUSOS · HOODIES · OVERSIZED · CHAQUETAS PREMIUM ·</span>
-</div>
-
 <!-- HERO DE CATEGORÍA -->
 <section class="cat-hero">
   <div class="cat-hero-gfx">🧥</div>
@@ -281,12 +275,6 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   <!-- PRODUCTO 1 -->
   <div class="product-card">
     <div class="product-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/hoodie-oversized.jpg" alt="Hoodie Oversized" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
         <span class="ph-text">Hoodie Oversized<br>Agrega tu imagen aquí</span>
@@ -311,16 +299,8 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   <!-- PRODUCTO 2 -->
   <div class="product-card">
     <div class="product-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/jacket-coach.jpg" alt="Jacket Coach" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
       <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Jacket Coach<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/jacket-coach.jpg</span>
+        <img src="imagenes/buso1.jpg" alt="buso1" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <span class="badge badge-new">Drop</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
@@ -466,12 +446,6 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   <!-- PRODUCTO 7 -->
   <div class="product-card">
     <div class="product-img">
-      <!--
-        ===== ESPACIO PARA IMAGEN =====
-        Reemplaza el div .img-placeholder por:
-        <img src="imagenes/chaqueta-denim.jpg" alt="Chaqueta Denim" style="width:100%;height:100%;object-fit:cover;">
-        ==============================
-      -->
       <div class="img-placeholder">
         <span class="ph-icon">📷</span>
         <span class="ph-text">Chaqueta Denim<br>Agrega tu imagen aquí</span>
@@ -605,13 +579,17 @@ const SUGS = [
 
 const RULES = [
   { k: ["hola","hey","buenas","saludos","que mas","ola","epale"], r: `¡Ey, qué más! 👊 Estás en la sección de <span class="kw">Busos & Chaquetas</span> de Streetflow. Te ayudo a encontrar la prenda perfecta. ¿Buscas un <span class="kw">hoodie</span>, una <span class="kw">chaqueta</span> o algo especial?` },
+  { k: ["como estas","Como esta","que tal tu dia "], r: `Bien y ¿tu?` },
+  { k: ["excelente","very good","bien", "maravilloso"], r: `Ah me alegro que estes asi` },
+   { k: ["chaqueta barata ","buso barato", "ropa barata", "buso mas barato"], r: `Nosotros manejamos con personas estrato 4, en los comuneros vende cosas baratas` },
   { k: ["novedad","nuevo","drop","coleccion","lanzamiento"], r: `🔥 El <span class="kw">Drop SS2026</span> está disponible: <span class="kw">Hoodie Oversized</span> ($189K), <span class="kw">Jacket Coach</span> ($265K) y la <span class="kw">Chaqueta Bomber</span>. ¿Quieres info de tallas? Escribe <span class="kw">talla</span>.` },
   { k: ["talla","medida","queda","fit","size"], r: `📏 Manejamos tallas <span class="kw">XS hasta XXL</span>. Para hoodies y jackets recomendamos pedir una talla más para el fit oversized streetwear. ¿De qué prenda necesitas la talla?` },
   { k: ["envio","envío","domicilio","entrega","despacho"], r: `🚚 Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Bogotá, Medellín y Cali en <span class="kw">24 horas</span>. Resto del país 2–5 días hábiles.` },
   { k: ["devolucion","cambio","garantia","retorno"], r: `🔄 ¡Sin rollos! <span class="kw">30 días</span> para devolver o cambiar. La prenda debe tener etiqueta original y estar sin uso. Escribe <span class="kw">contacto</span> para iniciar un cambio.` },
   { k: ["pago","tarjeta","nequi","pse","cuota"], r: `💳 Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span> con tarjeta de crédito.` },
   { k: ["oferta","descuento","sale","promo"], r: `🏷️ ¡Hay descuentos activos! El <span class="kw">Buso Vintage Washed</span> al −25% y el <span class="kw">Jacket Denim</span> al −20%. Revisa los badges rojos en los productos.` },
-  { k: ["hoodie","sudadera","buzo","sweatshirt"], r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller a $189.000, material 380gsm. El <span class="kw">Hoodie Full Zip</span> también está disponible a $175.000. ¿Necesitas la talla?` },
+  { k: ["buso deportivo", "busos baratos "], r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller a $189.000, material 380gsm. El <span class="kw">Hoodie Full Zip</span> también está disponible a $175.000. ¿Necesitas la talla?` },
+  { k: ["hoodie","sudadera","buzo","sweatshirt", "buso"], r: `🧥 La <span class="kw">Hoodie Oversized</span> es nuestro bestseller a $189.000, material 380gsm. El <span class="kw">Hoodie Full Zip</span> también está disponible a $175.000. ¿Necesitas la talla?` },
   { k: ["chaqueta","jacket","bomber","coach"], r: `🥋 Tenemos la <span class="kw">Jacket Coach</span> ($265K), <span class="kw">Bomber</span> ($235K), <span class="kw">Denim Oversize</span> ($200K) y <span class="kw">Cargo Utility</span> ($298K). ¿Cuál te llama más la atención?` },
   { k: ["comprar","agregar","carrito","quiero","pedido"], r: `🛒 ¡Vamos! Selecciona tu <span class="kw">talla</span>, haz clic en <span class="kw">+ Carrito</span> y elige tu método de <span class="kw">pago</span>. ¿Tienes dudas sobre el envío? Escribe <span class="kw">envio</span>.` },
   { k: ["contacto","whatsapp","hablar","humano"], r: `📞 Contacta al <span class="kw">WhatsApp 300-000-0000</span> o por Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2 horas en horario hábil.` },
