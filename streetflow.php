@@ -50,6 +50,7 @@ nav ul a:hover { color: var(--green); }
 @keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
 
 /* HERO */
+.hero-img {  width: 100%;max-width: 800px; height: 200px;font-size: 1.2rem }
 .hero { min-height: 560px; background: var(--black2); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(57,255,20,0.07) 0%, transparent 65%); pointer-events: none; }
 .hero::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, rgba(57,255,20,0.025) 0px, transparent 1px, transparent 60px, rgba(57,255,20,0.025) 60px), repeating-linear-gradient(90deg, rgba(57,255,20,0.025) 0px, transparent 1px, transparent 60px, rgba(57,255,20,0.025) 60px); pointer-events: none; }
@@ -86,7 +87,7 @@ nav ul a:hover { color: var(--green); }
 .cat-card { background: var(--card); position: relative; height: 300px; overflow: hidden; cursor: pointer; transition: background 0.2s; }
 .cat-card:hover { background: var(--black3); }
 .cat-card a { display: block; height: 100%; position: relative; }
-.cat-card img.cat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.6; transition: opacity 0.4s, transform 0.5s; }
+.cat-card img.cat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.7; transition: opacity 0.4s, transform 0.5s; }
 .cat-card:hover img.cat-img { opacity: 0.75; transform: scale(1.06); }
 .cat-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(8,12,8,0.95) 0%, transparent 100%); }
 .cat-num { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: rgba(57,255,20,0.06); position: absolute; top: 0.5rem; right: 1rem; line-height: 1; }
@@ -100,7 +101,7 @@ nav ul a:hover { color: var(--green); }
 .product-card { background: var(--card); cursor: pointer; transition: background 0.2s; position: relative; }
 .product-card:hover { background: var(--black3); }
 .product-img { height: 260px; display: flex; align-items: center; justify-content: center; background: var(--black3); position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
-.product-img img.prod-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.85; transition: opacity 0.3s, transform 0.4s; }
+.product-img img.prod-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.9; transition: opacity 0.3s, transform 0.4s; }
 .product-card:hover .prod-img { opacity: 1; transform: scale(1.04); }
 .p-icon { font-size: 6rem; opacity: 0.08; filter: grayscale(1); transition: opacity 0.3s, transform 0.4s; user-select: none; }
 .product-card:hover .p-icon { opacity: 0.14; transform: scale(1.06); }
@@ -264,6 +265,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <span class="hero-eyebrow">Drop Primavera 2026</span>
     <h1>VISTE<span class="green">LA CALLE</span>A TU MODO</h1>
     <p>Piezas diseñadas para los que mandan en el asfalto. Streetwear de nivel, sin límites, sin excusas. La moda urbana que realmente representa.</p>
+    <div class="hero-img">
+      <img src="imagenes/presentacion.jpg" alt="">
+      <img src="imagenes/presentacion2.jpg" alt="">
+    </div>
     <div class="hero-btns">
       <a href="#" class="btn-primary">Explorar drop</a>
       <a href="#" class="btn-outline">Ver lookbook</a>
@@ -310,31 +315,31 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
       <div class="product-info"><h4>Hoodie Oversized</h4><p class="product-sub">Unisex · Essentials</p><div class="product-footer"><div><span class="price">$189.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">👖</div><span class="badge badge-sale">−30%</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-img"><img src="imagenes/pantalon1.jpg" alt="pantalon" class="prod-img"><span class="badge badge-sale">−30%</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
       <div class="product-info"><h4>Cargo Pants Wide</h4><p class="product-sub">Hombre · Baggy</p><div class="product-footer"><div><span class="price">$175.000</span><span class="price-old">$250.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">🧢</div><span class="badge badge-hot">Hot</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-img"><img src="imagenes/zapatos1.jpg" alt="zapatos" class="prod-img"><span class="badge badge-hot">Hot</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
       <div class="product-info"><h4>Snapback Cap</h4><p class="product-sub">Accesorios · Logo</p><div class="product-footer"><div><span class="price">$65.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">👟</div><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
-      <div class="product-info"><h4>Sneaker Chunky</h4><p class="product-sub">Calzado · Urbano</p><div class="product-footer"><div><span class="price">$320.000</span></div><button class="btn-add">+ Carrito</button></div></div>
+      <div class="product-img"><img src="imagenes/buso2.jpg" alt="Hoodie" class="prod-img"><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-info"><h4>Hoodie oversized</h4><p class="product-sub">Moda · Urbano</p><div class="product-footer"><div><span class="price">$320.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">🧤</div><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
-      <div class="product-info"><h4>Guantes Tácticos</h4><p class="product-sub">Accesorios · Street</p><div class="product-footer"><div><span class="price">$55.000</span></div><button class="btn-add">+ Carrito</button></div></div>
+      <div class="product-img"><img src="imagenes/buso3.jpg" alt="buso3" class="prod-img"><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-info"><h4>Hoodie buso</h4><p class="product-sub">Accesorios · Street</p><div class="product-footer"><div><span class="price">$55.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">🧣</div><span class="badge badge-sale">−20%</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
-      <div class="product-info"><h4>Bandana Vintage</h4><p class="product-sub">Accesorios · Retro</p><div class="product-footer"><div><span class="price">$32.000</span><span class="price-old">$40.000</span></div><button class="btn-add">+ Carrito</button></div></div>
+      <div class="product-img"><img src="imagenes/gorras2.jpg" alt="gorras" class="prod-img"><span class="badge badge-sale">−20%</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-info"><h4>Gorras Moda</h4><p class="product-sub">Accesorios · Retro</p><div class="product-footer"><div><span class="price">$32.000</span><span class="price-old">$40.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">🎒</div><span class="badge badge-hot">Hot</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
-      <div class="product-info"><h4>Mochila Tactical</h4><p class="product-sub">Accesorios · Bag</p><div class="product-footer"><div><span class="price">$145.000</span></div><button class="btn-add">+ Carrito</button></div></div>
+      <div class="product-img"> <img src="imagenes/mochila1.webp" alt="mochila" class="prod-img"> <span class="badge badge-hot">Hot</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-info"><h4>Mochila </h4><p class="product-sub">Accesorios · Bag</p><div class="product-footer"><div><span class="price">$145.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
     <div class="product-card">
-      <div class="product-img"><div class="p-icon">🥋</div><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
+      <div class="product-img"> <img src="imagenes/jacket1.jpg" alt="" class="prod-img"><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
       <div class="product-info"><h4>Jacket Coach</h4><p class="product-sub">Unisex · Premium</p><div class="product-footer"><div><span class="price">$265.000</span></div><button class="btn-add">+ Carrito</button></div></div>
     </div>
   </div>
@@ -457,11 +462,11 @@ const RULES = [
     r: `👖 Los <span class="kw">Cargo Pants Wide</span> están a $175.000 (antes $250.000). Fit baggy, bolssillos laterales y cintura ajustable. ¿Dudas con la <span class="kw">talla</span>? Cuéntame tu medida de cintura y te recomiendo la ideal. También puedes ver las otras <span class="kw">ofertas</span> activas si quieres.`
   },
   {
-    k: ["zapatilla","sneaker","calzado","zapato","tenis","shoe","kicks"],
+    k: ["zapatilla","sneaker","calzado","zapato","tenis","shoe","kicks", "juan pablo"],
     r: ` Se encuentra en la categoria de <span class="kw"> Calzado y Accesorios</span>. Aqui solo se envia informacion  general de muestra tienda <span class="kw">streetflow </span> como <span class="kw"> ubicación, contacto, horario, pago, devolución </span>`
   },
   {
-    k: ["comprar","agregar","carrito","pedido","quiero"],
+    k: ["comprar","agregar","carrito","Angulo es gay", "pedido","quiero"],
     r: `🛒 ¡Vamos! Agrega los productos al carrito desde la tienda y elige tu método de <span class="kw">pago</span>. Si tienes dudas sobre alguna prenda, dime cuál es y te ayudo. ¿Ya sabes cómo llega tu pedido? Escribe <span class="kw">envio</span> para todos los detalles.`
   },
   {

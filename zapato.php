@@ -438,9 +438,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
         ==============================
       -->
       <div class="img-placeholder">
-        <span class="ph-icon">📷</span>
-        <span class="ph-text">Collar Chain<br>Agrega tu imagen aquí</span>
-        <span class="ph-tag">imagenes/collar-chain.jpg</span>
+        <img src="imagenes/adidas.jpg" alt="">
       </div>
       <span class="badge badge-sale">−15%</span>
       <div class="p-overlay"><button class="p-quick">+ Carrito</button></div>
