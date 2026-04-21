@@ -65,7 +65,22 @@ nav ul a:hover { color: var(--green); }
 .btn-primary:hover { background: #000000; box-shadow: 0 0 24px rgba(0, 0, 0, 0.5); transform: translateY(-2px); }
 .btn-outline { display: inline-block; background: transparent; color: var(--green); border: 1px solid var(--green); padding: 13px 32px; font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; font-weight: 700; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
 .btn-outline:hover { background: var(--green-dark); }
-.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.hero-visual {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+.hero-model-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  min-height: 560px;
+  transition: transform 0.6s ease;
+}
+.hero-visual:hover .hero-model-img { transform: scale(1.03); }
 .hero-gfx { font-size: 13rem; opacity: 0.08; user-select: none; filter: grayscale(1) brightness(2); animation: float 6s ease-in-out infinite; }
 @keyframes float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-18px) rotate(3deg); } }
 .hero-tag-box { position: absolute; bottom: 2.5rem; right: 2.5rem; border: 1px solid var(--green); padding: 12px 18px; text-align: center; background: rgba(57,255,20,0.04); }
@@ -108,7 +123,7 @@ nav ul a:hover { color: var(--green); }
 .p-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s; }
 .product-card:hover .p-overlay { opacity: 1; }
 .p-quick { background: var(--green); color: var(--black); border: none; padding: 9px 20px; font-family: 'Syne', sans-serif; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; cursor: pointer; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
-.p-quick:hover { background: #4fff28; }
+.p-quick:hover { background: #ffffffcb; }
 .badge { position: absolute; top: 10px; left: 10px; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 9px; font-weight: 700; z-index: 1; font-family: 'Syne', sans-serif; }
 .badge-new  { background: var(--green); color: var(--black); }
 .badge-sale { background: #FF1414; color: #fff; }
@@ -133,7 +148,8 @@ nav ul a:hover { color: var(--green); }
 .testimonials { background: var(--black); padding: 5rem 2.5rem; border-top: 1px solid var(--border); }
 .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; }
 .testi-card { background: var(--card); padding: 2rem; }
-.stars { color: var(--green); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 1.1rem; }
+.stars { color: #FFD700; font-size: 1rem; letter-spacing: 3px; margin-bottom: 1.1rem; }
+/* ESTRELLAS — Para 4 estrellas use: ★★★★☆   Para 5 estrellas use: ★★★★★ */
 .testi-card p { color: var(--muted); font-size: 0.86rem; line-height: 1.75; margin-bottom: 1.2rem; font-weight: 300; }
 .testi-author { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); font-weight: 700; }
 
@@ -166,18 +182,20 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   background: var(--black2); border: 2px solid var(--green); cursor: pointer;
   display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
   z-index: 9999; line-height: 1;
-  box-shadow: 0 0 20px rgba(57,255,20,0.35), 0 4px 24px rgba(0,0,0,0.6);
+  box-shadow: 0 0 20px rgba(216, 216, 216, 0.35), 0 4px 24px rgba(218, 218, 218, 0.6);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-#chat-toggle:hover { transform: scale(1.08); box-shadow: 0 0 32px rgba(57,255,20,0.55), 0 6px 30px rgba(0,0,0,0.6); }
+/*ANIMACION DEL BOTON DEL CHATBOT "ABRIR" */
+#chat-toggle:hover { transform: scale(1.08); box-shadow: 0 0 32px rgba(255, 255, 255, 0.55), 0 6px 30px rgba(0,0,0,0.6); }
 .chat-ping { position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; border-radius: 50%; background: var(--green); border: 2px solid var(--black2); animation: ping 1.8s ease-in-out infinite; }
-@keyframes ping { 0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,0.6); } 50% { box-shadow: 0 0 0 6px rgba(57,255,20,0); } }
+@keyframes ping { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 196, 0, 0.83); } 50% { box-shadow: 0 0 0 6px rgba(57,255,20,0); } }
 
+/*ESTILOS DEL VENTANA DEL CHATBOT*/
 #chat-window {
   position: fixed; bottom: 102px; right: 28px;
   width: 370px; height: 540px;
   background: var(--black2); border: 1px solid var(--border2); border-radius: 4px;
-  box-shadow: 0 0 40px rgba(57,255,20,0.12), 0 20px 60px rgba(0,0,0,0.7);
+  box-shadow: 0 0 40px rgb(161, 161, 161), 0 20px 60px rgba(248, 248, 248, 0.7);
   z-index: 9998; display: flex; flex-direction: column; overflow: hidden;
   transform: scale(0.88) translateY(16px); opacity: 0; pointer-events: none;
   transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
@@ -190,11 +208,11 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 .chat-header-info strong { display: block; color: var(--white); font-size: 0.84rem; font-weight: 700; letter-spacing: 0.06em; font-family: 'Syne', sans-serif; }
 .chat-online { display: flex; align-items: center; gap: 5px; font-size: 0.66rem; color: var(--green); letter-spacing: 0.08em; font-weight: 500; }
 .chat-online::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); display: inline-block; animation: glow 2s ease-in-out infinite; }
-@keyframes glow { 0%, 100% { box-shadow: 0 0 4px var(--green); } 50% { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(57,255,20,0.4); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 4px var(--green); } 50% { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(255, 255, 255, 0.4); } }
 .chat-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; line-height: 1; }
 .chat-close:hover { color: var(--green); }
 
-.chat-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; background: var(--black2); }
+.chat-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; background: var(--WITHE2); }
 .chat-messages::-webkit-scrollbar { width: 3px; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
 .msg { display: flex; gap: 8px; align-items: flex-end; }
@@ -203,28 +221,33 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 .msg-av { width: 26px; height: 26px; border-radius: 3px; background: var(--green-dark); border: 1px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
 .bubble { max-width: 78%; padding: 10px 13px; font-size: 0.82rem; line-height: 1.55; }
 .msg.bot  .bubble { background: var(--card); color: var(--white); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; }
-.msg.user .bubble { background: var(--green-dark); color: var(--white); border: 1px solid rgba(57,255,20,0.3); border-radius: 8px 0 8px 8px; }
-.bubble .kw { color: var(--green); font-weight: 700; font-style: italic; }
-.msg-time { font-size: 0.6rem; color: #2A402A; margin-top: 2px; padding: 0 3px; align-self: flex-end; }
+.msg.user .bubble { background: var(--green-dark); color: var(--white); border: 1px solid rgb(201, 201, 201); border-radius: 8px 0 8px 8px; }
+.bubble .kw { color: #ffe600f5; font-weight: 700; font-style: italic; }
+.msg-time { font-size: 0.6rem; color: #ffffff; margin-top: 2px; padding: 0 3px; align-self: flex-end; }
+
+/*ANIMACION DEL MENSAJE DEL CHAT BOT TRES PUNTOS*/
 
 .typing-indicator { display: flex; gap: 5px; padding: 12px 15px; background: var(--card); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; width: fit-content; align-items: center; }
-.tdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: tb 1.2s infinite; box-shadow: 0 0 6px rgba(57,255,20,0.5); }
+.tdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: tb 1.2s infinite; box-shadow: 0 0 6px rgba(0, 0, 0, 0.8); }
 .tdot:nth-child(2) { animation-delay: 0.2s; }
 .tdot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes tb { 0%, 60%, 100% { transform: translateY(0); opacity: 0.6; } 30% { transform: translateY(-6px); opacity: 1; } }
 
+/* colores de los botones de las preguntas rapidas */
+
 .sug-wrap { padding: 10px 14px 12px; flex-shrink: 0; border-top: 1px solid var(--border); background: var(--black3); }
 .sug-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; font-family: 'Syne', sans-serif; }
 .suggestions { display: flex; flex-wrap: wrap; gap: 6px; }
-.sug-chip { background: var(--card); border: 1px solid var(--border2); color: var(--white); font-size: 0.72rem; padding: 6px 12px; border-radius: 2px; cursor: pointer; transition: all 0.15s; font-family: 'Space Grotesk', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
-.sug-chip:hover { background: var(--green-dark); border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+.sug-chip { background: #727374; border: 1px solid #535353; color: #ffffff; font-size: 0.72rem; padding: 6px 12px; border-radius: 2px; cursor: pointer; transition: all 0.15s; font-family: 'Space Grotesk', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); font-weight: 600; }
+.sug-chip:hover { background: #616161; border-color: #000000; color: #ffffff; transform: translateY(-1px); box-shadow: 0 2px 10px rgba(31,96,236,0.4); }
 
 .chat-input-row { display: flex; gap: 8px; padding: 11px 14px; border-top: 1px solid var(--border); background: var(--card); flex-shrink: 0; align-items: center; }
 .chat-input-row input { flex: 1; border: 1px solid var(--border2); border-radius: 2px; padding: 9px 13px; font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; outline: none; color: var(--white); background: var(--black2); transition: border-color 0.2s, box-shadow 0.2s; }
-.chat-input-row input:focus { border-color: var(--green); box-shadow: 0 0 8px rgba(57,255,20,0.15); }
+.chat-input-row input:focus { border-color: var(--green); box-shadow: 0 0 8px rgba(255, 255, 255, 0.83); }
 .chat-input-row input::placeholder { color: var(--muted); }
 .chat-send { width: 38px; height: 38px; border-radius: 2px; background: var(--green); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--black); font-weight: 900; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%); }
-.chat-send:hover { background: #4fff28; box-shadow: 0 0 16px rgba(57,255,20,0.5); transform: scale(1.04); }
+/*ANIMACION DEL BOTON DE ENVIAR DEL CHATBOT "ENVIAR" */
+.chat-send:hover { background: #d8d8d8; box-shadow: 0 0 16px rgba(255, 255, 255, 0.5); transform: scale(1.04); }
 
 /* RESPONSIVE */
 @media (max-width: 960px) {
@@ -265,17 +288,13 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <span class="hero-eyebrow">Drop Primavera 2026</span>
     <h1>VISTE<span class="green">LA CALLE</span>A TU MODO</h1>
     <p>Piezas diseñadas para los que mandan en el asfalto. Streetwear de nivel, sin límites, sin excusas. La moda urbana que realmente representa.</p>
-    <div class="hero-img">
-      <img src="imagenes/presentacion.jpg" alt="">
-      <img src="imagenes/presentacion2.jpg" alt="">
-    </div>
     <div class="hero-btns">
       <a href="#" class="btn-primary">Explorar drop</a>
       <a href="#" class="btn-outline">Ver lookbook</a>
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-gfx">🥷</div>
+    <img src="imagenes/presentacion8.jpg" alt="Streetflow modelo" class="hero-model-img">
     <div class="hero-tag-box"><div class="big">SS</div><div class="sm">2026</div></div>
     <div class="hero-stats">
       <div class="stat-item"><div class="num">4.9★</div><div class="lbl">Rating</div></div>
@@ -285,7 +304,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 </section>
 
-<div class="sec-hd"><h2>CATEGORÍAS <span>// ESTILOS</span></h2><a href="catalogo.php">Catalogo →</a></div>
+<div class="sec-hd"><h2>CATEGORÍAS <span>// ESTILOS</span></h2><a href="catalogo.php">Ver Catalogo →</a></div>
 <div class="categories">
   <div class="cat-card">
     <a href="buso.php">
@@ -308,7 +327,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 </div>
 
 <section class="products-section">
-  <div class="sec-hd" style="padding-top:4rem;"><h2>MÁS <span>// VENDIDOS</span></h2><a href="#">Ver catálogo →</a></div>
+  <div class="sec-hd" style="padding-top:4rem;"><h2>MÁS <span>// VENDIDOS</span></h2></div>
   <div class="products-grid">
     <div class="product-card">
       <div class="product-img"><img src="imagenes/buso1.jpg" alt="Hoodie" class="prod-img"><span class="badge badge-new">Drop</span><div class="p-overlay"><button class="p-quick">+ Carrito</button></div></div>
@@ -347,10 +366,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 
 <div class="sec-hd" style="padding-top:4rem;"><h2>POR QUÉ <span>// STREETFLOW</span></h2></div>
 <div class="feature-band">
-  <div class="feat-item"><span class="feat-icon">🚀</span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
-  <div class="feat-item"><span class="feat-icon">🔄</span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
-  <div class="feat-item"><span class="feat-icon">🛡️</span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
-  <div class="feat-item"><span class="feat-icon">💳</span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
 </div>
 
 <section class="testimonials">
@@ -358,7 +377,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <div class="sec-hd" style="padding:0 0 2.5rem;"><h2>LA CALLE <span>// HABLA</span></h2></div>
     <div class="testi-grid">
       <div class="testi-card"><div class="stars">★★★★★</div><p>"La hoodie oversized llegó en 2 días. La calidad es brutal, material grueso y con buena caída. Definitivamente compro de nuevo."</p><span class="testi-author">— Yeison M. · Medellín</span></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>"Los cargos son exactamente lo que buscaba. El fit es perfecto para el estilo urbano que manejo. El empaque también muy pro."</p><span class="testi-author">— Daniela R. · Bogotá</span></div>
+      <div class="testi-card"><div class="stars">★★★★☆</div><p>"Los cargos son exactamente lo que buscaba. El fit es perfecto para el estilo urbano que manejo. El empaque también muy pro."</p><span class="testi-author">— Daniela R. · Bogotá</span></div>
       <div class="testi-card"><div class="stars">★★★★★</div><p>"El chatbot me ayudó a elegir la talla y me explicó todo sobre el envío. Se nota que la marca cuida los detalles."</p><span class="testi-author">— Camilo S. · Cali</span></div>
     </div>
   </div>
@@ -558,7 +577,7 @@ function openChat() {
       showTyping();
       setTimeout(() => {
         removeTyping();
-        addMsg(`¡Ey! 👊 Soy el asistente virtual de <span class="kw">Streetflow</span>. Estoy aquí para ayudarte con lo que necesites. Cuéntame, ¿qué andas buscando hoy?`, 'bot');
+        addMsg(`¡Ey! Soy el asistente virtual de <span class="kw">Streetflow</span>. Estoy aquí para ayudarte con lo que necesites. Cuéntame, ¿qué andas buscando hoy?`, 'bot');
         buildSugs();
       }, 1100);
     }, 300);

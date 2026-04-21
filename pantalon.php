@@ -53,8 +53,8 @@ nav ul a:hover, nav ul a.active { color: var(--green); }
 
 .filter-bar { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 2.5rem; background: var(--black2); border-bottom: 1px solid var(--border); overflow-x: auto; }
 .filter-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 700; white-space: nowrap; font-family: 'Syne', sans-serif; }
-.filter-btn { background: var(--card); border: 1px solid var(--border2); color: var(--muted); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
-.filter-btn:hover, .filter-btn.active { background: var(--green-dark); border-color: var(--green); color: var(--green); }
+.filter-btn { background: #5e5858; border: 1px solid #333333; color: #b0b0b0; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
+.filter-btn:hover, .filter-btn.active { background: #0a2a06; border-color: #39ff14; color: #39ff14; }
 .filter-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
 .results-count { margin-left: auto; font-size: 0.68rem; color: var(--muted); white-space: nowrap; }
 
@@ -111,6 +111,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 .chat-ping { position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; border-radius: 50%; background: var(--green); border: 2px solid var(--black2); animation: ping 1.8s ease-in-out infinite; }
 @keyframes ping { 0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,0.6); } 50% { box-shadow: 0 0 0 6px rgba(57,255,20,0); } }
 #chat-window { position: fixed; bottom: 102px; right: 28px; width: 370px; height: 540px; background: var(--black2); border: 1px solid var(--border2); border-radius: 4px; box-shadow: 0 0 40px rgba(57,255,20,0.12), 0 20px 60px rgba(0,0,0,0.7); z-index: 9998; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.88) translateY(16px); opacity: 0; pointer-events: none; transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s; }
+
 #chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
 .chat-topbar { height: 2px; background: var(--green); flex-shrink: 0; box-shadow: 0 0 12px rgba(57,255,20,0.7); }
 .chat-header { background: var(--card); padding: 12px 15px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
@@ -122,6 +123,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 @keyframes glow { 0%, 100% { box-shadow: 0 0 4px var(--green); } 50% { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(57,255,20,0.4); } }
 .chat-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; line-height: 1; }
 .chat-close:hover { color: var(--green); }
+
 .chat-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
 .chat-messages::-webkit-scrollbar { width: 3px; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
@@ -132,8 +134,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 .bubble { max-width: 78%; padding: 10px 13px; font-size: 0.82rem; line-height: 1.55; }
 .msg.bot .bubble { background: var(--card); color: var(--white); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; }
 .msg.user .bubble { background: var(--green-dark); color: var(--white); border: 1px solid rgba(57,255,20,0.3); border-radius: 8px 0 8px 8px; }
-.bubble .kw { color: var(--green); font-weight: 700; font-style: italic; }
-.msg-time { font-size: 0.6rem; color: #2A402A; margin-top: 2px; padding: 0 3px; }
+.bubble .kw { color: #ffe600f5; font-weight: 700; font-style: italic; }
+.msg-time { font-size: 0.6rem; color: #ffffff; margin-top: 2px; padding: 0 3px; align-self: flex-end; }
+
+
 .typing-indicator { display: flex; gap: 5px; padding: 12px 15px; background: var(--card); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; width: fit-content; align-items: center; }
 .tdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: tb 1.2s infinite; }
 .tdot:nth-child(2) { animation-delay: 0.2s; }
@@ -169,10 +173,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <body>
 
 <nav>
-  <a href="index.php" class="logo">STREET<span>FLOW</span></a>
+  <a href="streetflow.php" class="logo">STREET<span>FLOW</span></a>
   <ul>
-    <li><a href="index.php">Inicio</a></li>
-    <li><a href="ropa.php">Busos & Chaquetas</a></li>
+    <li><a href="streetflow.php">Inicio</a></li>
+    <li><a href="buso.php">Busos & Chaquetas</a></li>
     <li><a href="pantalon.php" class="active">Cargos & Joggers</a></li>
     <li><a href="zapato.php">Calzado & Accesorios</a></li>
     <li><a href="#">Sale</a></li>
@@ -181,8 +185,8 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 
 
 <section class="cat-hero">
-  <div class="cat-hero-gfx">👖</div>
-  <div class="breadcrumb"><a href="index.php">Inicio</a> &nbsp;/&nbsp; Cargo & Joggers</div>
+  <div class="cat-hero-gfx"></div>
+  <div class="breadcrumb"><a href="streetflow.php">Inicio</a> &nbsp;/&nbsp; Cargo & Joggers</div>
   <h1>CARGO &<br><span>JOGGERS</span></h1>
   <p>Pantalones para dominar la calle. Cargos baggy, joggers de corte amplio y pantalonetas urbanas con el mejor fit del mercado.</p>
   <div class="cat-stats">
@@ -210,7 +214,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <div class="products-grid" style="padding-bottom:0;">
 
   <!-- PRODUCTO 1 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="cargos baggy" data-badge="ofertas">
     <div class="product-img">
       <div class="img-placeholder">
         <img src="imagenes/pantalon1.jpg" alt="buso1" style="width:100%;height:100%;object-fit:cover;">
@@ -232,7 +236,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 2 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="cargos" data-badge="">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -262,7 +266,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 3 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="cargos" data-badge="nuevo">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -292,7 +296,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 4 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="cargos baggy" data-badge="">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -327,7 +331,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <div class="products-grid">
 
   <!-- PRODUCTO 5 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="joggers" data-badge="">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -357,7 +361,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 6 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="joggers" data-badge="nuevo">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -387,7 +391,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 7 — PANTALONETA -->
-  <div class="product-card">
+  <div class="product-card" data-cat="pantalonetas" data-badge="ofertas">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -417,7 +421,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 8 — PANTALONETA -->
-  <div class="product-card">
+  <div class="product-card" data-cat="pantalonetas" data-badge="">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -450,10 +454,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 
 <div class="sec-hd" style="padding-top:3rem;"><h2>POR QUÉ <span>// STREETFLOW</span></h2></div>
 <div class="feature-band">
-  <div class="feat-item"><span class="feat-icon">🚀</span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
-  <div class="feat-item"><span class="feat-icon">🔄</span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
-  <div class="feat-item"><span class="feat-icon">🛡️</span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
-  <div class="feat-item"><span class="feat-icon">💳</span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
 </div>
 
 <footer>
@@ -492,12 +496,47 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 </div>
 
 <script>
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+// ===== FILTROS — FUNCIONA REAL =====
+const filterBtns = document.querySelectorAll('.filter-btn');
+const allCards   = document.querySelectorAll('.product-card');
+const countEl    = document.querySelector('.results-count');
+
+function updateCount(visible) {
+  if (countEl) countEl.textContent = visible + ' producto' + (visible !== 1 ? 's' : '') + ' encontrado' + (visible !== 1 ? 's' : '');
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', function () {
+    filterBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
+
+    const filtro = this.textContent.trim().toLowerCase();
+    let visible = 0;
+
+    allCards.forEach(card => {
+      const cat   = (card.dataset.cat   || '').toLowerCase();
+      const badge = (card.dataset.badge || '').toLowerCase();
+
+      let mostrar = false;
+      if (filtro === 'todos') {
+        mostrar = true;
+      } else if (filtro === 'ofertas') {
+        mostrar = badge.includes('oferta') || badge.includes('sale');
+      } else if (filtro === 'nuevo') {
+        mostrar = badge.includes('nuevo') || badge.includes('drop');
+      } else {
+        mostrar = cat.includes(filtro);
+      }
+
+      card.style.display = mostrar ? '' : 'none';
+      if (mostrar) visible++;
+    });
+
+    updateCount(visible);
   });
 });
+
+updateCount(allCards.length);
 document.querySelectorAll('.talla-chip').forEach(chip => {
   chip.addEventListener('click', function() {
     const row = this.closest('.tallas-row');
@@ -517,22 +556,22 @@ const SUGS = [
 ];
 
 const RULES = [
-  { k: ["hola","hey","buenas","saludos","que mas","ola"], r: `¡Ey! 👊 Estás en <span class="kw">Cargo & Joggers</span>. ¿Buscas un pantalón <span class="kw">cargo</span>, un <span class="kw">jogger</span> o una <span class="kw">pantaloneta</span>? Cuéntame y te ayudo a elegir.` },
-  { k: ["novedad","nuevo","drop","coleccion"], r: `🔥 Lo nuevo: <span class="kw">Cargo Denim Washed</span> ($229K) y el <span class="kw">Jogger Tech Ripstop</span> ($178K). El <span class="kw">Cargo Wide</span> también sigue disponible con el 30% off.` },
-  { k: ["talla","medida","queda","fit","size","cintura"], r: `📏 Para los cargos manejamos tallas de cintura <span class="kw">28 al 36</span>. Para joggers usamos <span class="kw">XS al XXL</span>. ¿De qué prenda necesitas la medida? Te oriento.` },
-  { k: ["envio","envío","domicilio","entrega","despacho"], r: `🚚 Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Express en <span class="kw">24h</span> para Bogotá, Medellín y Cali.` },
-  { k: ["devolucion","cambio","garantia"], r: `🔄 <span class="kw">30 días</span> para cambiar sin rollos. Etiqueta original y sin uso. Escribe <span class="kw">contacto</span> para iniciar.` },
-  { k: ["pago","tarjeta","nequi","pse","cuota"], r: `💳 Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span>.` },
-  { k: ["oferta","descuento","sale","promo","rebaja"], r: `🏷️ Ofertas activas: <span class="kw">Cargo Pants Wide</span> al −30% ($175K) y <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K).` },
-  { k: ["cargo","pantalon","pantalón","baggy"], r: `👖 Tenemos <span class="kw">Cargo Wide</span> ($175K con 30% off), <span class="kw">Cargo Tactical</span> ($210K), <span class="kw">Cargo Denim</span> ($229K) y <span class="kw">Cargo Slim</span> ($185K). ¿Cuál te llama?` },
+  { k: ["hola","hey","buenas","saludos","que mas","ola"], r: `¡Ey!  Estás en <span class="kw">Cargo & Joggers</span>. ¿Buscas un pantalón <span class="kw">cargo</span>, un <span class="kw">jogger</span> o una <span class="kw">pantaloneta</span>? Cuéntame y te ayudo a elegir.` },
+  { k: ["novedad","nuevo","drop","coleccion"], r: ` Lo nuevo: <span class="kw">Cargo Denim Washed</span> ($229K) y el <span class="kw">Jogger Tech Ripstop</span> ($178K). El <span class="kw">Cargo Wide</span> también sigue disponible con el 30% off.` },
+  { k: ["talla","medida","queda","fit","size","cintura"], r: ` Para los cargos manejamos tallas de cintura <span class="kw">28 al 36</span>. Para joggers usamos <span class="kw">XS al XXL</span>. ¿De qué prenda necesitas la medida? Te oriento.` },
+  { k: ["envio","envío","domicilio","entrega","despacho"], r: ` Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Express en <span class="kw">24h</span> para Bogotá, Medellín y Cali.` },
+  { k: ["devolucion","cambio","garantia"], r: ` <span class="kw">30 días</span> para cambiar sin rollos. Etiqueta original y sin uso. Escribe <span class="kw">contacto</span> para iniciar.` },
+  { k: ["pago","tarjeta","nequi","pse","cuota"], r: ` Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span>.` },
+  { k: ["oferta","descuento","sale","promo","rebaja"], r: ` Ofertas activas: <span class="kw">Cargo Pants Wide</span> al −30% ($175K) y <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K).` },
+  { k: ["cargo","pantalon","pantalón","baggy"], r: ` Tenemos <span class="kw">Cargo Wide</span> ($175K con 30% off), <span class="kw">Cargo Tactical</span> ($210K), <span class="kw">Cargo Denim</span> ($229K) y <span class="kw">Cargo Slim</span> ($185K). ¿Cuál te llama?` },
   { k: ["jogger","jogging","sport"], r: `🏃 El <span class="kw">Jogger Fleece Oversized</span> a $155K es el más popular. El <span class="kw">Jogger Tech Ripstop</span> ($178K) es ideal si buscas algo más técnico. ¿Necesitas la talla?` },
-  { k: ["pantaloneta","short","corto","bermuda"], r: `🩳 Tenemos la <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K) y la <span class="kw">Pantaloneta Baggy Mesh</span> ($95K). Perfectas para el verano urbano.` },
+  { k: ["pantaloneta","short","corto","bermuda"], r: ` Tenemos la <span class="kw">Pantaloneta Cargo Street</span> al −15% ($89K) y la <span class="kw">Pantaloneta Baggy Mesh</span> ($95K). Perfectas para el verano urbano.` },
   { k: ["muchacha","mujer","pantalon mujer"], r: `Por ahora no tenemos, se agotaron` },
-  { k: ["comprar","agregar","carrito","quiero"], r: `🛒 Selecciona tu talla, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Dudas con el envío? Escribe <span class="kw">envio</span>.` },
-  { k: ["contacto","whatsapp","hablar","humano"], r: `📞 <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
+  { k: ["comprar","agregar","carrito","quiero"], r: ` Selecciona tu talla, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Dudas con el envío? Escribe <span class="kw">envio</span>.` },
+  { k: ["contacto","whatsapp","hablar","humano"], r: ` <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
 ];
 
-const DEFAULT = `Mmmh 🤔 Puedo ayudarte con: <span class="kw">cargo</span>, <span class="kw">jogger</span>, <span class="kw">pantaloneta</span>, <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span> u <span class="kw">oferta</span>. Escribe alguna y te cuento.`;
+const DEFAULT = `Mmmh no puedo responder tu duda. Pero puedo ayudarte con: <span class="kw">cargo</span>, <span class="kw">jogger</span>, <span class="kw">pantaloneta</span>, <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span> u <span class="kw">oferta</span>. Escribe alguna y te cuento.`;
 
 const toggle=document.getElementById('chat-toggle'), win=document.getElementById('chat-window'), closeBtn=document.getElementById('chat-close'), msgs=document.getElementById('chat-messages'), input=document.getElementById('chat-input'), sendBtn=document.getElementById('chat-send'), sugWrap=document.getElementById('sug-wrap'), sugCont=document.getElementById('sug-container');
 function time(){const d=new Date();return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
@@ -543,7 +582,7 @@ function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\
 function getReply(text){const n=normalize(text);for(const r of RULES){if(r.k.some(k=>n.includes(normalize(k))))return r.r;}return DEFAULT;}
 function send(text){if(!text.trim())return;addMsg(text,'user');input.value='';sugWrap.style.display='none';showTyping();setTimeout(()=>{removeTyping();addMsg(getReply(text),'bot');},700+Math.random()*600);}
 function buildSugs(){sugCont.innerHTML='';SUGS.forEach(s=>{const b=document.createElement('button');b.className='sug-chip';b.textContent=s.label;b.onclick=()=>send(s.msg);sugCont.appendChild(b);});}
-function openChat(){win.classList.add('open');document.querySelector('.chat-ping').style.display='none';if(!msgs.children.length){setTimeout(()=>{showTyping();setTimeout(()=>{removeTyping();addMsg(`¡Ey! 👊 Estás en <span class="kw">Cargo & Joggers</span>. Te ayudo a encontrar el pantalón perfecto. ¿Buscas un <span class="kw">cargo</span>, <span class="kw">jogger</span> o <span class="kw">pantaloneta</span>?`,'bot');buildSugs();},1100);},300);}}
+function openChat(){win.classList.add('open');document.querySelector('.chat-ping').style.display='none';if(!msgs.children.length){setTimeout(()=>{showTyping();setTimeout(()=>{removeTyping();addMsg(`¡Ey! Estás en <span class="kw">Cargo & Joggers</span>. Te ayudo a encontrar el pantalón perfecto. ¿Buscas un <span class="kw">cargo</span>, <span class="kw">jogger</span> o <span class="kw">pantaloneta</span>?`,'bot');buildSugs();},1100);},300);}}
 toggle.addEventListener('click',()=>{win.classList.contains('open')?win.classList.remove('open'):openChat();});
 closeBtn.addEventListener('click',()=>win.classList.remove('open'));
 sendBtn.addEventListener('click',()=>send(input.value));

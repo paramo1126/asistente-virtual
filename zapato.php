@@ -53,8 +53,8 @@ nav ul a:hover, nav ul a.active { color: var(--green); }
 
 .filter-bar { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 2.5rem; background: var(--black2); border-bottom: 1px solid var(--border); overflow-x: auto; }
 .filter-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 700; white-space: nowrap; font-family: 'Syne', sans-serif; }
-.filter-btn { background: var(--card); border: 1px solid var(--border2); color: var(--muted); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
-.filter-btn:hover, .filter-btn.active { background: var(--green-dark); border-color: var(--green); color: var(--green); }
+.filter-btn { background: #5e5858; border: 1px solid #333333; color: #b0b0b0; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
+.filter-btn:hover, .filter-btn.active { background: #0a2a06; border-color: #39ff14; color: #39ff14; }
 .filter-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
 .results-count { margin-left: auto; font-size: 0.68rem; color: var(--muted); white-space: nowrap; }
 
@@ -128,6 +128,8 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 @keyframes glow { 0%, 100% { box-shadow: 0 0 4px var(--green); } 50% { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(57,255,20,0.4); } }
 .chat-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; line-height: 1; }
 .chat-close:hover { color: var(--green); }
+
+
 .chat-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
 .chat-messages::-webkit-scrollbar { width: 3px; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
@@ -138,8 +140,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 .bubble { max-width: 78%; padding: 10px 13px; font-size: 0.82rem; line-height: 1.55; }
 .msg.bot .bubble { background: var(--card); color: var(--white); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; }
 .msg.user .bubble { background: var(--green-dark); color: var(--white); border: 1px solid rgba(57,255,20,0.3); border-radius: 8px 0 8px 8px; }
-.bubble .kw { color: var(--green); font-weight: 700; font-style: italic; }
-.msg-time { font-size: 0.6rem; color: #2A402A; margin-top: 2px; padding: 0 3px; }
+.bubble .kw { color: #ffe600f5; font-weight: 700; font-style: italic; }
+.msg-time { font-size: 0.6rem; color: #ffffff; margin-top: 2px; padding: 0 3px; align-self: flex-end; }
+
+
 .typing-indicator { display: flex; gap: 5px; padding: 12px 15px; background: var(--card); border: 1px solid var(--border); border-radius: 0 8px 8px 8px; width: fit-content; align-items: center; }
 .tdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: tb 1.2s infinite; }
 .tdot:nth-child(2) { animation-delay: 0.2s; }
@@ -175,7 +179,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <body>
 
 <nav>
-  <a href="index.php" class="logo">STREET<span>FLOW</span></a>
+  <a href="streetflow.php" class="logo">STREET<span>FLOW</span></a>
   <ul>
     <li><a href="streetflow.php">Inicio</a></li>
     <li><a href="ropa.php">Busos & Chaquetas</a></li>
@@ -215,7 +219,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <div class="products-grid" style="padding-bottom:0;">
 
   <!-- PRODUCTO 1 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="calzado" data-badge="nuevo">
     <div class="product-img">
       <div class="img-placeholder">
       </div>
@@ -236,7 +240,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 2 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="calzado" data-badge="ofertas">
     <div class="product-img">
       <img src="imagenes/zapatos2.jpg" alt="Sneaker Low Top" style="width:100%;height:100%;object-fit:cover;object-position:center;">
       <span class="badge badge-sale">−20%</span>
@@ -256,7 +260,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 3 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="calzado" data-badge="">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -286,7 +290,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- PRODUCTO 4 -->
-  <div class="product-card">
+  <div class="product-card" data-cat="calzado" data-badge="">
     <div class="product-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -321,7 +325,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 <div class="accesorios-grid">
 
   <!-- GORRA 1 -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="gorras" data-badge="">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -348,7 +352,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- GORRA 2 -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="gorras" data-badge="nuevo">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -375,7 +379,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- RELOJ 1 -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="relojes" data-badge="nuevo">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -402,7 +406,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- RELOJ 2 -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="relojes" data-badge="">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -429,7 +433,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- COLLAR 1 -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="collares" data-badge="ofertas">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -454,7 +458,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- COLLAR 2 -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="collares" data-badge="">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -480,7 +484,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- MOCHILA -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="mochilas" data-badge="">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -507,7 +511,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
   </div>
 
   <!-- BANDANA -->
-  <div class="acc-card product-card">
+  <div class="acc-card product-card" data-cat="mochilas" data-badge="ofertas">
     <div class="product-img acc-img">
       <!--
         ===== ESPACIO PARA IMAGEN =====
@@ -537,10 +541,10 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 
 <div class="sec-hd" style="padding-top:3rem;"><h2>POR QUÉ <span>// STREETFLOW</span></h2></div>
 <div class="feature-band">
-  <div class="feat-item"><span class="feat-icon">🚀</span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
-  <div class="feat-item"><span class="feat-icon">🔄</span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
-  <div class="feat-item"><span class="feat-icon">🛡️</span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
-  <div class="feat-item"><span class="feat-icon">💳</span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Envío Express</strong><span>24h para Bogotá, Medellín y Cali</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>30 días de cambios</strong><span>Sin rollos. Si no te queda, lo cambiamos.</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Calidad garantizada</strong><span>Materiales premium seleccionados a mano</span></div></div>
+  <div class="feat-item"><span class="feat-icon"></span><div class="feat-text"><strong>Pagos flexibles</strong><span>Cuotas sin interés, Nequi, PSE y más</span></div></div>
 </div>
 
 <footer>
@@ -553,7 +557,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
     <div class="footer-col"><h5>Ayuda</h5><ul><li><a href="#">Guía de tallas</a></li><li><a href="#">Envíos</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Contacto</a></li></ul></div>
     <div class="footer-col"><h5>Marca</h5><ul><li><a href="#">Nosotros</a></li><li><a href="#">Lookbook</a></li><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li></ul></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Streetflow. Todos los derechos reservados.</span><span>Hecho con flow 🟢</span></div>
+  <div class="footer-bottom"><span>© 2026 Streetflow. Todos los derechos reservados.</span><span>Hecho con flow </span></div>
 </footer>
 
 <button id="chat-toggle" title="Abrir asistente">🤖<div class="chat-ping"></div></button>
@@ -579,12 +583,47 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 </div>
 
 <script>
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+// ===== FILTROS — FUNCIONA REAL =====
+const filterBtns = document.querySelectorAll('.filter-btn');
+const allCards   = document.querySelectorAll('.product-card');
+const countEl    = document.querySelector('.results-count');
+
+function updateCount(visible) {
+  if (countEl) countEl.textContent = visible + ' producto' + (visible !== 1 ? 's' : '') + ' encontrado' + (visible !== 1 ? 's' : '');
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', function () {
+    filterBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
+
+    const filtro = this.textContent.trim().toLowerCase();
+    let visible = 0;
+
+    allCards.forEach(card => {
+      const cat   = (card.dataset.cat   || '').toLowerCase();
+      const badge = (card.dataset.badge || '').toLowerCase();
+
+      let mostrar = false;
+      if (filtro === 'todo') {
+        mostrar = true;
+      } else if (filtro === 'ofertas') {
+        mostrar = badge.includes('oferta') || badge.includes('sale');
+      } else if (filtro === 'nuevo') {
+        mostrar = badge.includes('nuevo') || badge.includes('drop');
+      } else {
+        mostrar = cat.includes(filtro);
+      }
+
+      card.style.display = mostrar ? '' : 'none';
+      if (mostrar) visible++;
+    });
+
+    updateCount(visible);
   });
 });
+
+updateCount(allCards.length);
 document.querySelectorAll('.talla-chip').forEach(chip => {
   chip.addEventListener('click', function() {
     const row = this.closest('.tallas-row');
@@ -604,24 +643,24 @@ const SUGS = [
 ];
 
 const RULES = [
-  { k: ["hola","hey","buenas","saludos","que mas","ola"], r: `¡Ey! 👊 Estás en <span class="kw">Calzado & Accesorios</span>. ¿Buscas <span class="kw">sneakers</span>, una <span class="kw">gorra</span>, <span class="kw">reloj</span> o <span class="kw">collar</span>? Cuéntame y te ayudo a armar el look completo.` },
-   { k: ["zapatilla deportiva", "tenis deportivo", "zapatos para jugar"], r: `Por ahora, tenemos talla del 40 al 44. Tambien puedes esperar varios dias mientras que llegue nuestra mercancia` },
-  { k: ["novedad","nuevo","drop","coleccion"], r: `🔥 Nuevos en la tienda: <span class="kw">Sneaker Chunky</span> ($320K), <span class="kw">Reloj Chain Oversized</span> ($245K) y el <span class="kw">Bucket Hat Reversible</span> ($72K). ¿Cuál te interesa?` },
-  { k: ["talla","medida","numero","size","pie"], r: `📏 Para calzado manejamos del <span class="kw">36 al 45</span>. Para gorras es <span class="kw">talla única</span> ajustable. Relojes tienen pulsera ajustable. ¿De qué producto necesitas info?` },
-  { k: ["envio","envío","domicilio","entrega"], r: `🚚 Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Express en <span class="kw">24h</span> para Bogotá, Medellín y Cali.` },
-  { k: ["devolucion","cambio","garantia"], r: `🔄 <span class="kw">30 días</span> para cambiar sin rollos. Etiqueta original y sin uso. Escribe <span class="kw">contacto</span> para iniciar.` },
-  { k: ["pago","tarjeta","nequi","pse","cuota"], r: `💳 Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span>.` },
-  { k: ["oferta","descuento","sale","promo"], r: `🏷️ Ofertas: <span class="kw">Sneaker Low Top</span> al −20% ($220K), <span class="kw">Collar Chain</span> al −15% ($45K) y <span class="kw">Bandana Vintage</span> al −20% ($32K).` },
+  { k: ["hola","hey","buenas","saludos","que mas","ola"], r: `¡Ey! Estás en <span class="kw">Calzado & Accesorios</span>. ¿Buscas <span class="kw">sneakers</span>, una <span class="kw">gorra</span>, <span class="kw">reloj</span> o <span class="kw">collar</span>? Cuéntame y te ayudo a armar el look completo.` },
+   { k: ["zapatilla deportiva", "tenis deportivo", "zapatos para jugar"], r: `Tenemos estos zapatos que estan disponibles por ahora ` },
+  { k: ["novedad","nuevo","drop","coleccion"], r: ` Nuevos en la tienda: <span class="kw">Sneaker Chunky</span> ($320K), <span class="kw">Reloj Chain Oversized</span> ($245K) y el <span class="kw">Bucket Hat Reversible</span> ($72K). ¿Cuál te interesa?` },
+  { k: ["talla","medida","numero","size","pie"], r: ` Para calzado manejamos del <span class="kw">36 al 45</span>. Para gorras es <span class="kw">talla única</span> ajustable. Relojes tienen pulsera ajustable. ¿De qué producto necesitas info?` },
+  { k: ["envio","envío","domicilio","entrega"], r: ` Envíos a toda Colombia. <span class="kw">GRATIS</span> desde $200.000. Express en <span class="kw">24h</span> para Bogotá, Medellín y Cali.` },
+  { k: ["devolucion","cambio","garantia"], r: ` <span class="kw">30 días</span> para cambiar sin rollos. Etiqueta original y sin uso. Escribe <span class="kw">contacto</span> para iniciar.` },
+  { k: ["pago","tarjeta","nequi","pse","cuota"], r: ` Aceptamos <span class="kw">Visa/Mastercard</span>, PSE, <span class="kw">Nequi</span>, Daviplata y efectivo. Hasta <span class="kw">12 cuotas sin interés</span>.` },
+  { k: ["oferta","descuento","sale","promo"], r: ` Ofertas: <span class="kw">Sneaker Low Top</span> al −20% ($220K), <span class="kw">Collar Chain</span> al −15% ($45K) y <span class="kw">Bandana Vintage</span> al −20% ($32K).` },
   { k: ["sneaker","zapatilla","tenis","zapato","kicks","calzado"], r: `👟 Tenemos la <span class="kw">Sneaker Chunky</span> ($320K), <span class="kw">Low Top Classic</span> ($220K con 20% off), <span class="kw">Bota Combat</span> ($285K) y <span class="kw">Slide Urban</span> ($98K). ¿Cuál es tu número?` },
-  { k: ["gorra","cap","snapback","hat","bucket"], r: `🧢 La <span class="kw">Snapback Cap Logo</span> ($65K) es la más pedida. El <span class="kw">Bucket Hat Reversible</span> ($72K) es el nuevo drop. ¿Cuál te llama?` },
-  { k: ["reloj","watch","hora","tiempo"], r: `⌚ El <span class="kw">Reloj Street Digital</span> ($185K) es perfecto para el estilo urbano. Si buscas algo más premium, el <span class="kw">Reloj Chain Oversized</span> ($245K) es el must-have de la temporada.` },
+  { k: ["gorra","cap","snapback","hat","bucket"], r: ` La <span class="kw">Snapback Cap Logo</span> ($65K) es la más pedida. El <span class="kw">Bucket Hat Reversible</span> ($72K) es el nuevo drop. ¿Cuál te llama?` },
+  { k: ["reloj","watch","hora","tiempo"], r: ` El <span class="kw">Reloj Street Digital</span> ($185K) es perfecto para el estilo urbano. Si buscas algo más premium, el <span class="kw">Reloj Chain Oversized</span> ($245K) es el must-have de la temporada.` },
   { k: ["collar","chain","joya","accesorio","colgante","pendant"], r: `📿 El <span class="kw">Collar Chain Street</span> ($45K con 15% off) y el <span class="kw">Collar Pendant Logo</span> ($52K) son los favoritos. Perfectos para completar el look.` },
-  { k: ["mochila","bolso","bag","backpack"], r: `🎒 La <span class="kw">Mochila Tactical</span> ($145K) es nuestra más vendida: compartimentos múltiples, resistente al agua y con el estilo street que necesitas.` },
-  { k: ["comprar","agregar","carrito","quiero"], r: `🛒 Selecciona tu talla o color, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Tienes dudas? Cuéntame.` },
-  { k: ["contacto","whatsapp","hablar"], r: `📞 <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
+  { k: ["mochila","bolso","bag","backpack"], r: ` La <span class="kw">Mochila Tactical</span> ($145K) es nuestra más vendida: compartimentos múltiples, resistente al agua y con el estilo street que necesitas.` },
+  { k: ["comprar","agregar","carrito","quiero"], r: ` Selecciona tu talla o color, haz clic en <span class="kw">+ Carrito</span> y elige tu <span class="kw">pago</span>. ¿Tienes dudas? Cuéntame.` },
+  { k: ["contacto","whatsapp","hablar"], r: ` <span class="kw">WhatsApp: 300-000-0000</span> o Instagram <span class="kw">@streetflow.co</span>. Respuesta en menos de 2h hábiles.` },
 ];
 
-const DEFAULT = `Mmmh 🤔 Puedo ayudarte con: <span class="kw">sneaker</span>, <span class="kw">gorra</span>, <span class="kw">reloj</span>, <span class="kw">collar</span>, <span class="kw">talla</span>, <span class="kw">envio</span> u <span class="kw">oferta</span>. Escribe alguna.`;
+const DEFAULT = `Mmmh, Puedo ayudarte con: <span class="kw">sneaker</span>, <span class="kw">gorra</span>, <span class="kw">reloj</span>, <span class="kw">collar</span>, <span class="kw">talla</span>, <span class="kw">envio</span> u <span class="kw">oferta</span>. Escribe alguna.`;
 
 const toggle=document.getElementById('chat-toggle'),win=document.getElementById('chat-window'),closeBtn=document.getElementById('chat-close'),msgs=document.getElementById('chat-messages'),input=document.getElementById('chat-input'),sendBtn=document.getElementById('chat-send'),sugWrap=document.getElementById('sug-wrap'),sugCont=document.getElementById('sug-container');
 function time(){const d=new Date();return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
@@ -632,7 +671,7 @@ function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\
 function getReply(text){const n=normalize(text);for(const r of RULES){if(r.k.some(k=>n.includes(normalize(k))))return r.r;}return DEFAULT;}
 function send(text){if(!text.trim())return;addMsg(text,'user');input.value='';sugWrap.style.display='none';showTyping();setTimeout(()=>{removeTyping();addMsg(getReply(text),'bot');},700+Math.random()*600);}
 function buildSugs(){sugCont.innerHTML='';SUGS.forEach(s=>{const b=document.createElement('button');b.className='sug-chip';b.textContent=s.label;b.onclick=()=>send(s.msg);sugCont.appendChild(b);});}
-function openChat(){win.classList.add('open');document.querySelector('.chat-ping').style.display='none';if(!msgs.children.length){setTimeout(()=>{showTyping();setTimeout(()=>{removeTyping();addMsg(`¡Ey! 👊 Estás en <span class="kw">Calzado & Accesorios</span>. ¿Buscas <span class="kw">sneakers</span>, <span class="kw">gorras</span>, <span class="kw">relojes</span> o <span class="kw">collares</span>? ¡Te ayudo a armar el look completo!`,'bot');buildSugs();},1100);},300);}}
+function openChat(){win.classList.add('open');document.querySelector('.chat-ping').style.display='none';if(!msgs.children.length){setTimeout(()=>{showTyping();setTimeout(()=>{removeTyping();addMsg(`¡Ey! Estás en <span class="kw">Calzado & Accesorios</span>. ¿Buscas <span class="kw">sneakers</span>, <span class="kw">gorras</span>, <span class="kw">relojes</span> o <span class="kw">collares</span>? ¡Te ayudo a armar el look completo!`,'bot');buildSugs();},1100);},300);}}
 toggle.addEventListener('click',()=>{win.classList.contains('open')?win.classList.remove('open'):openChat();});
 closeBtn.addEventListener('click',()=>win.classList.remove('open'));
 sendBtn.addEventListener('click',()=>send(input.value));
