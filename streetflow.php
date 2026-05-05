@@ -285,7 +285,7 @@ footer { background: var(--black); padding: 3.5rem 2.5rem 2rem; border-top: 1px 
 
 <section class="hero">
   <div class="hero-text">
-    <span class="hero-eyebrow">Drop Primavera 2026</span>
+    <span class="hero-eyebrow">Lo mejor para ti en 2026</span>
     <h1>VISTE<span class="green">LA CALLE</span>A TU MODO</h1>
     <p>Piezas diseñadas para los que mandan en el asfalto. Streetwear de nivel, sin límites, sin excusas. La moda urbana que realmente representa.</p>
     <div class="hero-btns">
@@ -445,20 +445,20 @@ const SUGS = [
 
 const RULES = [
   {
-    k: ["hola","hey","buenas","saludos","que mas","ola","epale", "ey"],
-    r: `¡Ey, qué más! 👊 Bienvenid@ al chat de <span class="kw">Streetflow</span>. Estoy aquí para ayudarte con lo que necesites.`
+    k: ["hola","hey","buenas","saludos","que mas","ola","epale", "ey", "como vamos", "buenos día", "buenas tardes", "buenas noches"],
+    r: `¡Ey, qué más! Bienvenid@ al chat de <span class="kw">Streetflow</span>. Estoy aquí para ayudarte con lo que necesites como: <span class="kw">novedades</span>, <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">devolucion</span>, <span class="kw">pago</span>, <span class="kw">oferta</span>, <span class="kw">contacto</span> o <span class="kw">ubicacion</span>.`
   },
   {
     k: ["novedades","nuevo","nueva","drop","coleccion","temporada","lanzamiento", "novedad"],
-    r: ` El <span class="kw">Drop SS2026</span> ya está disponible. Tenemos <span class="kw">Hoodie Oversized</span> ($189.000), <span class="kw">Cargo Pants Wide</span> (con 30% off ahorita) y la nueva <span class="kw">Jacket Coach</span> ($265.000). ¿Quieres saber de alguna prenda específica? Y si necesitas info de <span class="kw">envio</span>, con gusto te explico.`
+    r: `  Tenemos <span class="kw">Hoodie Oversized</span> ($189.000), <span class="kw">Cargo Pants Wide</span> (con 30% off ahorita) y la nueva <span class="kw">Jacket Coach</span> ($265.000). ¿Quieres saber de alguna prenda específica? Y si necesitas info de <span class="kw">envio</span>, con gusto te explico.`
   },
   {
-    k: ["talla","medida","tamaño","queda","fit","size"],
-    r: ` Manejamos tallas <span class="kw">XS hasta XXL</span>. Tambien manejamos tallas de zapato <span class="kw">36 a 45</span>. ¿Tienes dudas de una prenda? Dime cuál es y te ayudo. Si ya tienes la tuya lista, escribe <span class="kw">comprar</span> para continuar.`
+    k: ["talla","medida","tamaño"],
+    r: ` Manejamos tallas <span class="kw">XS hasta XXL</span> en la categoria de <span class="kw">Buso y chaquetas o Pantalon y Joggers</span>. Tambien manejamos tallas de zapato <span class="kw">36 a 45</span>.  Para mas informacion sobre zapato, busca en la categoria <span class="kw">Calzado y Accesorios</span> para continuar.`
   },
   {
     k: ["envio","envío","domicilio","entrega","llegar","despacho","shipping"],
-    r: `🚚 Hacemos <span class="kw">envíos a toda Colombia</span>. Envío <span class="kw">GRATIS</span> en compras desde $200.000. Para Bogotá, Medellín y Cali hay entrega <span class="kw">express en 24 horas</span>. El resto del país: 2 a 5 días hábiles. Tambien hacemos <span class="kw">devoluciones</span>. Solo escribe <span class="kw">cambio</span>, para darte mas informacion`
+    r: ` Hacemos <span class="kw">envíos a toda Colombia</span>. Envío <span class="kw">GRATIS</span> en compras desde $200.000. Para Bogotá, Medellín y Cali hay entrega <span class="kw">express en 24 horas</span>. El resto del país: 2 a 5 días hábiles. Tambien hacemos <span class="kw">devoluciones</span>. Solo escribe <span class="kw">cambio</span>, para darte mas informacion`
   },
   {
     k: ["devolucion","devolución","cambio","cambiar","garantia","retorno"],
@@ -466,43 +466,39 @@ const RULES = [
   },
   {
     k: ["pago","pagar","cuota","tarjeta","efectivo","nequi","pse","banco"],
-    r: `💳 Aceptamos <span class="kw">tarjetas</span> Visa/Mastercard, <span class="kw">PSE</span>, <span class="kw">Nequi</span>, Daviplata y efectivo por Efecty o Baloto. Con tarjetas de crédito tienes <span class="kw">hasta 12 cuotas sin interés</span>. ¿Ya tienes algo en el carrito? Escribe <span class="kw">comprar</span> para continuar.`
+    r: ` Aceptamos <span class="kw">tarjetas</span> Visa/Mastercard, <span class="kw">PSE</span>, <span class="kw">Nequi</span>, Daviplata y efectivo por Efecty o Baloto. Con tarjetas de crédito tienes <span class="kw">hasta 12 cuotas sin interés</span>.`
   },
   {
     k: ["oferta","descuento","sale","rebaja","promo","precio","barato"],
-    r: `🏷️ ¡Hay ofertas activas! Los <span class="kw">Cargo Pants Wide</span> están al <span class="kw">−30%</span> (ahora $175.000) y la <span class="kw">Bandana Vintage</span> al −20%. En la sección <span class="kw">Sale</span> hay más piezas con hasta 40% off. ¿Cuál te interesa? Dime y te doy más detalles.`
+    r: ` ¡Hay ofertas activas! Los <span class="kw">Cargo Pants Wide</span> están al <span class="kw">−30%</span> (ahora $175.000) y la <span class="kw">Bandana Vintage</span> al −20%. En la sección <span class="kw">Sale</span> hay más piezas con hasta 40% off. ¿Cuál te interesa? Dime y te doy más detalles.`
   }, 
   {
-    k: ["hoodie","sudadera","buzo","sweatshirt","poleron", "buso deportivo", "camisa", "chaqueta", ],
-    r: ` La <span class="kw">Hoodie Oversized</span> es nuestro bestseller: $189.000, material 380gsm, tiro largo y cuello amplio. Disponible en negro, verde militar y gris. ¿Necesitas saber tu <span class="kw">talla</span> ideal? Escribe <span class="kw">talla</span> y te oriento. ¿Ya vas a pedir? Escribe <span class="kw">comprar</span>.`
-  },
-  {
     k: ["cargo","pantalon","pantalón","jogger","jean","pant"],
-    r: `👖 Los <span class="kw">Cargo Pants Wide</span> están a $175.000 (antes $250.000). Fit baggy, bolssillos laterales y cintura ajustable. ¿Dudas con la <span class="kw">talla</span>? Cuéntame tu medida de cintura y te recomiendo la ideal. También puedes ver las otras <span class="kw">ofertas</span> activas si quieres.`
+    r: ` Se encuentra en la categoria de <span class="kw"> PANTALONES Y JOGGERS </span>. Aqui solo se envia informacion  general de muestra tienda <span class="kw">streetflow </span> como <span class="kw"> ubicación, contacto, horario, pago, devolución </span>`
   },
   {
-    k: ["zapatilla","sneaker","calzado","zapato","tenis","shoe","kicks", "juan pablo"],
+    k: ["buso","busos","hoodie","camisas","chaqueta","saco","camibusos"],
     r: ` Se encuentra en la categoria de <span class="kw"> Calzado y Accesorios</span>. Aqui solo se envia informacion  general de muestra tienda <span class="kw">streetflow </span> como <span class="kw"> ubicación, contacto, horario, pago, devolución </span>`
   },
   {
-    k: ["comprar","agregar","carrito","Angulo es gay", "pedido","quiero"],
-    r: `🛒 ¡Vamos! Agrega los productos al carrito desde la tienda y elige tu método de <span class="kw">pago</span>. Si tienes dudas sobre alguna prenda, dime cuál es y te ayudo. ¿Ya sabes cómo llega tu pedido? Escribe <span class="kw">envio</span> para todos los detalles.`
+    k: ["zapatilla","sneaker","calzado","zapato","tenis","shoe","kicks"],
+    r: ` Se encuentra en la categoria de <span class="kw"> Calzado y Accesorios</span>. Aqui solo se envia informacion  general de muestra tienda <span class="kw">streetflow </span> como <span class="kw"> ubicación, contacto, horario, pago, devolución </span>`
   },
   {
     k: ["horario", "atencion", "antiende"],
-    r: `⏰ Nuestro horario de atención es de lunes a viernes de 9am a 6pm. Fuera de ese horario, puedes escribirnos y te responderemos lo antes posible en el siguiente día hábil. Si quieres contacto directo, solo escribe <span class="kw">contacto</span> y te doy las opciones.`
+    r: ` Nuestro horario de atención es de lunes a viernes de 9am a 6pm. Fuera de ese horario, puedes escribirnos y te responderemos lo antes posible en el siguiente día hábil. Si quieres contacto directo, solo escribe <span class="kw">contacto</span> y te doy las opciones.`
   },
   {
-    k: ["ubicación, dirección","donde estan","sede","tienda","local","oficina","dónde están", "ubicacion","direccion"],
+    k: ["ubicación, dirección","donde estan","sede","tienda","local","oficina","dónde están", "ubicacion","direccion"], 
     r: `Nos encontramos en <span class="kw">Neiva-huila, san pedro plaza-local 101</span>, pero hacemos envíos a toda Colombia. Si quieres el horario de atencion, solo escribe <span class="kw">horario</span> y te doy las opciones.`
   },
   {
     k: ["contacto","whatsapp","llamar","hablar","persona","humano", "usuario"],
-    r: `📞 Puedes contactarnos por <a href="https://wa.me/573102916140" target="_blank"><span class="kw">WhatsApp</span></a> o por <span class="kw">Instagram</span> @streetflow.co. Respuesta en menos de 2 horas en horario hábil. ¿Hay algo más que pueda ayudarte? Escribe lo que necesitas.`
+    r: ` Puedes contactarnos por <a href="https://wa.me/573102916140" target="_blank"><span class="kw">WhatsApp</span></a> o por <span class="kw">Instagram</span> @streetflow.co. Respuesta en menos de 2 horas en horario hábil. ¿Hay algo más que pueda ayudarte? Escribe lo que necesitas.`
   },
 ];
 
-const DEFAULT = `Mmmh, no caché bien esa 🤔 Pero puedo ayudarte con: <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span>, <span class="kw">devolucion</span>, <span class="kw">oferta</span>, <span class="kw">hoodie</span>, <span class="kw">cargo</span> o <span class="kw">comprar</span>. Escribe alguna y te respondo.`;
+const DEFAULT = `Mmmh, no puedo ayudarte con tu busqueda, pero si puedo ayudarte con: <span class="kw">talla</span>, <span class="kw">envio</span>, <span class="kw">pago</span>, <span class="kw">devolucion</span>, <span class="kw">oferta</span>, <span class="kw">hoodie</span>, <span class="kw">cargo</span> o <span class="kw">comprar</span>. Escribe alguna y te respondo.`;
 
 const toggle   = document.getElementById('chat-toggle');
 const win      = document.getElementById('chat-window');
